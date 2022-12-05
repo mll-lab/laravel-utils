@@ -20,6 +20,44 @@ composer require mll-lab/laravel-utils
 
 See [tests](tests).
 
+### Autoincrement
+
+Allows the creation of incrementing IDs without actually using autoincrement.
+
+Extend the class [`Autoincrement`](src/Database/Autoincrement.php) with a descriptive name for your ID.
+
+```php
+use MLL\LaravelUtils\Database\Autoincrement;
+
+final class MaxFooId extends Autoincrement
+{
+    public static function name(): string
+    {
+        return 'max_foo_id';
+    }
+}
+```
+
+Generate a migration and call the `createTable()` method in it:
+
+```php
+public function up() {
+    MaxFooId::createTable();
+}
+```
+
+To use this ID in your model, set `$incrementing` to false and assign the ID to your model in the `booted()` method:
+
+```php
+public $incrementing = false;
+
+protected static function booted(): void
+{
+    self::creating(function (self $instance): void {
+        $instance->id ??= MaxFooId::next();
+    });
+```
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).
