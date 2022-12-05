@@ -90,27 +90,39 @@ jobs:
         with:
           commit_message: Apply php-cs-fixer changes
 
-  static-code-analysis:
-    name: "Static Code Analysis"
-
+  static-analysis:
+    name: PHPStan on PHP ${{ matrix.php-version }} with Laravel ${{ matrix.laravel-version }}
     runs-on: ubuntu-latest
 
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@master
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - 7.4
+          - 8.0
+          - 8.1
+        laravel-version:
+          - ^8
+          - ^9
+        exclude:
+          - php-version: 7.4
+            laravel-version: ^9
 
-      - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v2
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: shivammathur/setup-php@v2
         with:
           coverage: none
           extensions: mbstring
-          php-version: 8.1
+          php-version: ${{ matrix.php-version }}
 
-      - name: "Install dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+      - name: "Remove conflicting dependencies that are not needed here"
+        run: composer remove --dev rector/rector --no-update
 
-      - name: "Run phpstan"
-        run: vendor/bin/phpstan analyse --configuration=phpstan.neon
+      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+
+      - run: vendor/bin/phpstan
 
   tests:
     name: "Tests - PHP ${{ matrix.php-version }}, Illuminate ${{ matrix.illuminate }}, ${{ matrix.dependencies }}"

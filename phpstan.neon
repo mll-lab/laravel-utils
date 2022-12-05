@@ -1,5 +1,12 @@
 parameters:
 	level: max
+
 	paths:
 	- src
 	- tests
+
+	# TODO reenable once we require Laravel 9+
+	checkGenericClassInNonGenericObjectType: false
+
+	# As long as we support multiple Laravel versions at once, there will be some dead spots
+	reportUnmatchedIgnoredErrors: false
