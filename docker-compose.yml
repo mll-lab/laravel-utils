@@ -10,10 +10,10 @@ services:
     security_opt:
       - label:disable
     depends_on:
-      - mysql
+      - mariadb
     tty: true
 
-  mysql:
+  mariadb:
     image: mariadb:10.5
     # Ensures compatibility with Apple M1
     platform: linux/amd64

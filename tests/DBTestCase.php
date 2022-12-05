@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 abstract class DBTestCase extends TestCase
 {
-    public const DEFAULT_CONNECTION = 'mysql';
+    public const DEFAULT_CONNECTION = 'mariadb';
 
     /**
      * Indicates if migrations ran.
@@ -48,21 +48,21 @@ abstract class DBTestCase extends TestCase
 
         $config->set('database.default', self::DEFAULT_CONNECTION);
 
-        $mysqlOptions = $this->mysqlOptions();
-        $config->set('database.connections.' . self::DEFAULT_CONNECTION, $mysqlOptions);
+        $mariadbOptions = $this->mariadbOptions();
+        $config->set('database.connections.' . self::DEFAULT_CONNECTION, $mariadbOptions);
     }
 
     /**
      * @return array<string, mixed>
      */
-    protected function mysqlOptions(): array
+    protected function mariadbOptions(): array
     {
         return [
             'driver' => 'mysql',
             'database' => env('MLL_TEST_DB_DATABASE', 'test'),
             'username' => env('MLL_TEST_DB_USERNAME', 'root'),
             'password' => env('MLL_TEST_DB_PASSWORD', ''),
-            'host' => env('MLL_TEST_DB_HOST', 'mysql'),
+            'host' => env('MLL_TEST_DB_HOST', 'mariadb'),
             'port' => env('MLL_TEST_DB_PORT', '3306'),
             'unix_socket' => env('MLL_TEST_DB_UNIX_SOCKET', null),
         ];

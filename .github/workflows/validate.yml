@@ -1,12 +1,16 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 
+name: "Validate"
+
 on:
   pull_request:
   push:
     branches:
       - master
 
-name: "Continuous Integration"
+env:
+  MLL_TEST_DB_HOST: 127.0.0.1
+  MLL_TEST_DB_PORT: 33060
 
 jobs:
   composer-validate:
@@ -131,6 +135,16 @@ jobs:
           - php-version: 7.4
             illuminate: ^9
 
+    services:
+      mariadb:
+        image: mariadb:10.5
+        env:
+          MYSQL_DATABASE: test
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        ports:
+          - 33060:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@master
@@ -160,6 +174,16 @@ jobs:
     name: "Code Coverage"
 
     runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: mariadb:10.5
+        env:
+          MYSQL_DATABASE: test
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        ports:
+          - 33060:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: "Checkout"
