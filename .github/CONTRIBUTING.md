@@ -2,7 +2,7 @@
 
 We are using [GitHub Actions](https://github.com/features/actions) as a continuous integration system.
 
-For details, see [`workflows/continuous-integration.yml`](workflows/validate.yml).
+For details, see [`workflows/validate.yml`](workflows/validate.yml).
 
 ## Code Style
 
