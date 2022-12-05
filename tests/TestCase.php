@@ -11,6 +11,7 @@ abstract class TestCase extends BaseTestCase
      *
      * @var \Illuminate\Foundation\Application
      */
+    // @phpstan-ignore-next-line
     protected $app;
 
     /**

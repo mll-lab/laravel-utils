@@ -43,7 +43,8 @@ abstract class Autoincrement
      */
     public static function next(): int
     {
-        $next = DB::transaction(static function (): int {
+        // @phpstan-ignore-next-line TODO remove when requiring Laravel 9+ that can infer this must return int
+        return DB::transaction(static function (): int {
             $name = static::name();
             $builder = DB::table($name);
 
@@ -61,9 +62,6 @@ abstract class Autoincrement
 
             return $next;
         });
-        assert(is_int($next));
-
-        return $next;
     }
 
     /**
