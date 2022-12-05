@@ -1,0 +1,25 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+>
+    <testsuites>
+        <testsuite name="Database">
+            <directory>tests/Database</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </coverage>
+
+    <php>
+        <env name="MLL_TEST_DB_DATABASE" value="test"/>
+        <env name="MLL_TEST_DB_HOST" value="mysql"/>
+        <env name="MLL_TEST_DB_PORT" value="3306"/>
+        <env name="MLL_TEST_DB_USERNAME" value="root"/>
+        <env name="MLL_TEST_DB_PASSWORD" value=""/>
+    </php>
+</phpunit>

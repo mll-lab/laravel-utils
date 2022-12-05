@@ -1,0 +1,23 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+      args:
+        USER: $USER
+    volumes:
+      - ./:/workdir
+    security_opt:
+      - label:disable
+    depends_on:
+      - mysql
+    tty: true
+
+  mysql:
+    image: mariadb:10.5
+    # Ensures compatibility with Apple M1
+    platform: linux/amd64
+    tmpfs: /var/lib/mysql
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
