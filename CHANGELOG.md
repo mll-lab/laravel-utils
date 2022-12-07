@@ -8,3 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
+
+## v1.0.0
+
+### Added
+
+- Add `Autoincrement`
