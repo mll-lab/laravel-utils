@@ -37,12 +37,10 @@ final class StateEnumType extends EnumType
                 /**
                  * @return array<string, mixed> Used to construct a \GraphQL\Type\Definition\EnumValueDefinition
                  */
-                function (string $state): array {
-                    return [
-                        'name' => $state::name(),
-                        'value' => new $state(),
-                    ];
-                },
+                fn (string $state): array => [
+                    'name' => $state::name(),
+                    'value' => new $state(),
+                ],
                 $config->possibleStates()
             ),
         ]);

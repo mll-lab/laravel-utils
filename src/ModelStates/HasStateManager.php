@@ -89,7 +89,7 @@ trait HasStateManager
                 $targetNode = $graph->getNode($possibleNextState::name());
 
                 if (null !== $sourceNode && null !== $targetNode) {
-                    $transition = $config->transition(get_class($state), get_class($possibleNextState));
+                    $transition = $config->transition($state::class, get_class($possibleNextState));
                     assert(null !== $transition);
 
                     $reflectionClass = new \ReflectionClass($transition);

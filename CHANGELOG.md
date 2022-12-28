@@ -9,7 +9,11 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
-## v1.1.0
+## v2.0.0
+
+### Removed
+
+- Drop PHP 7.4 and PHP 8.0 support
 
 ### Added
 

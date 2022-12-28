@@ -8,29 +8,27 @@ use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 
 final class StateMachine
 {
-    private StateConfig $stateConfig;
+    private readonly StateConfig $stateConfig;
 
-    private HasStateManagerInterface $model;
+    private readonly HasStateManagerInterface $model;
 
-    private Application $app;
+    private readonly Application $app;
 
     public function __construct(HasStateManagerInterface $model)
     {
         $this->stateConfig = $model->stateClass()::config();
         $this->model = $model;
 
-        $this->app = app();
+        $this->app = Application::getInstance();
     }
 
     /**
      * @param State|class-string<State> $newState
      */
-    public function transitionTo($newState): HasStateManagerInterface
+    public function transitionTo(State|string $newState): HasStateManagerInterface
     {
-        $from = get_class($this->model->state);
-        $to = is_string($newState)
-            ? $newState
-            : get_class($newState);
+        $from = $this->model->state::class;
+        $to = $newState::class;
 
         $transitionClass = $this->stateConfig->transition($from, $to);
         if (null === $transitionClass) {
