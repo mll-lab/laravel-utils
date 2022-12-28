@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MLL\LaravelUtils\Tests\ModelStates\Dummy\Transitions;
+namespace App\ModelStates\Transitions;
 
 use MLL\LaravelUtils\ModelStates\Transition;
 

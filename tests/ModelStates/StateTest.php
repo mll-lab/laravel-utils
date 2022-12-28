@@ -2,38 +2,28 @@
 
 namespace MLL\LaravelUtils\ModelStates\Tests;
 
+use App\ModelStates\ModelStates\StateA;
+use App\ModelStates\ModelStates\StateB;
+use App\ModelStates\ModelStates\StateC;
+use App\ModelStates\ModelStates\StateD;
+use App\ModelStates\OtherModelStates\StateY;
+use App\ModelStates\OtherModelStates\StateZ;
+use App\ModelStates\TestModel;
+use App\ModelStates\TestModelWithCustomTransition;
 use Illuminate\Support\Collection as SupportCollection;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
 use MLL\LaravelUtils\Tests\DBTestCase;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\ModelStates\StateA;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\ModelStates\StateB;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\ModelStates\StateC;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\ModelStates\StateD;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\OtherModelStates\StateY;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\OtherModelStates\StateZ;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\TestModel;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\TestModelWithCustomTransition;
 
 final class StateTest extends DBTestCase
 {
-    private string $columnName;
-
-    public function setUp(): void
-    {
-        parent::setUp();
-        $columnName = config('model-state.column_name');
-        assert(is_string($columnName));
-        $this->columnName = $columnName;
-    }
-
     public function testModelWillBeCreatedWithDefault(): void
     {
         $model = new TestModel();
         $model->save();
 
-        self::assertSame(StateA::name(), $model->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model->stateManager->state_name);
     }
 
     public function testIfOldAndNewStateAreIdenticalNoTransitionNotAllowedExceptionWillBeThrown(): void
@@ -42,9 +32,9 @@ final class StateTest extends DBTestCase
         $model1 = new TestModel();
         $model1->save();
         self::assertSame('STATE_A', StateA::name());
-        self::assertSame(StateA::name(), $model1->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model1->stateManager->state_name);
         $model1->state = new StateA();
-        self::assertSame(StateA::name(), $model1->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model1->stateManager->state_name);
     }
 
     public function testCanTransitionToAllowedStates(): void
@@ -52,30 +42,30 @@ final class StateTest extends DBTestCase
         // A -> B
         $model1 = new TestModel();
         $model1->save();
-        self::assertSame(StateA::name(), $model1->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model1->stateManager->state_name);
 
         $model1->state = new StateB();
-        self::assertSame(StateB::name(), $model1->stateManager->{$this->columnName});
+        self::assertSame(StateB::name(), $model1->stateManager->state_name);
 
         // B -> C
         $model1->state = new StateC();
-        self::assertSame(StateC::name(), $model1->stateManager->{$this->columnName});
+        self::assertSame(StateC::name(), $model1->stateManager->state_name);
 
         // A -> C
         $model2 = new TestModel();
         $model2->save();
-        self::assertSame(StateA::name(), $model2->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model2->stateManager->state_name);
 
         $model2->state = new StateC();
-        self::assertSame(StateC::name(), $model2->stateManager->{$this->columnName});
+        self::assertSame(StateC::name(), $model2->stateManager->state_name);
 
         // A -> C
         $model3 = new TestModel();
         $model3->save();
-        self::assertSame(StateA::name(), $model3->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model3->stateManager->state_name);
 
         $model3->state = new StateD();
-        self::assertSame(StateD::name(), $model3->stateManager->{$this->columnName});
+        self::assertSame(StateD::name(), $model3->stateManager->state_name);
     }
 
     public function testCanNotTransitionForNotAssignedTransitionFromBToA(): void
@@ -98,15 +88,15 @@ final class StateTest extends DBTestCase
     {
         $model = new TestModel();
         $model->save();
-        self::assertSame(StateA::name(), $model->stateManager->{$this->columnName});
+        self::assertSame(StateA::name(), $model->stateManager->state_name);
 
         $model->state = new StateB();
-        self::assertSame(StateB::name(), $model->stateManager->{$this->columnName});
+        self::assertSame(StateB::name(), $model->stateManager->state_name);
 
         // B -> D
         $this->expectException(TransitionNotFound::class);
         $model->state = new StateD();
-        self::assertSame(StateD::name(), $model->stateManager->{$this->columnName});
+        self::assertSame(StateD::name(), $model->stateManager->state_name);
     }
 
     public function testReturnsListOfPossibleNextStates(): void
@@ -129,7 +119,7 @@ final class StateTest extends DBTestCase
         $model->save();
 
         $model->state = new StateY();
-        self::assertSame(StateY::name(), $model->stateManager->{$this->columnName});
+        self::assertSame(StateY::name(), $model->stateManager->state_name);
         self::assertSame('my custom action', $model->message);
     }
 
@@ -146,10 +136,13 @@ final class StateTest extends DBTestCase
     {
         $model = new TestModel();
         $model->save();
-        $model->stateManager->setAttribute($this->columnName, 'UnknownState');
-        self::assertEquals('UnknownState', $model->stateManager->{$this->columnName});
+
+        $model->stateManager->state_name = 'UnknownState';
+        self::assertSame('UnknownState', $model->stateManager->state_name);
+
         $this->expectException(UnknownStateException::class);
-        self::assertEquals('UnknownState', $model->state);
+        // @phpstan-ignore-next-line only meant to trigger an error
+        $model->state;
     }
 
     public function testGenerateMermaidGraph(): void

@@ -52,6 +52,7 @@
   },
   "autoload-dev": {
     "psr-4": {
+      "App\\": "app/",
       "MLL\\LaravelUtils\\Tests\\": "tests/"
     }
   },

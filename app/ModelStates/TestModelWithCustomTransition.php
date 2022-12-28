@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace MLL\LaravelUtils\Tests\ModelStates\Dummy;
+namespace App\ModelStates;
 
+use App\ModelStates\OtherModelStates\OtherModelState;
 use Illuminate\Database\Eloquent\Model;
 use MLL\LaravelUtils\ModelStates\HasStateManager;
 use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\OtherModelStates\OtherModelState;
 
 /**
  * @property string $id

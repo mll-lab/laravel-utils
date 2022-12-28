@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace MLL\LaravelUtils\Tests\ModelStates\Dummy\Transitions;
+namespace App\ModelStates\Transitions;
 
+use App\ModelStates\TestModelWithCustomTransition;
 use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
 use MLL\LaravelUtils\ModelStates\Transition;
-use MLL\LaravelUtils\Tests\ModelStates\Dummy\TestModelWithCustomTransition;
 
 final class CustomTransition extends Transition
 {

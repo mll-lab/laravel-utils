@@ -27,8 +27,7 @@ trait IsStateManager
         $stateable = $this->stateable;
         $stateable->refresh();
 
-        return $stateable
-            ->stateClass()::config()
+        return $stateable->stateClass()::config()
             ->possibleNextStates($stateable->state);
     }
 }

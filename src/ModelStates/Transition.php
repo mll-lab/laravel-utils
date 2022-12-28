@@ -43,9 +43,7 @@ abstract class Transition
      */
     final protected function manage(): void
     {
-        $column_name = config('model-state.column_name');
-
-        $this->model->stateManager->{$column_name} = $this->to::name();
+        $this->model->stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $this->to::name());
         $this->model->stateManager->save();
     }
 }

@@ -6,11 +6,10 @@ return [
     | State Model Class
     |--------------------------------------------------------------------------
     |
-    | This value determines which model ist the actually used State-Model.
-    | Replace with root application state class.
+    | Fully qualified class name of the model class used to store the state.
     |
     */
-    'model' => MLL\LaravelUtils\Tests\ModelStates\Dummy\StateManager::class,
+    'model' => App\ModelStates\StateManager::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -21,14 +20,4 @@ return [
     |
     */
     'column_name' => 'state_name',
-
-    /*
-    |--------------------------------------------------------------------------
-    | State Relation Name
-    |--------------------------------------------------------------------------
-    |
-    | This value the name of the morphed state relation.
-    |
-    */
-    'relation_name' => 'stateable',
 ];
