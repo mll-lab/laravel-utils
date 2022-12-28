@@ -22,7 +22,8 @@ trait HasStateManager
                 return;
             }
 
-            $stateManager = new (ModelStatesServiceProvider::stateManagerClass())();
+            $stateManagerClass = ModelStatesServiceProvider::stateManagerClass();
+            $stateManager = new $stateManagerClass();
             $stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $self->stateClass()::defaultState()::name());
 
             $self->stateManager()->save($stateManager);
