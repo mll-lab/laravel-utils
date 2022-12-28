@@ -2,10 +2,13 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
+use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
+
 final class TransitionNotFound extends CouldNotPerformTransition
 {
-    public static function make(string $from, string $to, string $modelClass): self
+    public function __construct(string $from, string $to, HasStateManagerInterface $model)
     {
-        return new self("Transitions from `{$from}` to `{$to}` on model `{$modelClass}` was not found, did you forget to register it in the config?");
+        $modelClass = get_class($model);
+        parent::__construct("Transitions from `{$from}` to `{$to}` on model `{$modelClass}` was not found, did you forget to register it in the config?");
     }
 }

@@ -3,7 +3,7 @@
 namespace MLL\LaravelUtils\ModelStates;
 
 use Illuminate\Support\Collection as SupportCollection;
-use MLL\LaravelUtils\ModelStates\Exceptions\InvalidConfig;
+use MLL\LaravelUtils\ModelStates\Exceptions\ClassDoesNotExtendBaseClass;
 
 final class StateConfig
 {
@@ -32,12 +32,12 @@ final class StateConfig
 
         // @phpstan-ignore-next-line php-stan is not right here
         if (! is_subclass_of($fromOrFroms, State::class)) {
-            throw InvalidConfig::doesNotExtendBaseClass($fromOrFroms, State::class);
+            throw new ClassDoesNotExtendBaseClass($fromOrFroms, State::class);
         }
 
         // @phpstan-ignore-next-line php-stan is not right here
         if (! is_subclass_of($to, State::class)) {
-            throw InvalidConfig::doesNotExtendBaseClass($to, State::class);
+            throw new ClassDoesNotExtendBaseClass($to, State::class);
         }
 
         // There might already be transitions registered for this state

@@ -2,12 +2,15 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
+use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
+use MLL\LaravelUtils\ModelStates\Transition;
+
 final class TransitionNotAllowed extends CouldNotPerformTransition
 {
-    protected string $transitionClass;
-
-    public static function make(string $modelClass, string $transitionClass): self
+    public function __construct(HasStateManagerInterface $model, Transition $transitionClass)
     {
-        return new self("The transition `{$transitionClass}` is not allowed on model `{$modelClass}` at the moment.");
+        $modelClass = get_class($model);
+        $transitionClass = get_class($transitionClass);
+        parent::__construct("The transition `{$transitionClass}` is not allowed on model `{$modelClass}` at the moment.");
     }
 }

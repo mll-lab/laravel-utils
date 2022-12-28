@@ -3,7 +3,8 @@
 namespace MLL\LaravelUtils\ModelStates;
 
 use Illuminate\Foundation\Application;
-use MLL\LaravelUtils\ModelStates\Exceptions\CouldNotPerformTransition;
+use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
+use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 
 final class StateMachine
 {
@@ -33,13 +34,13 @@ final class StateMachine
 
         $transitionClass = $this->stateConfig->transition($from, $to);
         if (null === $transitionClass) {
-            throw CouldNotPerformTransition::notFound($from, $to, $this->model);
+            throw new TransitionNotFound($from, $to, $this->model);
         }
 
         $transition = new $transitionClass($this->model, $from, $to);
 
         if (! $transition->canTransition()) {
-            throw CouldNotPerformTransition::notAllowed($this->model, $transition);
+            throw new TransitionNotAllowed($this->model, $transition);
         }
 
         if (method_exists($transition, 'handle')) {

@@ -4,8 +4,8 @@ namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
 final class ClassDoesNotExtendBaseClass extends InvalidConfig
 {
-    public static function make(string $class, string $baseClass): self
+    public function __construct(string $class, string $baseClass)
     {
-        return new self("Class {$class} does not extend the `{$baseClass}` base class.");
+        parent::__construct("Class {$class} does not extend the base class {$baseClass}.");
     }
 }
