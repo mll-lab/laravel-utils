@@ -11,5 +11,6 @@ parameters:
 	# As long as we support multiple Laravel versions at once, there will be some dead spots
 	reportUnmatchedIgnoredErrors: false
 	ignoreErrors:
-	# Variable properties are essential part of the ´ModelStates´
-	- '#Variable property access on#'
+	# PHPStan does not believe interfaces can define magic properties
+	- '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$stateManager\.#'
+	- '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$state\.#'
