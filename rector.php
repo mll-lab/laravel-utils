@@ -7,6 +7,11 @@ use Rector\Set\ValueObject\SetList;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->import(SetList::CODE_QUALITY);
     $rectorConfig->import(SetList::PHP_71);
+    $rectorConfig->import(SetList::PHP_72);
+    $rectorConfig->import(SetList::PHP_73);
+    $rectorConfig->import(SetList::PHP_74);
+    $rectorConfig->import(SetList::PHP_80);
+    $rectorConfig->import(SetList::PHP_81);
 
     $rectorConfig->skip([
         // skip csv test file to keep `\r` and `\n` for readability

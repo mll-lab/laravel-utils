@@ -4,6 +4,7 @@ namespace MLL\LaravelUtils\Tests;
 
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Support\Facades\DB;
+use MLL\LaravelUtils\ModelStates\ModelStatesServiceProvider;
 
 abstract class DBTestCase extends TestCase
 {
@@ -20,7 +21,7 @@ abstract class DBTestCase extends TestCase
 
         if (! static::$migrated) {
             $this->artisan('migrate:fresh', [
-                '--path' => __DIR__ . '/Database/migrations',
+                '--path' => __DIR__ . '/../app/migrations',
                 '--realpath' => true,
             ]);
 
@@ -52,10 +53,17 @@ abstract class DBTestCase extends TestCase
         $config->set('database.connections.' . self::DEFAULT_CONNECTION, $mariadbOptions);
     }
 
+    protected function getPackageProviders($app): array
+    {
+        return [
+            ModelStatesServiceProvider::class,
+        ];
+    }
+
     /**
      * @return array<string, mixed>
      */
-    protected function mariadbOptions(): array
+    private function mariadbOptions(): array
     {
         return [
             'driver' => 'mysql',

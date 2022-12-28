@@ -9,6 +9,20 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v2.0.0
+
+### Removed
+
+- Drop PHP 7.4 and PHP 8.0 support
+
+### Changed
+
+- Bump minimum requirements to ensure PHP 8.2 compatibility
+
+### Added
+
+- Add state support for models in a morphed table
+
 ## v1.0.0
 
 ### Added

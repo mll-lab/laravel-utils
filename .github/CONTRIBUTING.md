@@ -4,6 +4,14 @@ We are using [GitHub Actions](https://github.com/features/actions) as a continuo
 
 For details, see [`workflows/validate.yml`](workflows/validate.yml).
 
+## Directory structure
+
+Add any source code to publish (classes, config files) in [src](/src).
+
+Add tests to [tests](/tests).
+
+Add files a user of this package would create in their own application in [app](/app).
+
 ## Code Style
 
 We are using [`friendsofphp/php-cs-fixer`](https://github.com/friendsofphp/php-cs-fixer) to automatically format the code.

@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\Tests\Database;
 
+use App\Database\MaxNo;
 use MLL\LaravelUtils\Tests\DBTestCase;
 
 final class AutoincrementTest extends DBTestCase
