@@ -20,8 +20,8 @@ up: ## Bring up the docker-compose stack
 
 .PHONY: fix
 fix: up
-	${dcphp} vendor/bin/php-cs-fixer fix
 	${dcphp} vendor/bin/rector process
+	${dcphp} vendor/bin/php-cs-fixer fix
 
 .PHONY: stan
 stan: up ## Runs a static analysis with phpstan
