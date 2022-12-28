@@ -10,3 +10,6 @@ parameters:
 
 	# As long as we support multiple Laravel versions at once, there will be some dead spots
 	reportUnmatchedIgnoredErrors: false
+	ignoreErrors:
+	# Variable properties are essential part of the ´ModelStates´
+	- '#Variable property access on#'

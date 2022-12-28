@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v1.1.0
+
+### Added
+
+- Add state support for models in a morphed table
+
 ## v1.0.0
 
 ### Added

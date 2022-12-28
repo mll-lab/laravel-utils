@@ -12,6 +12,8 @@ services:
     depends_on:
       - mariadb
     tty: true
+    environment:
+      PHP_CS_FIXER_IGNORE_ENV: true
 
   mariadb:
     image: mariadb:10.5
