@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class Transition
 {
-    /**
-     * @var HasStateManagerInterface&Model
-     */
-    protected HasStateManagerInterface $model;
+    protected HasStateManagerInterface&Model $model;
 
     /**
      * @var class-string<State>
@@ -22,11 +19,10 @@ abstract class Transition
     protected string $to;
 
     /**
-     * @param HasStateManagerInterface&Model $model
      * @param class-string<State> $from
      * @param class-string<State> $to
      */
-    final public function __construct(HasStateManagerInterface $model, string $from, string $to)
+    final public function __construct(HasStateManagerInterface&Model $model, string $from, string $to)
     {
         $this->model = $model;
         $this->from = $from;

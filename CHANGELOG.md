@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v3.0.0
+
+### Changed
+
+- Define `Transition::$model` as union type `HasStateManagerInterface&Model`
+
 ## v2.0.0
 
 ### Removed
