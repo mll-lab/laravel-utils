@@ -25,6 +25,7 @@ class ModelStatesServiceProvider extends ServiceProvider
     public static function stateManagerClass(): string
     {
         $config = Container::getInstance()->make(ConfigRepository::class);
+        // @phpstan-ignore-next-line unknown with Laravel 8, known with Laravel 9
         assert($config instanceof ConfigRepository);
 
         $modelClass = $config->get('model-state.model');
@@ -36,6 +37,7 @@ class ModelStatesServiceProvider extends ServiceProvider
     public static function stateColumnName(): string
     {
         $config = Container::getInstance()->make(ConfigRepository::class);
+        // @phpstan-ignore-next-line unknown with Laravel 8, known with Laravel 9
         assert($config instanceof ConfigRepository);
 
         $columnName = $config->get('model-state.column_name');
