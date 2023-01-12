@@ -45,6 +45,7 @@ abstract class DBTestCase extends TestCase
         parent::getEnvironmentSetUp($app);
 
         $config = $app->make(ConfigRepository::class);
+        // @phpstan-ignore-next-line unknown with Laravel 8, known with Laravel 9
         assert($config instanceof ConfigRepository);
 
         $config->set('database.default', self::DEFAULT_CONNECTION);
