@@ -11,6 +11,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## v4.0.0
 
+### Added
+
+- Add conditional migrations
+
 ### Removed
 
 - Drop support for Laravel 8
