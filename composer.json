@@ -32,7 +32,7 @@
     "jbzoo/mermaid-php": "^2.3",
     "laravel/framework": "^9",
     "mll-lab/graphql-php-scalars": "^4 || ^5",
-    "mll-lab/php-cs-fixer-config": "^4.3",
+    "mll-lab/php-cs-fixer-config": "^5",
     "mll-lab/rector-config": "^2",
     "nunomaduro/larastan": "^2",
     "orchestra/testbench": "^7.7",

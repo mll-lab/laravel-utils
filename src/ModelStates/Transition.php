@@ -14,8 +14,7 @@ abstract class Transition
         protected HasStateManagerInterface&Model $model,
         protected string $from,
         protected string $to
-    ) {
-    }
+    ) {}
 
     public function canTransition(): bool
     {
