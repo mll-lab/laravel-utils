@@ -20,7 +20,7 @@ final class StateConfig
      * @param class-string<State> $to
      * @param class-string<Transition> $transition
      */
-    public function allowTransition($fromOrFroms, string $to, string $transition = DefaultTransition::class): StateConfig
+    public function allowTransition(string|array $fromOrFroms, string $to, string $transition = DefaultTransition::class): StateConfig
     {
         if (is_array($fromOrFroms)) {
             foreach ($fromOrFroms as $from) {
@@ -92,7 +92,7 @@ final class StateConfig
      */
     public function possibleNextStates(State $from): SupportCollection
     {
-        $fromClass = get_class($from);
+        $fromClass = $from::class;
 
         if (! isset($this->allowedTransitions[$fromClass])) {
             // @phpstan-ignore-next-line empty colletion is part of SupportCollection<class-string<State>, State>

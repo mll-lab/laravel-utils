@@ -58,6 +58,32 @@ protected static function booted(): void
     });
 ```
 
+### Conditional Migrations
+
+To run a migration conditionally, implement the `MLL\LaravelUtils\Database\ConditionalMigration`
+interface and its `->shouldRun()` method in your migration:
+
+```php
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Carbon;
+use MLL\LaravelUtils\Database\ConditionalMigration
+
+return new class extends Migration implements ConditionalMigration {
+    public function up(): void
+    {
+        // Something that would put intense strain on the database
+    }
+
+    public function shouldRun(): bool
+    {
+        $currentHour = Carbon::now()->hour;
+
+        // Only run between 01:00 and 03:00
+        return $currentHour > 1 && $currentHour < 3;
+    }
+};
+```
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).

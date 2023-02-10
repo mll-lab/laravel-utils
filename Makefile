@@ -19,8 +19,14 @@ up: ## Bring up the docker-compose stack
 	docker-compose up -d
 
 .PHONY: fix
-fix: up
+fix: rector php-cs-fixer
+
+.PHONY: rector
+rector: up
 	${dcphp} vendor/bin/rector process
+
+.PHONY: php-cs-fixer
+php-cs-fixer: up
 	${dcphp} vendor/bin/php-cs-fixer fix
 
 .PHONY: stan
