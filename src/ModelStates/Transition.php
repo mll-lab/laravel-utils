@@ -6,27 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class Transition
 {
-    protected HasStateManagerInterface&Model $model;
-
-    /**
-     * @var class-string<State>
-     */
-    protected string $from;
-
-    /**
-     * @var class-string<State>
-     */
-    protected string $to;
-
     /**
      * @param class-string<State> $from
      * @param class-string<State> $to
      */
-    final public function __construct(HasStateManagerInterface&Model $model, string $from, string $to)
-    {
-        $this->model = $model;
-        $this->from = $from;
-        $this->to = $to;
+    final public function __construct(
+        protected HasStateManagerInterface&Model $model,
+        protected string $from,
+        protected string $to
+    ) {
     }
 
     public function canTransition(): bool

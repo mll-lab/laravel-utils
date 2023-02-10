@@ -15,6 +15,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 - Drop support for Laravel 8
 
+### Changed
+
+- Use union and intersection types in `ModelStates`
+
 ## v3.0.0
 
 ### Changed

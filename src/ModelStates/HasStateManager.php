@@ -48,7 +48,7 @@ trait HasStateManager
     /**
      * @param State|class-string<State> $newState
      */
-    public function setStateAttribute($newState): void
+    public function setStateAttribute(State|string $newState): void
     {
         // if the old and new state are the same, do not perform a "transition"
         if ($this->state::name() === $newState::name()) {
@@ -89,7 +89,7 @@ trait HasStateManager
                 $targetNode = $graph->getNode($possibleNextState::name());
 
                 if (null !== $sourceNode && null !== $targetNode) {
-                    $transition = $config->transition($state::class, get_class($possibleNextState));
+                    $transition = $config->transition($state::class, $possibleNextState::class);
                     assert(null !== $transition);
 
                     $reflectionClass = new \ReflectionClass($transition);
