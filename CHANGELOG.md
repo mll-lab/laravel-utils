@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.0.0
+
+### Removed
+
+- Drop support for Laravel 8
+
 ## v3.0.0
 
 ### Changed
