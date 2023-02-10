@@ -101,7 +101,7 @@ jobs:
           - 8.1
           - 8.2
         laravel-version:
-          - ^9
+          - ^9.51
 
     steps:
       - uses: actions/checkout@v3
@@ -134,7 +134,7 @@ jobs:
           - lowest
           - highest
         laravel-version:
-          - ^9
+          - ^9.51
 
     services:
       mariadb:
