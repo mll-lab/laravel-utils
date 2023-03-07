@@ -31,17 +31,11 @@ abstract class Transition
         return true;
     }
 
-    /**
-     * @return State
-     */
     public function to(): State
     {
         return new $this->to();
     }
 
-    /**
-     * @return State
-     */
     public function from(): State
     {
         return new $this->from();
