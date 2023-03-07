@@ -112,7 +112,7 @@ final class StateConfig
     /**
      * Returns a possibly empty list of the next possible transitions for a given model with StateManager.
      *
-     * @return SupportCollection<array-key, Transition>
+     * @return SupportCollection<int, Transition>
      */
     public function possibleNextTransitions(Model&HasStateManagerInterface $stateable): SupportCollection
     {
@@ -123,6 +123,7 @@ final class StateConfig
         $stateMachine = $stateable->stateMachine();
 
         return $possibleNextStates
-            ->map(fn (State $nextState): Transition => $stateMachine->instantiateTransitionClass($from::class, $nextState::class))->values();
+            ->map(fn (State $nextState): Transition => $stateMachine->instantiateTransitionClass($from::class, $nextState::class))
+            ->values();
     }
 }
