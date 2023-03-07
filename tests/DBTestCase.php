@@ -9,7 +9,7 @@ use MLL\LaravelUtils\ModelStates\ModelStatesServiceProvider;
 
 abstract class DBTestCase extends TestCase
 {
-    public const DEFAULT_CONNECTION = 'mariadb';
+    final public const DEFAULT_CONNECTION = 'mariadb';
 
     /**
      * Indicates if migrations ran.

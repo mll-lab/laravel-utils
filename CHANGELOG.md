@@ -9,6 +9,13 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+
+## v4.1.0
+
+### Changed
+
+- add `TransitionDirection` and visibility method for `Transition`-class
+
 ## v4.0.0
 
 ### Added

@@ -30,12 +30,7 @@ final class StateMachine
         $from = $this->model->state::class;
         $to = $newState::class;
 
-        $transitionClass = $this->stateConfig->transition($from, $to);
-        if (null === $transitionClass) {
-            throw new TransitionNotFound($from, $to, $this->model);
-        }
-
-        $transition = new $transitionClass($this->model, $from, $to);
+        $transition = $this->instantiateTransitionClass($from, $to);
 
         if (! $transition->canTransition()) {
             throw new TransitionNotAllowed($this->model, $transition);
@@ -50,5 +45,15 @@ final class StateMachine
         }
 
         return $this->model;
+    }
+
+    public function instantiateTransitionClass(string $from, string $to): Transition
+    {
+        $transitionClass = $this->stateConfig->transition($from, $to);
+        if (null === $transitionClass) {
+            throw new TransitionNotFound($from, $to, $this->model);
+        }
+
+        return new $transitionClass($this->model, $from, $to);
     }
 }

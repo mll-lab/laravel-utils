@@ -21,6 +21,32 @@ abstract class Transition
         return true;
     }
 
+    public function direction(): TransitionDirection
+    {
+        return TransitionDirection::FORWARD();
+    }
+
+    public function isVisibleFromUserFrontend(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return State
+     */
+    public function to(): State
+    {
+        return new $this->to();
+    }
+
+    /**
+     * @return State
+     */
+    public function from(): State
+    {
+        return new $this->from();
+    }
+
     /**
      * Can be reused in default state transitions.
      */

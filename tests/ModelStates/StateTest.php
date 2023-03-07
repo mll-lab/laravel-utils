@@ -6,14 +6,19 @@ use App\ModelStates\ModelStates\StateA;
 use App\ModelStates\ModelStates\StateB;
 use App\ModelStates\ModelStates\StateC;
 use App\ModelStates\ModelStates\StateD;
+use App\ModelStates\OtherModelStates\StateX;
 use App\ModelStates\OtherModelStates\StateY;
 use App\ModelStates\OtherModelStates\StateZ;
 use App\ModelStates\TestModel;
 use App\ModelStates\TestModelWithCustomTransition;
+use App\ModelStates\Transitions\CustomInvalidTransition;
+use App\ModelStates\Transitions\CustomTransition;
 use Illuminate\Support\Collection as SupportCollection;
+use MLL\LaravelUtils\ModelStates\DefaultTransition;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
+use MLL\LaravelUtils\ModelStates\TransitionDirection;
 use MLL\LaravelUtils\Tests\DBTestCase;
 
 final class StateTest extends DBTestCase
@@ -111,6 +116,36 @@ final class StateTest extends DBTestCase
 
         $model->state = new StateB();
         self::assertEquals(new SupportCollection([StateC::class => new StateC()]), $model->stateManager->canTransitionTo);
+    }
+
+    public function testReturnsListOfPossibleNextTransitionsForCustomTransition(): void
+    {
+        $model = new TestModelWithCustomTransition();
+        $model->save();
+
+        $first = $model->stateManager->possibleTransitions()->first();
+        self::assertInstanceOf(CustomTransition::class, $first);
+        self::assertTrue($first->direction()->is(TransitionDirection::FORWARD));
+        self::assertSame(StateX::name(), $first->from()::name());
+        self::assertSame(StateY::name(), $first->to()::name());
+
+        $last = $model->stateManager->possibleTransitions()->last();
+        self::assertInstanceOf(CustomInvalidTransition::class, $last);
+        self::assertTrue($last->direction()->is(TransitionDirection::REVERSE()));
+        self::assertFalse($last->isVisibleFromUserFrontend());
+        self::assertSame(StateX::name(), $last->from()::name());
+        self::assertSame(StateZ::name(), $last->to()::name());
+    }
+
+    public function testReturnsListOfPossibleNextTransitionsForDefaultTransition(): void
+    {
+        $model = new TestModel();
+        $model->save();
+
+        $default = $model->stateManager->possibleTransitions()->first();
+        self::assertInstanceOf(DefaultTransition::class, $default);
+        self::assertTrue($default->direction()->is(TransitionDirection::FORWARD));
+        self::assertTrue($default->isVisibleFromUserFrontend());
     }
 
     public function testCustomTransition(): void

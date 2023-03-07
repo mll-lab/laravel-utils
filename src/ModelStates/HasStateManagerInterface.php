@@ -17,4 +17,6 @@ interface HasStateManagerInterface
      * @return class-string<State>
      */
     public function stateClass(): string;
+
+    public function stateMachine(): StateMachine;
 }
