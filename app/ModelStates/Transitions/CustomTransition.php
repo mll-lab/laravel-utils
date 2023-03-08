@@ -6,6 +6,7 @@ use App\ModelStates\TestModelWithCustomTransition;
 use Illuminate\Database\Eloquent\Model;
 use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
 use MLL\LaravelUtils\ModelStates\Transition;
+use MLL\LaravelUtils\ModelStates\TransitionDirection;
 
 final class CustomTransition extends Transition
 {
@@ -22,5 +23,10 @@ final class CustomTransition extends Transition
         $this->model->save();
 
         return $this->model;
+    }
+
+    public function direction(): TransitionDirection
+    {
+        return TransitionDirection::FORWARD;
     }
 }

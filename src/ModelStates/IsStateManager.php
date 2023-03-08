@@ -30,4 +30,15 @@ trait IsStateManager
         return $stateable->stateClass()::config()
             ->possibleNextStates($stateable->state);
     }
+
+    /**
+     * @return SupportCollection<array-key, Transition>
+     */
+    public function possibleTransitions(): SupportCollection
+    {
+        $stateable = $this->stateable;
+
+        return $stateable->stateClass()::config()
+            ->possibleNextTransitions($stateable);
+    }
 }

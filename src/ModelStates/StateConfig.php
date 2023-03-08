@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\ModelStates;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection as SupportCollection;
 use MLL\LaravelUtils\ModelStates\Exceptions\ClassDoesNotExtendBaseClass;
 
@@ -106,5 +107,23 @@ final class StateConfig
 
         // @phpstan-ignore-next-line php-stan is not right here
         return new SupportCollection($next);
+    }
+
+    /**
+     * Returns a possibly empty list of the next possible transitions for a given model with StateManager.
+     *
+     * @return SupportCollection<int, Transition>
+     */
+    public function possibleNextTransitions(Model&HasStateManagerInterface $stateable): SupportCollection
+    {
+        $stateable->refresh();
+        $from = $stateable->state;
+        $possibleNextStates = $this->possibleNextStates($from);
+
+        $stateMachine = $stateable->stateMachine();
+
+        return $possibleNextStates
+            ->map(fn (State $nextState): Transition => $stateMachine->instantiateTransitionClass($from::class, $nextState::class))
+            ->values();
     }
 }

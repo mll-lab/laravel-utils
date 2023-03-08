@@ -55,8 +55,8 @@ trait HasStateManager
             return;
         }
 
-        $stateMachine = new StateMachine($this);
-        $stateMachine->transitionTo($newState);
+        $this->stateMachine()
+            ->transitionTo($newState);
     }
 
     public function stateManager(): MorphOne
@@ -108,5 +108,10 @@ trait HasStateManager
     public function stateClassConfig(): StateConfig
     {
         return $this->stateClass()::config();
+    }
+
+    public function stateMachine(): StateMachine
+    {
+        return new StateMachine($this);
     }
 }

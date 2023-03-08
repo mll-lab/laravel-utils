@@ -21,6 +21,30 @@ abstract class Transition
         return true;
     }
 
+    public function direction(): TransitionDirection
+    {
+        return TransitionDirection::FORWARD;
+    }
+
+    /**
+     * Determines whether this transition should be visible from the frontend.
+     * Useful if a transition should be triggered by a backend process and not by a user.
+     */
+    public function isVisibleFromFrontend(): bool
+    {
+        return true;
+    }
+
+    public function to(): State
+    {
+        return new $this->to();
+    }
+
+    public function from(): State
+    {
+        return new $this->from();
+    }
+
     /**
      * Can be reused in default state transitions.
      */
