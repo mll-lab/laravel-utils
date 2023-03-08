@@ -14,10 +14,10 @@ final class CustomInvalidTransition extends Transition
 
     public function direction(): TransitionDirection
     {
-        return TransitionDirection::REVERSE();
+        return TransitionDirection::REVERSE;
     }
 
-    public function isVisibleFromUserFrontend(): bool
+    public function isVisibleFromAdminFrontend(): bool
     {
         return false;
     }

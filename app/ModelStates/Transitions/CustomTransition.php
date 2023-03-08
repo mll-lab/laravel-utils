@@ -27,6 +27,6 @@ final class CustomTransition extends Transition
 
     public function direction(): TransitionDirection
     {
-        return TransitionDirection::FORWARD();
+        return TransitionDirection::FORWARD;
     }
 }

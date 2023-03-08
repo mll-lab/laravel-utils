@@ -23,10 +23,14 @@ abstract class Transition
 
     public function direction(): TransitionDirection
     {
-        return TransitionDirection::FORWARD();
+        return TransitionDirection::FORWARD;
     }
 
-    public function isVisibleFromUserFrontend(): bool
+    /**
+     * Determines whether this transition should be visible from the AdminFrontend.
+     * Useful if a transition should be triggered by a backend process and not by a user.
+     */
+    public function isVisibleFromAdminFrontend(): bool
     {
         return true;
     }

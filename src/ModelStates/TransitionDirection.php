@@ -2,14 +2,8 @@
 
 namespace MLL\LaravelUtils\ModelStates;
 
-use BenSampo\Enum\Enum;
-
-/**
- * @method static static FORWARD()
- * @method static static REVERSE()
- */
-class TransitionDirection extends Enum
+enum TransitionDirection
 {
-    final public const FORWARD = 'FORWARD';
-    final public const REVERSE = 'REVERSE';
+    case FORWARD;
+    case REVERSE;
 }
