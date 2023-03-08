@@ -17,7 +17,7 @@ final class CustomInvalidTransition extends Transition
         return TransitionDirection::REVERSE;
     }
 
-    public function isVisibleFromAdminFrontend(): bool
+    public function isVisibleFromFrontend(): bool
     {
         return false;
     }

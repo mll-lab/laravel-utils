@@ -30,7 +30,7 @@ abstract class Transition
      * Determines whether this transition should be visible from the AdminFrontend.
      * Useful if a transition should be triggered by a backend process and not by a user.
      */
-    public function isVisibleFromAdminFrontend(): bool
+    public function isVisibleFromFrontend(): bool
     {
         return true;
     }
