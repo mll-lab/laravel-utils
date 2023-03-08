@@ -126,7 +126,7 @@ final class StateTest extends DBTestCase
         $first = $model->stateManager->possibleTransitions()->first();
         self::assertInstanceOf(CustomTransition::class, $first);
         self::assertSame($first->direction(), TransitionDirection::FORWARD);
-        self::assertSame(StateX::name(), $first->from()::name());
+        self::assertInstanceOf(StateX::class, $first->from());
         self::assertSame(StateY::name(), $first->to()::name());
 
         $last = $model->stateManager->possibleTransitions()->last();
