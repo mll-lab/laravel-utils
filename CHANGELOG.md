@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.2.0
+
+### Added
+
+- Add trait `ExponentialBackoff` for queue jobs
+
 ## v4.1.0
 
 ### Changed
