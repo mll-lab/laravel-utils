@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Schema;
  */
 abstract class Autoincrement
 {
-    /**
-     * Use this method in a migration to create the backing table.
-     */
+    /** Use this method in a migration to create the backing table. */
     public static function createTable(): void
     {
         $name = static::name();
@@ -64,8 +62,6 @@ abstract class Autoincrement
         });
     }
 
-    /**
-     * Name of the table/column, must be unique in the used database.
-     */
+    /** Name of the table/column, must be unique in the used database. */
     abstract protected static function name(): string;
 }

@@ -4,8 +4,6 @@ namespace MLL\LaravelUtils\Database;
 
 interface ConditionalMigration
 {
-    /**
-     * Should the migration run?
-     */
+    /** Should the migration run? */
     public function shouldRun(): bool;
 }

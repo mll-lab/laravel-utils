@@ -22,9 +22,7 @@ final class StateMachine
         $this->app = Application::getInstance();
     }
 
-    /**
-     * @param State|class-string<State> $newState
-     */
+    /** @param State|class-string<State> $newState */
     public function transitionTo(State|string $newState): HasStateManagerInterface
     {
         $from = $this->model->state::class;

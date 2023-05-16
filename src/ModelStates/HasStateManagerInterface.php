@@ -13,9 +13,7 @@ interface HasStateManagerInterface
 {
     public function stateManager(): MorphOne;
 
-    /**
-     * @return class-string<State>
-     */
+    /** @return class-string<State> */
     public function stateClass(): string;
 
     public function stateMachine(): StateMachine;

@@ -19,9 +19,7 @@ class ModelStatesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($configFile, 'model-state');
     }
 
-    /**
-     * @return class-string<Model>
-     */
+    /** @return class-string<Model> */
     public static function stateManagerClass(): string
     {
         $config = Container::getInstance()->make(ConfigRepository::class);

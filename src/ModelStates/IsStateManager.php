@@ -14,14 +14,10 @@ use Illuminate\Support\Collection as SupportCollection;
  */
 trait IsStateManager
 {
-    /**
-     * @return MorphTo<HasStateManagerInterface&Model, self>
-     */
+    /** @return MorphTo<HasStateManagerInterface&Model, self> */
     abstract public function stateable(): MorphTo;
 
-    /**
-     * @return SupportCollection<class-string<State>, State>
-     */
+    /** @return SupportCollection<class-string<State>, State> */
     public function getCanTransitionToAttribute(): SupportCollection
     {
         $stateable = $this->stateable;
@@ -31,9 +27,7 @@ trait IsStateManager
             ->possibleNextStates($stateable->state);
     }
 
-    /**
-     * @return SupportCollection<array-key, Transition>
-     */
+    /** @return SupportCollection<array-key, Transition> */
     public function possibleTransitions(): SupportCollection
     {
         $stateable = $this->stateable;

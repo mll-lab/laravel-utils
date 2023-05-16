@@ -9,9 +9,7 @@ use GraphQL\Type\Definition\EnumType;
  */
 final class StateEnumType extends EnumType
 {
-    /**
-     * @var class-string<State>
-     */
+    /** @var class-string<State> */
     protected string $stateClass;
 
     /**
@@ -46,9 +44,7 @@ final class StateEnumType extends EnumType
         ]);
     }
 
-    /**
-     * Overwrite the native EnumType serialization, as this class does not hold plain values.
-     */
+    /** Overwrite the native EnumType serialization, as this class does not hold plain values. */
     public function serialize($value): string
     {
         if ($value instanceof State) {

@@ -11,9 +11,7 @@ abstract class DBTestCase extends TestCase
 {
     final public const DEFAULT_CONNECTION = 'mariadb';
 
-    /**
-     * Indicates if migrations ran.
-     */
+    /** Indicates if migrations ran. */
     protected static bool $migrated = false;
 
     public function setUp(): void
@@ -63,9 +61,7 @@ abstract class DBTestCase extends TestCase
         ];
     }
 
-    /**
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     private function mariadbOptions(): array
     {
         return [
