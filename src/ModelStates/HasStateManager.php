@@ -10,9 +10,7 @@ use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
 
 trait HasStateManager
 {
-    /**
-     * @return class-string<State>
-     */
+    /** @return class-string<State> */
     abstract public function stateClass(): string;
 
     public static function bootHasStateManager(): void
@@ -45,9 +43,7 @@ trait HasStateManager
         return new $stateClass();
     }
 
-    /**
-     * @param State|class-string<State> $newState
-     */
+    /** @param State|class-string<State> $newState */
     public function setStateAttribute(State|string $newState): void
     {
         // if the old and new state are the same, do not perform a "transition"

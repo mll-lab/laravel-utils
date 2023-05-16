@@ -14,9 +14,7 @@ abstract class TestCase extends BaseTestCase
     // @phpstan-ignore-next-line
     protected $app;
 
-    /**
-     * @return array<int, class-string<\Illuminate\Support\ServiceProvider>>
-     */
+    /** @return array<int, class-string<\Illuminate\Support\ServiceProvider>> */
     protected function getPackageProviders($app): array
     {
         return [];

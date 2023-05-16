@@ -53,9 +53,7 @@ final class StateConfig
         return $this;
     }
 
-    /**
-     * @return class-string<Transition>
-     */
+    /** @return class-string<Transition> */
     public function transition(string $fromMorphClass, string $toMorphClass): ?string
     {
         $fromTransition = $this->allowedTransitions[$fromMorphClass] ?? null;

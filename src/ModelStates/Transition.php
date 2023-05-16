@@ -45,9 +45,7 @@ abstract class Transition
         return new $this->from();
     }
 
-    /**
-     * Can be reused in default state transitions.
-     */
+    /** Can be reused in default state transitions. */
     final protected function manage(): void
     {
         $this->model->stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $this->to::name());
