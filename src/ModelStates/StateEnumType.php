@@ -18,7 +18,7 @@ final class StateEnumType extends EnumType
      * @param class-string<State> $stateClass
      * @param string|null $name The name the enum will have in the schema, defaults to the basename of the given class
      */
-    public function __construct(string $stateClass, ?string $name = null)
+    public function __construct(string $stateClass, string $name = null)
     {
         // @phpstan-ignore-next-line php-stan is not right here
         if (! is_subclass_of($stateClass, State::class)) {

@@ -24,7 +24,7 @@
     "mll-lab/str_putcsv": "^1",
     "nesbot/carbon": "^2.64",
     "ramsey/uuid": "^4.7",
-    "thecodingmachine/safe": "^1"
+    "thecodingmachine/safe": "^1 || ^2"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2",

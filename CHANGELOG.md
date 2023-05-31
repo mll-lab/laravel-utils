@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.3.0
+
+### Added
+
+- Support `thecodingmachine/safe:^2`
+
 ## v4.2.0
 
 ### Added
