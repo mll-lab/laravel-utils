@@ -57,7 +57,7 @@ final class StateConfig
     public function transition(string $fromMorphClass, string $toMorphClass): ?string
     {
         $fromTransition = $this->allowedTransitions[$fromMorphClass] ?? null;
-        if (null === $fromTransition) {
+        if ($fromTransition === null) {
             return null;
         }
 

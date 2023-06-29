@@ -2,6 +2,4 @@
 
 namespace App\ModelStates\ModelStates;
 
-final class StateA extends ModelState
-{
-}
+final class StateA extends ModelState {}

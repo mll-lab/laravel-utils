@@ -52,7 +52,7 @@ abstract class Autoincrement
 
             $next = $current + 1;
 
-            if (null === $current) {
+            if ($current === null) {
                 $builder->insert([$name => $next]);
             } else {
                 $builder->update([$name => $next]);

@@ -56,6 +56,7 @@ abstract class DBTestCase extends TestCase
     protected function getPackageProviders($app): array
     {
         return [
+            ...parent::getPackageProviders($app),
             DatabaseServiceProvider::class,
             ModelStatesServiceProvider::class,
         ];

@@ -2,6 +2,4 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
-abstract class CouldNotPerformTransition extends ModelStateException
-{
-}
+abstract class CouldNotPerformTransition extends ModelStateException {}

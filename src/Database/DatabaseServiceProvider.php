@@ -3,9 +3,9 @@
 namespace MLL\LaravelUtils\Database;
 
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class DatabaseServiceProvider extends IlluminateServiceProvider
+class DatabaseServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
