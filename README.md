@@ -84,6 +84,20 @@ return new class extends Migration implements ConditionalMigration {
 };
 ```
 
+### Strict Stubs
+
+To continually keep your stubs updated with the latest and greatest from this package,
+add `/stubs` to your `.gitignore` and add the following to your `composer.json`:
+
+```diff
+    "scripts": {
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
++           "@php artisan vendor:publish --tag=strict-stubs --force"
+        ]
+    }
+```
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).
