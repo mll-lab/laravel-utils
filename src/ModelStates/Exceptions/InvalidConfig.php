@@ -2,6 +2,4 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
-abstract class InvalidConfig extends ModelStateException
-{
-}
+abstract class InvalidConfig extends ModelStateException {}

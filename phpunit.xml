@@ -1,28 +1,29 @@
-<phpunit
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-    bootstrap="vendor/autoload.php"
->
-    <testsuites>
-        <testsuite name="Database">
-            <directory>tests/Database</directory>
-        </testsuite>
-        <testsuite name="ModelStates">
-            <directory>tests/ModelStates</directory>
-        </testsuite>
-    </testsuites>
-
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-    </coverage>
-
-    <php>
-        <env name="MLL_TEST_DB_DATABASE" value="test"/>
-        <env name="MLL_TEST_DB_HOST" value="mariadb"/>
-        <env name="MLL_TEST_DB_PORT" value="3306"/>
-        <env name="MLL_TEST_DB_USERNAME" value="root"/>
-        <env name="MLL_TEST_DB_PASSWORD" value=""/>
-    </php>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+  <source>
+    <include>
+      <directory>src</directory>
+    </include>
+  </source>
+  <testsuites>
+    <testsuite name="Core">
+      <directory>tests/Core</directory>
+    </testsuite>
+    <testsuite name="Database">
+      <directory>tests/Database</directory>
+    </testsuite>
+    <testsuite name="ModelStates">
+      <directory>tests/ModelStates</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="MLL_TEST_DB_DATABASE" value="test"/>
+    <env name="MLL_TEST_DB_HOST" value="mariadb"/>
+    <env name="MLL_TEST_DB_PORT" value="3306"/>
+    <env name="MLL_TEST_DB_USERNAME" value="root"/>
+    <env name="MLL_TEST_DB_PASSWORD" value=""/>
+  </php>
 </phpunit>

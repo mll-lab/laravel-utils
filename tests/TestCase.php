@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\Tests;
 
+use MLL\LaravelUtils\LaravelUtilsServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -17,6 +18,8 @@ abstract class TestCase extends BaseTestCase
     /** @return array<int, class-string<\Illuminate\Support\ServiceProvider>> */
     protected function getPackageProviders($app): array
     {
-        return [];
+        return [
+            LaravelUtilsServiceProvider::class,
+        ];
     }
 }

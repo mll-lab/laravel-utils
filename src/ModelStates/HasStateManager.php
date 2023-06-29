@@ -16,7 +16,7 @@ trait HasStateManager
     public static function bootHasStateManager(): void
     {
         self::created(function (self $self): void {
-            if (property_exists($self, 'stateManager') && null !== $self->stateManager) {
+            if (property_exists($self, 'stateManager') && $self->stateManager !== null) {
                 return;
             }
 
@@ -36,7 +36,7 @@ trait HasStateManager
         assert(is_string($stateName));
 
         $stateClass = $stateClasses[$stateName] ?? null;
-        if (null === $stateClass) {
+        if ($stateClass === null) {
             throw new UnknownStateException("The state {$stateName} of {$this->table} with id {$this->id} is not part of {$this->stateClass()}.");
         }
 
@@ -86,10 +86,10 @@ trait HasStateManager
 
                 if ($sourceNode instanceof Node && $targetNode instanceof Node) {
                     $transition = $config->transition($state::class, $possibleNextState::class);
-                    assert(null !== $transition);
+                    assert($transition !== null);
 
                     $reflectionClass = new \ReflectionClass($transition);
-                    $transitionName = DefaultTransition::class === $reflectionClass->getName()
+                    $transitionName = $reflectionClass->getName() === DefaultTransition::class
                         ? ''
                         : $reflectionClass->getShortName();
 

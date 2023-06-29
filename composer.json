@@ -20,7 +20,7 @@
   },
   "require": {
     "php": "^8.1",
-    "illuminate/support": "^9.51",
+    "illuminate/support": "^9.51 || ^10",
     "mll-lab/str_putcsv": "^1",
     "nesbot/carbon": "^2.64",
     "ramsey/uuid": "^4.7",
@@ -30,17 +30,17 @@
     "ergebnis/composer-normalize": "^2",
     "jangregor/phpstan-prophecy": "^1",
     "jbzoo/mermaid-php": "^2.3",
-    "laravel/framework": "^9",
+    "laravel/framework": "^9 || ^10",
     "mll-lab/graphql-php-scalars": "^4 || ^5",
     "mll-lab/php-cs-fixer-config": "^5",
     "mll-lab/rector-config": "^2",
     "nunomaduro/larastan": "^2",
-    "orchestra/testbench": "^7.7",
+    "orchestra/testbench": "^7.7 || ^8",
     "phpstan/extension-installer": "^1",
     "phpstan/phpstan-deprecation-rules": "^1",
     "phpstan/phpstan-phpunit": "^1",
     "phpstan/phpstan-strict-rules": "^1",
-    "phpunit/phpunit": "^9",
+    "phpunit/phpunit": "^9 || ^10",
     "thecodingmachine/phpstan-safe-rule": "^1.2"
   },
   "suggest": {
@@ -69,6 +69,7 @@
   "extra": {
     "laravel": {
       "providers": [
+        "MLL\\LaravelUtils\\LaravelUtilsServiceProvider",
         "MLL\\LaravelUtils\\Database\\DatabaseServiceProvider",
         "MLL\\LaravelUtils\\ModelStates\\ModelStatesServiceProvider"
       ]

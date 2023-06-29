@@ -2,6 +2,4 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
-abstract class ModelStateException extends \Exception
-{
-}
+abstract class ModelStateException extends \Exception {}

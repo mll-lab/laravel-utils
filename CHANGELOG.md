@@ -9,6 +9,11 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Support Laravel 10
+- Integrate `mll-lab/laravel-strict-stubs`
+
 ## v4.3.0
 
 ### Added

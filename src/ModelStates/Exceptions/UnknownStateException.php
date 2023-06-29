@@ -2,6 +2,4 @@
 
 namespace MLL\LaravelUtils\ModelStates\Exceptions;
 
-final class UnknownStateException extends ModelStateException
-{
-}
+final class UnknownStateException extends ModelStateException {}
