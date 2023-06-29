@@ -200,11 +200,8 @@ jobs:
       - name: "Install dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Dump Xdebug filter with phpunit/phpunit"
-        run: vendor/bin/phpunit --dump-xdebug-filter=xdebug-filter.php
-
       - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: vendor/bin/phpunit --coverage-clover=clover.xml --prepend=xdebug-filter.php
+        run: vendor/bin/phpunit --coverage-clover=clover.xml
 
       - name: "Send code coverage report to codecov.io"
         uses: codecov/codecov-action@v2
