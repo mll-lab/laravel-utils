@@ -1,16 +1,14 @@
 parameters:
-	level: max
-
-	paths:
-	- src
-	- tests
-
-	# TODO reenable once we require Laravel 9+
-	checkGenericClassInNonGenericObjectType: false
-
-	# As long as we support multiple Laravel versions at once, there will be some dead spots
-	reportUnmatchedIgnoredErrors: false
-	ignoreErrors:
-	# PHPStan does not believe interfaces can define magic properties
-	- '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$stateManager\.#'
-	- '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$state\.#'
+  level: max
+  paths:
+  - src
+  - tests
+  checkGenericClassInNonGenericObjectType: false # TODO reenable once we require Laravel 9+
+  reportUnmatchedIgnoredErrors: false # As long as we support multiple Laravel versions at once, there will be some dead spots
+  ignoreErrors:
+  # PHPStan does not believe interfaces can define magic properties
+  - '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$stateManager\.#'
+  - '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$state\.#'
+  # Install https://plugins.jetbrains.com/plugin/7677-awesome-console to make those links clickable
+  editorUrl: '%%relFile%%:%%line%%'
+  editorUrlTitle: '%%relFile%%:%%line%%'
