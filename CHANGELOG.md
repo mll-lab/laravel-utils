@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.5.0
+
+### Changed
+
+- Use single line PHPDoc in `factory.stub`
+
 ## v4.4.0
 
 ### Added
