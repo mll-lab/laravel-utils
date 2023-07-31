@@ -4,9 +4,9 @@ namespace MLL\LaravelUtils\Database;
 
 use Illuminate\Console\View\Components\Info;
 use Illuminate\Console\View\Components\Task;
-use Illuminate\Database\Migrations\Migrator as IlluminateMigrator;
+use Illuminate\Database\Migrations\Migrator;
 
-class Migrator extends IlluminateMigrator
+class ConditionalMigrator extends Migrator
 {
     protected function runUp($file, $batch, $pretend): void
     {

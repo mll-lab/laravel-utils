@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.6.0
+
+### Added
+
+- Allow calling `->change()` on an enum column definition when using migrations
+
 ## v4.5.0
 
 ### Changed

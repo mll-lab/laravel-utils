@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MLL\ConditionalMigrations\Tests;
+namespace MLL\LaravelUtils\Tests\Database;
 
 use Illuminate\Support\Facades\DB;
 use MLL\LaravelUtils\Tests\DBTestCase;

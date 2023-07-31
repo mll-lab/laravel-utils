@@ -27,6 +27,7 @@
     "thecodingmachine/safe": "^1 || ^2"
   },
   "require-dev": {
+    "doctrine/dbal": "^3.6",
     "ergebnis/composer-normalize": "^2",
     "jangregor/phpstan-prophecy": "^1",
     "jbzoo/mermaid-php": "^2.3",
