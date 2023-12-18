@@ -31,11 +31,11 @@
     "ergebnis/composer-normalize": "^2",
     "jangregor/phpstan-prophecy": "^1",
     "jbzoo/mermaid-php": "^2.3",
+    "larastan/larastan": "^2",
     "laravel/framework": "^9 || ^10",
     "mll-lab/graphql-php-scalars": "^4 || ^5",
     "mll-lab/php-cs-fixer-config": "^5",
     "mll-lab/rector-config": "^2",
-    "nunomaduro/larastan": "^2",
     "orchestra/testbench": "^7.7 || ^8",
     "phpstan/extension-installer": "^1",
     "phpstan/phpstan-deprecation-rules": "^1",
@@ -60,9 +60,9 @@
   },
   "config": {
     "allow-plugins": {
+      "ergebnis/composer-normalize": true,
       "ocramius/package-versions": true,
-      "phpstan/extension-installer": true,
-      "ergebnis/composer-normalize": true
+      "phpstan/extension-installer": true
     },
     "preferred-install": "dist",
     "sort-packages": true
@@ -72,6 +72,7 @@
       "providers": [
         "MLL\\LaravelUtils\\LaravelUtilsServiceProvider",
         "MLL\\LaravelUtils\\Database\\DatabaseServiceProvider",
+        "MLL\\LaravelUtils\\Mail\\MailServiceProvider",
         "MLL\\LaravelUtils\\ModelStates\\ModelStatesServiceProvider"
       ]
     }
