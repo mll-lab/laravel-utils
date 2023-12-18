@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.8.0
+
+### Added
+
+- Allow specifying mailer in `php artisan send-test-mail`
+
 ## v4.7.0
 
 ### Added

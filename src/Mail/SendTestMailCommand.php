@@ -11,6 +11,7 @@ class SendTestMailCommand extends Command
         send-test-mail
         {--from= : Sender}
         {--to= : Recipient}
+        {--mailer= : See config/mail.php mailers}
     ';
 
     public function handle(): void
@@ -31,6 +32,13 @@ class SendTestMailCommand extends Command
             ->from($from)
             ->to($to);
 
-        Mail::send($mail);
+        $mailer = $this->option('mailer');
+        if (! is_null($mailer) && ! is_string($mailer)) { // @phpstan-ignore-line
+            $mailerType = gettype($mailer);
+            throw new \UnexpectedValueException("Expected option --mailer to be string or null, got {$mailerType}.");
+        }
+
+        Mail::mailer($mailer)
+            ->send($mail);
     }
 }
