@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Add command `send-test-mail`
+
 ## v4.6.0
 
 ### Added
