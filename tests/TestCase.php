@@ -3,6 +3,7 @@
 namespace MLL\LaravelUtils\Tests;
 
 use MLL\LaravelUtils\LaravelUtilsServiceProvider;
+use MLL\LaravelUtils\Mail\MailServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -20,6 +21,7 @@ abstract class TestCase extends BaseTestCase
     {
         return [
             LaravelUtilsServiceProvider::class,
+            MailServiceProvider::class,
         ];
     }
 }

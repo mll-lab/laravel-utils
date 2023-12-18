@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MLL\LaravelUtils\ModelStates\Tests;
+namespace MLL\LaravelUtils\Tests\ModelStates;
 
 use App\ModelStates\ModelStates\StateA;
 use App\ModelStates\ModelStates\StateB;
