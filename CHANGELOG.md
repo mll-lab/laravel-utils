@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.9.0
+
+### Changed
+
+- Limit `ExponentialBackoff` to specifying just `$backoff`
+
 ## v4.8.0
 
 ### Added

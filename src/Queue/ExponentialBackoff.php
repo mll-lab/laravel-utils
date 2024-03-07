@@ -3,7 +3,7 @@
 namespace MLL\LaravelUtils\Queue;
 
 /**
- * Sane defaults for handling unexpected exceptions in jobs.
+ * Sane values for exponentially rising backoff times for failed jobs.
  *
  * - frees worker resources from jobs that are likely to never succeed
  * - prevents flooding Sentry with an ever-repeating error report
@@ -14,20 +14,13 @@ namespace MLL\LaravelUtils\Queue;
 trait ExponentialBackoff
 {
     /**
-     * The maximum number of unhandled exceptions to allow before failing.
-     *
-     * https://laravel.com/docs/queues#max-exceptions
-     */
-    public int $maxExceptions = 10;
-
-    /**
      * The amount of seconds to wait before retrying the job.
      *
      * We go up to a maximum interval of 64 seconds to ensure the waiting
      * time between attempts is not too long.
      *
-     * Combined with $maxExceptions, the duration adds up to just over
-     * 5 minutes total, after which the job fails.
+     * The duration for 10 tries adds up to just over 5 minutes total,
+     * after which the job fails.
      *
      * https://laravel.com/docs/queues#dealing-with-failed-jobs
      */
