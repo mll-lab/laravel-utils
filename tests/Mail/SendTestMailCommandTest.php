@@ -14,10 +14,12 @@ final class SendTestMailCommandTest extends TestCase
 
         $from = 'schnack@gogg.ler';
         $to = 'foo@bar.baz';
+        $replyTo = 'a@b.c';
 
         $this->artisan('send-test-mail', [
             '--from' => $from,
             '--to' => $to,
+            '--reply-to' => $replyTo,
         ]);
 
         $sent = $mailFake->sent(TestMail::class);
@@ -27,5 +29,6 @@ final class SendTestMailCommandTest extends TestCase
         assert($testMail instanceof TestMail);
         $testMail->assertFrom($from);
         $testMail->assertTo($to);
+        $testMail->assertHasReplyTo($replyTo);
     }
 }
