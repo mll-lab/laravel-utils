@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Add option `--reply-to` to `php artisan send-test-mail`
+
 ## v4.9.0
 
 ### Changed
