@@ -9,6 +9,8 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.11.0
+
 ### Added
 
 - Support Laravel 11
