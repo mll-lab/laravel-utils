@@ -104,6 +104,10 @@ jobs:
         laravel-version:
           - ^9.51
           - ^10
+          - ^11
+        exclude:
+          - php-version: "8.1"
+            laravel-version: ^11
 
     steps:
       - uses: actions/checkout@v4
@@ -139,6 +143,10 @@ jobs:
         laravel-version:
           - ^9.51
           - ^10
+          - ^11
+        exclude:
+          - php-version: "8.1"
+            laravel-version: ^11
 
     services:
       mariadb:
