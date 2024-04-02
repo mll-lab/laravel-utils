@@ -20,11 +20,13 @@ class SendTestMailCommand extends Command
         $mail = new TestMail();
 
         $from = $this->option('from');
-        if (! is_string($from)) {
-            $fromType = gettype($from);
-            throw new \UnexpectedValueException("Expected option --from to be string, got {$fromType}.");
+        if (! is_null($from)) {
+            if (! is_string($from)) { // @phpstan-ignore-line option values can also be arrays
+                $fromType = gettype($from);
+                throw new \UnexpectedValueException("Expected option --from to be string, got {$fromType}.");
+            }
+            $mail->from($from);
         }
-        $mail->from($from);
 
         $to = $this->option('to');
         if (! is_string($to)) {
