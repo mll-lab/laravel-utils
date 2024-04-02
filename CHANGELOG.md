@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v4.12.0
+
+### Changed
+
+- Make `php artisan send-test-mail` option `--from` optional
+
 ## v4.11.0
 
 ### Added
