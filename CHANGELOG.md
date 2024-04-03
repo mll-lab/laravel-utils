@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Changed
+
+- Updated Carbon dependency to allow 3.2+ also
+
 ## v4.12.0
 
 ### Changed
