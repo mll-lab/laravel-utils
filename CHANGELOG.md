@@ -12,6 +12,7 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 ### Changed
 
 - Updated Carbon dependency to allow 3.2+ also
+- Support docker compose plugin in addition to docker-compose
 
 ## v4.12.0
 
