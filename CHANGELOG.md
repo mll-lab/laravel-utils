@@ -9,6 +9,11 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Changed
+
+- Remove unused dependency nesbot/carbon
+- Support docker compose plugin in addition to docker-compose
+
 ## v4.12.0
 
 ### Changed

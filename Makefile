@@ -1,4 +1,14 @@
-dcphp=$$(echo "docker-compose exec php")
+ifneq (, $(shell which docker-compose))
+DOCKER_COMPOSE := docker-compose
+endif
+ifneq (, $(shell docker compose version 2>/dev/null))
+DOCKER_COMPOSE := docker compose
+endif
+ifndef DOCKER_COMPOSE
+$(error "No docker-compose nor valid 'docker compose' in $(PATH), what now?")
+endif
+
+dcphp=$$(echo "$(DOCKER_COMPOSE) exec php")
 
 .PHONY: it
 it: fix stan test ## Run the commonly used targets
@@ -12,11 +22,11 @@ setup: build vendor ## Setup the local environment
 
 .PHONY: build
 build: ## Build the local Docker containers
-	docker-compose build --pull --build-arg USER_ID=$(shell id --user) --build-arg GROUP_ID=$(shell id --group)
+	${DOCKER_COMPOSE} build --pull --build-arg USER_ID=$(shell id --user) --build-arg GROUP_ID=$(shell id --group)
 
 .PHONY: up
-up: ## Bring up the docker-compose stack
-	docker-compose up --detach
+up: ## Bring up the docker compose stack
+	${DOCKER_COMPOSE} up --detach
 
 .PHONY: fix
 fix: rector php-cs-fixer
