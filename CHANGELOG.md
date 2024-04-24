@@ -9,6 +9,16 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v5.0.0
+
+### Added
+
+- Add `MLL\LaravelUtils\Casts\Coordinates96Well` from `mll-lab/microplate`
+
+### Changed
+
+- Require `mll-lab/php-utils`
+
 ## v4.12.1
 
 ### Changed
