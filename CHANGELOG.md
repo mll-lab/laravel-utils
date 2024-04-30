@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Add `UnsignedInt` cast
+
 ## v5.0.0
 
 ### Added
