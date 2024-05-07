@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v5.2.1
+
+### Fixed
+
+- Handle `null` in `UnsignedInt` cast
+
 ## v5.2.0
 
 ### Added

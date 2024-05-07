@@ -9,7 +9,12 @@ final class UnsignedIntTest extends TestCase
     public function testCast(): void
     {
         $model = new CastsModel();
+
+        $model->setRawAttribute('unsigned_int', null);
         self::assertNull($model->unsigned_int);
+
+        $model->unsigned_int = null;
+        self::assertNull($model->getRawAttribute('unsigned_int'));
 
         $model->unsigned_int = -1;
         self::assertSame(0, $model->getRawAttribute('unsigned_int'));
@@ -35,7 +40,7 @@ final class UnsignedIntTest extends TestCase
         $model->setRawAttribute('unsigned_int', 1.1);
         self::assertSame(1, $model->unsigned_int);
 
-        $this->expectExceptionObject(new \RuntimeException('Expected int, got string: "foo".'));
+        $this->expectExceptionObject(new \RuntimeException("Expected int, got string: 'foo'."));
         $model->unsigned_int = 'foo'; // @phpstan-ignore-line intentionally wrong
     }
 }

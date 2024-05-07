@@ -19,7 +19,7 @@ class UnsignedInt implements CastsAttributes
      * @param  string  $key
      * @param  array<array-key, mixed> $attributes
      */
-    public function get($model, $key, $value, $attributes): int
+    public function get($model, $key, $value, $attributes): ?int
     {
         return $this->cast($value);
     }
@@ -29,13 +29,17 @@ class UnsignedInt implements CastsAttributes
      * @param  string  $key
      * @param  array<array-key, mixed>  $attributes
      */
-    public function set($model, $key, $value, $attributes): int
+    public function set($model, $key, $value, $attributes): ?int
     {
         return $this->cast($value);
     }
 
-    protected function cast(mixed $value): int
+    protected function cast(mixed $value): ?int
     {
+        if ($value === null) {
+            return null;
+        }
+
         if (is_float($value)) {
             $value = (int) round($value);
         }
