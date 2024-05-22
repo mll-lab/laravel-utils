@@ -21,7 +21,7 @@
   "require": {
     "php": "^8.1",
     "illuminate/support": "^9.51 || ^10 || ^11",
-    "mll-lab/php-utils": "^1.13 || ^2",
+    "mll-lab/php-utils": "^2",
     "mll-lab/str_putcsv": "^1",
     "ramsey/uuid": "^4.7",
     "thecodingmachine/safe": "^1 || ^2"

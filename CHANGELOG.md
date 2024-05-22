@@ -9,11 +9,15 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
-## v5.3.0
+## v6.0.0
 
 ### Added
 
 - Support `mll-lab/php-utils` 2
+
+### Changed
+
+- Drop support for `mll-lab/php-utils` ^1.3
 
 ## v5.2.1
 
