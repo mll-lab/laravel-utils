@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace MLL\LaravelUtils\Queue;
 
@@ -13,7 +13,11 @@ final class DispatchJob extends Command
     public function handle(): void
     {
         $class = $this->argument('class');
-        if (!class_exists($class)) {
+        if (! is_string($class)) {
+            $notString = gettype($class);
+            throw new \Exception("Expected argument 'class' to be string, got {$notString}.");
+        }
+        if (! class_exists($class)) {
             throw new \Exception("Job class {$class} does not exist.");
         }
 
