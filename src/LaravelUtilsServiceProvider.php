@@ -3,6 +3,7 @@
 namespace MLL\LaravelUtils;
 
 use Illuminate\Support\ServiceProvider;
+use MLL\LaravelUtils\Queue\DispatchJob;
 
 class LaravelUtilsServiceProvider extends ServiceProvider
 {
@@ -11,5 +12,8 @@ class LaravelUtilsServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/stubs' => $this->app->basePath('stubs'),
         ], ['strict-stubs']);
+        $this->commands([
+            DispatchJob::class,
+        ]);
     }
 }
