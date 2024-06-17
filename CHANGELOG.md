@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v5.4.0
+
+### Added
+
+- Add artisan command `laravel-utils:dispatch-job`
+
 ## v5.3.0
 
 ### Added
