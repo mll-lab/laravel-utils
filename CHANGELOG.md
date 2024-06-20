@@ -15,6 +15,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 - Add artisan command `laravel-utils:dispatch-job`
 
+## v5.4.0
+
+### Added
+
+- Support `mll-lab/php-utils` 3
+
 ## v5.3.0
 
 ### Added
