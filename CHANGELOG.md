@@ -9,7 +9,7 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
-## v5.6.0
+## v5.7.0
 
 ### Added
 
