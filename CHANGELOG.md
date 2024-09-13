@@ -9,11 +9,17 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
-## v5.7.0
+## v5.8.0
 
 ### Added
 
 - Add `MLL\LaravelUtils\Casts\CoordinatesCast`
+
+## v5.7.0
+
+### Added
+
+- Support `mll-lab/php-utils` 5
 
 ## v5.6.0
 
