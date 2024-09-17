@@ -12,8 +12,13 @@ use MLL\Utils\Microplate\CoordinateSystem;
  *
  * @implements CastsAttributes<Coordinates<TCoordinateSystem>, Coordinates<TCoordinateSystem>>
  */
-abstract class CoordinatesCast implements CastsAttributes
+class CoordinatesCast implements CastsAttributes
 {
+    public function __construct(
+        /** @var class-string<TCoordinateSystem> */
+        protected string $coordinateSystemClass,
+    ) {}
+
     /**
      * @param  Model  $model
      * @param  string  $key
@@ -25,7 +30,7 @@ abstract class CoordinatesCast implements CastsAttributes
     {
         assert(is_string($value));
 
-        return Coordinates::fromString($value, $this->coordinateSystem());
+        return Coordinates::fromString($value, new $this->coordinateSystemClass());
     }
 
     /**
@@ -39,7 +44,4 @@ abstract class CoordinatesCast implements CastsAttributes
 
         return $value->toString();
     }
-
-    /** @return TCoordinateSystem */
-    abstract protected function coordinateSystem(): CoordinateSystem;
 }

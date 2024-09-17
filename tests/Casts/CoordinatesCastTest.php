@@ -4,16 +4,16 @@ namespace MLL\LaravelUtils\Tests\Casts;
 
 use MLL\LaravelUtils\Tests\TestCase;
 use MLL\Utils\Microplate\Coordinates;
-use MLL\Utils\Microplate\CoordinateSystem96Well;
+use MLL\Utils\Microplate\CoordinateSystem12x8;
 
-final class Coordinates96WellTest extends TestCase
+final class CoordinatesCastTest extends TestCase
 {
     public function testCast(): void
     {
         $model = new CastsModel();
         self::assertNull($model->coordinates);
 
-        $cast = new Coordinates('A', 2, new CoordinateSystem96Well());
+        $cast = new Coordinates('A', 2, new CoordinateSystem12x8());
         $raw = 'A2';
 
         $model->coordinates = $cast;

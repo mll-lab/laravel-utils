@@ -9,6 +9,16 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v6.0.0
+
+### Changed
+
+- BREAKING CHANGE: `MLL\LaravelUtils\Casts\CoordinatesCast` requires class-string of `MLL\Utils\Microplate\CoordinateSystem` as a parameter
+
+### Removed
+
+- Remove `MLL\LaravelUtils\Casts\Coordinates96Well`
+
 ## v5.8.0
 
 ### Added

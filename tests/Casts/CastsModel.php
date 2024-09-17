@@ -3,19 +3,19 @@
 namespace MLL\LaravelUtils\Tests\Casts;
 
 use Illuminate\Database\Eloquent\Model;
-use MLL\LaravelUtils\Casts\Coordinates96Well;
+use MLL\LaravelUtils\Casts\CoordinatesCast;
 use MLL\LaravelUtils\Casts\UnsignedInt;
 use MLL\Utils\Microplate\Coordinates;
-use MLL\Utils\Microplate\CoordinateSystem96Well;
+use MLL\Utils\Microplate\CoordinateSystem12x8;
 
 /**
- * @property Coordinates<CoordinateSystem96Well>|null $coordinates
+ * @property Coordinates<CoordinateSystem12x8>|null $coordinates
  * @property int|null $unsigned_int
  */
 final class CastsModel extends Model
 {
     protected $casts = [
-        'coordinates' => Coordinates96Well::class,
+        'coordinates' => CoordinatesCast::class . ':' . CoordinateSystem12x8::class,
         'unsigned_int' => UnsignedInt::class,
     ];
 
