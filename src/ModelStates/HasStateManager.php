@@ -3,9 +3,6 @@
 namespace MLL\LaravelUtils\ModelStates;
 
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use JBZoo\MermaidPHP\Graph;
-use JBZoo\MermaidPHP\Link;
-use JBZoo\MermaidPHP\Node;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
 
 trait HasStateManager
@@ -61,44 +58,6 @@ trait HasStateManager
             ModelStatesServiceProvider::stateManagerClass(),
             'stateable',
         );
-    }
-
-    public function generateMermaidGraphAsString(): string
-    {
-        $config = $this->stateClassConfig();
-
-        $graph = (new Graph(['abc_order' => true]))
-            ->addStyle('linkStyle default interpolate basis');
-
-        $possibleStateInstances = array_map(
-            static fn (string $stateClass): State => new $stateClass(),
-            $config->possibleStates(),
-        );
-
-        foreach ($possibleStateInstances as $state) {
-            $graph->addNode(new Node($state::name()));
-        }
-
-        foreach ($possibleStateInstances as $state) {
-            foreach ($config->possibleNextStates($state) as $possibleNextState) {
-                $sourceNode = $graph->getNode($state::name());
-                $targetNode = $graph->getNode($possibleNextState::name());
-
-                if ($sourceNode instanceof Node && $targetNode instanceof Node) {
-                    $transition = $config->transition($state::class, $possibleNextState::class);
-                    assert($transition !== null);
-
-                    $reflectionClass = new \ReflectionClass($transition);
-                    $transitionName = $reflectionClass->getName() === DefaultTransition::class
-                        ? ''
-                        : $reflectionClass->getShortName();
-
-                    $graph->addLink(new Link($sourceNode, $targetNode, $transitionName));
-                }
-            }
-        }
-
-        return $graph->__toString();
     }
 
     public function stateClassConfig(): StateConfig

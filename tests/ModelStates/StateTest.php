@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\Tests\ModelStates;
 
+use App\ModelStates\ModelStates\ModelState;
 use App\ModelStates\ModelStates\StateA;
 use App\ModelStates\ModelStates\StateB;
 use App\ModelStates\ModelStates\StateC;
@@ -18,6 +19,7 @@ use MLL\LaravelUtils\ModelStates\DefaultTransition;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
+use MLL\LaravelUtils\ModelStates\MermaidStateConfigValidator;
 use MLL\LaravelUtils\ModelStates\TransitionDirection;
 use MLL\LaravelUtils\Tests\DBTestCase;
 
@@ -182,9 +184,8 @@ final class StateTest extends DBTestCase
 
     public function testGenerateMermaidGraph(): void
     {
-        $model = new TestModel();
-
-        $workflowAsMermaidGraph = 'graph TB;
+        $workflowAsMermaidGraph = /** @lang Mermaid */ <<<'MERMAID'
+graph TB;
     FOO_BAR("FOO_BAR");
     STATE_A("STATE_A");
     STATE_C("STATE_C");
@@ -195,12 +196,9 @@ final class StateTest extends DBTestCase
     STATE_A-->STATE_C;
     STATE_A-->STATE_D;
 
-linkStyle default interpolate basis;';
+linkStyle default interpolate basis;
+MERMAID;
 
-        self::assertSame(
-            $workflowAsMermaidGraph,
-            $model->generateMermaidGraphAsString(),
-            'Use https://mermaid.live/ for debugging.'
-        );
+        MermaidStateConfigValidator::assertStateConfigEquals($workflowAsMermaidGraph, ModelState::config());
     }
 }
