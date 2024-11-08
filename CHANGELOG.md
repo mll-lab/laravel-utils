@@ -9,6 +9,14 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Add `MLL\LaravelUtils\ModelStates\MermaidStateConfigValidator`
+
+### Removed
+
+- Remove `MLL\LaravelUtils\ModelStates\HasStateManager::generateMermaidGraphAsString`
+
 ## v6.0.0
 
 ### Changed
