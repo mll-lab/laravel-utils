@@ -9,6 +9,8 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v7.0.0
+
 ### Added
 
 - Add `MLL\LaravelUtils\ModelStates\MermaidStateConfigValidator`
