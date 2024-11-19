@@ -5,13 +5,14 @@ namespace MLL\LaravelUtils\ModelStates;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection as SupportCollection;
 use MLL\LaravelUtils\ModelStates\Exceptions\ClassDoesNotExtendBaseClass;
+use MLL\LaravelUtils\ModelStates\Exceptions\DuplicateTransitionException;
 
 final class StateConfig
 {
     /**
      * @var array<
-     *      class-string<State>,
-     *      array<class-string<State>, class-string<Transition>|null>
+     *   class-string<State>,
+     *   array<class-string<State>, class-string<Transition>|null>,
      * >
      */
     public array $allowedTransitions = [];
@@ -31,24 +32,22 @@ final class StateConfig
             return $this;
         }
 
-        // @phpstan-ignore-next-line php-stan is not right here
+        // @phpstan-ignore-next-line PHPStan is not right here
         if (! is_subclass_of($fromOrFroms, State::class)) {
             throw new ClassDoesNotExtendBaseClass($fromOrFroms, State::class);
         }
 
-        // @phpstan-ignore-next-line php-stan is not right here
+        // @phpstan-ignore-next-line PHPStan is not right here
         if (! is_subclass_of($to, State::class)) {
             throw new ClassDoesNotExtendBaseClass($to, State::class);
         }
 
         // There might already be transitions registered for this state
-        $fromTransition = $this->allowedTransitions[$fromOrFroms] ?? [];
+        if (isset($this->allowedTransitions[$fromOrFroms][$to])) {
+            throw new DuplicateTransitionException($fromOrFroms, $to);
+        }
 
-        // We just overwrite the transition with what was defined.
-        // We might consider throwing an exception here to catch double configuration.
-        $fromTransition[$to] = $transition;
-
-        $this->allowedTransitions[$fromOrFroms] = $fromTransition;
+        $this->allowedTransitions[$fromOrFroms][$to] = $transition;
 
         return $this;
     }
@@ -103,7 +102,7 @@ final class StateConfig
             $next[$stateClass] = new $stateClass();
         }
 
-        // @phpstan-ignore-next-line php-stan is not right here
+        // @phpstan-ignore-next-line PHPStan is not right here
         return new SupportCollection($next);
     }
 

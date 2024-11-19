@@ -16,10 +16,12 @@ use App\ModelStates\Transitions\CustomInvalidTransition;
 use App\ModelStates\Transitions\CustomTransition;
 use Illuminate\Support\Collection as SupportCollection;
 use MLL\LaravelUtils\ModelStates\DefaultTransition;
+use MLL\LaravelUtils\ModelStates\Exceptions\DuplicateTransitionException;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
 use MLL\LaravelUtils\ModelStates\MermaidStateConfigValidator;
+use MLL\LaravelUtils\ModelStates\StateConfig;
 use MLL\LaravelUtils\ModelStates\TransitionDirection;
 use MLL\LaravelUtils\Tests\DBTestCase;
 
@@ -180,6 +182,15 @@ final class StateTest extends DBTestCase
         $this->expectException(UnknownStateException::class);
         // @phpstan-ignore-next-line only meant to trigger an error
         $model->state;
+    }
+
+    public function testDuplicateTransitionException(): void
+    {
+        $stateConfig = new StateConfig();
+        $stateConfig->allowTransition(StateA::class, StateB::class);
+
+        $this->expectExceptionObject(new DuplicateTransitionException(StateA::class, StateB::class));
+        $stateConfig->allowTransition(StateA::class, StateB::class);
     }
 
     public function testGenerateMermaidGraph(): void
