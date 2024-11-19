@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v8.0.0
+
+### Changed
+
+- Throw `DuplicateTransitionException` on duplicate state transitions in `StateConfig`
+
 ## v7.0.0
 
 ### Added

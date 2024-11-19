@@ -20,7 +20,7 @@ final class StateEnumType extends EnumType
      */
     public function __construct(string $stateClass, ?string $name = null)
     {
-        // @phpstan-ignore-next-line php-stan is not right here
+        // @phpstan-ignore-next-line PHPStan is not right here
         if (! is_subclass_of($stateClass, State::class)) {
             $abstractState = State::class;
             throw new \InvalidArgumentException("Must pass an instance of {$abstractState}, got {$stateClass}.");
