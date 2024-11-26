@@ -72,8 +72,7 @@
       "providers": [
         "MLL\\LaravelUtils\\LaravelUtilsServiceProvider",
         "MLL\\LaravelUtils\\Database\\DatabaseServiceProvider",
-        "MLL\\LaravelUtils\\Mail\\MailServiceProvider",
-        "MLL\\LaravelUtils\\ModelStates\\ModelStatesServiceProvider"
+        "MLL\\LaravelUtils\\Mail\\MailServiceProvider"
       ]
     }
   }

@@ -19,7 +19,8 @@ trait HasStateManager
 
             $stateManagerClass = $self->stateClass()::stateManagerClass();
             $stateManager = new $stateManagerClass();
-            $stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $self->stateClass()::defaultState()::name());
+            assert(in_array(IsStateManager::class, class_uses($stateManager)));
+            $stateManager->setAttribute($stateManager::stateColumnName(), $self->stateClass()::defaultState()::name());
 
             $self->stateManager()->save($stateManager);
             $self->setRelation('stateManager', $stateManager);
@@ -28,10 +29,13 @@ trait HasStateManager
 
     public function getStateAttribute(): State
     {
-        $stateClasses = $this->stateClassConfig()->possibleStates();
-        $stateName = $this->stateManager->getAttribute(ModelStatesServiceProvider::stateColumnName());
+        $stateManagerClass = $this->stateClass()::stateManagerClass();
+        $stateManager = new $stateManagerClass();
+        assert(in_array(IsStateManager::class, class_uses($stateManager)));
+        $stateName = $this->stateManager->getAttribute($stateManager::stateColumnName());
         assert(is_string($stateName));
 
+        $stateClasses = $this->stateClassConfig()->possibleStates();
         $stateClass = $stateClasses[$stateName] ?? null;
         if ($stateClass === null) {
             throw new UnknownStateException("The state {$stateName} of {$this->table} with id {$this->id} is not part of {$this->stateClass()}.");

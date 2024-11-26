@@ -48,7 +48,7 @@ abstract class Transition
     /** Can be reused in default state transitions. */
     final protected function manage(): void
     {
-        $this->model->stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $this->to::name());
+        $this->model->stateManager->setAttribute($this->model->stateManager::stateColumnName(), $this->to::name());
         $this->model->stateManager->save();
     }
 }
