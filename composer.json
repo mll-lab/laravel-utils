@@ -19,7 +19,7 @@
     "source": "https://github.com/mll-lab/laravel-utils"
   },
   "require": {
-    "php": "^8.1",
+    "php": "^8.2",
     "illuminate/support": "^9.51 || ^10 || ^11",
     "mll-lab/php-utils": "^1.13 || ^2 || ^3 || ^4 || ^5",
     "mll-lab/str_putcsv": "^1",
