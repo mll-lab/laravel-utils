@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v8.0.1
+
+### Fixed
+
+- Omit tests from composer package
+
 ## v8.0.0
 
 ### Changed
