@@ -16,6 +16,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 - Support multiple `StateManager` classes by configuring the `StateManager`-Model in `StateConfig` and the column name in `StateManager`-Model
 - Drop support for php 8.1
 
+## v8.0.1
+
+### Fixed
+
+- Omit tests from composer package
+
 ## v8.0.0
 
 ### Changed

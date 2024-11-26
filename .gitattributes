@@ -1,7 +1,7 @@
 /.dependabot/ export-ignore
 /.github/ export-ignore
 /app/ export-ignore
-/test/ export-ignore
+/tests/ export-ignore
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
