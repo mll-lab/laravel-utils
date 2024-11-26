@@ -17,8 +17,7 @@ trait HasStateManager
                 return;
             }
 
-            $stateManagerClass = $self->stateClass()::stateManagerClass();
-            $stateManager = new $stateManagerClass();
+            $stateManager = $self->stateClass()::stateManagerClass();
             assert(in_array(IsStateManager::class, class_uses($stateManager)));
             $stateManager->setAttribute($stateManager::stateColumnName(), $self->stateClass()::defaultState()::name());
 
@@ -29,9 +28,9 @@ trait HasStateManager
 
     public function getStateAttribute(): State
     {
-        $stateManagerClass = $this->stateClass()::stateManagerClass();
-        $stateManager = new $stateManagerClass();
+        $stateManager = self::stateClass()::stateManagerClass();
         assert(in_array(IsStateManager::class, class_uses($stateManager)));
+
         $stateName = $this->stateManager->getAttribute($stateManager::stateColumnName());
         assert(is_string($stateName));
 

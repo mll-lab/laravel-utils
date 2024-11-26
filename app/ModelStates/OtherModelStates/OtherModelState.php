@@ -23,9 +23,8 @@ abstract class OtherModelState extends State
         return new StateX();
     }
 
-    /** @return class-string<Model> */
-    public static function stateManagerClass(): string
+    public static function stateManagerClass(): Model
     {
-        return StateManager::class;
+        return new StateManager();
     }
 }
