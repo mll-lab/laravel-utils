@@ -19,19 +19,6 @@ class ModelStatesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($configFile, 'model-state');
     }
 
-    /** @return class-string<Model> */
-    public static function stateManagerClass(): string
-    {
-        $config = Container::getInstance()->make(ConfigRepository::class);
-        // @phpstan-ignore-next-line unknown with Laravel 8, known with Laravel 9
-        assert($config instanceof ConfigRepository);
-
-        $modelClass = $config->get('model-state.model');
-        assert(is_string($modelClass) && is_subclass_of($modelClass, Model::class));
-
-        return $modelClass;
-    }
-
     public static function stateColumnName(): string
     {
         $config = Container::getInstance()->make(ConfigRepository::class);

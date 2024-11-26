@@ -3,7 +3,6 @@ parameters:
   paths:
   - src
   - tests
-  checkGenericClassInNonGenericObjectType: false # TODO reenable once we require Laravel 9+
   reportUnmatchedIgnoredErrors: false # As long as we support multiple Laravel versions at once, there will be some dead spots
   ignoreErrors:
   # PHPStan does not believe interfaces can define magic properties

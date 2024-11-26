@@ -17,7 +17,7 @@ trait HasStateManager
                 return;
             }
 
-            $stateManagerClass = ModelStatesServiceProvider::stateManagerClass();
+            $stateManagerClass = $self->stateClass()::stateManagerClass();
             $stateManager = new $stateManagerClass();
             $stateManager->setAttribute(ModelStatesServiceProvider::stateColumnName(), $self->stateClass()::defaultState()::name());
 
@@ -55,7 +55,7 @@ trait HasStateManager
     public function stateManager(): MorphOne
     {
         return $this->morphOne(
-            ModelStatesServiceProvider::stateManagerClass(),
+            $this->stateClass()::stateManagerClass(),
             'stateable',
         );
     }
