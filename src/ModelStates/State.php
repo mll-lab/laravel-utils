@@ -11,7 +11,8 @@ abstract class State
 
     abstract public static function defaultState(): self;
 
-    abstract public static function stateManagerClass(): Model;
+    /** @return class-string<Model> */
+    abstract public static function stateManagerClass(): string;
 
     public static function name(): string
     {

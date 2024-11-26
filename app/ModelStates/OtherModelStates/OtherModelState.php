@@ -5,7 +5,6 @@ namespace App\ModelStates\OtherModelStates;
 use App\ModelStates\StateManager;
 use App\ModelStates\Transitions\CustomInvalidTransition;
 use App\ModelStates\Transitions\CustomTransition;
-use Illuminate\Database\Eloquent\Model;
 use MLL\LaravelUtils\ModelStates\State;
 use MLL\LaravelUtils\ModelStates\StateConfig;
 
@@ -23,8 +22,8 @@ abstract class OtherModelState extends State
         return new StateX();
     }
 
-    public static function stateManagerClass(): Model
+    public static function stateManagerClass(): string
     {
-        return new StateManager();
+        return StateManager::class;
     }
 }

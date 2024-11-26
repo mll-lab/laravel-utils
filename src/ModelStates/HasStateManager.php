@@ -13,13 +13,21 @@ trait HasStateManager
     public static function bootHasStateManager(): void
     {
         self::created(function (self $self): void {
-            if (property_exists($self, 'stateManager') && $self->stateManager !== null) {
+            if (property_exists($self, 'stateManager')
+                && isset($self->stateManager)
+            ) {
                 return;
             }
 
-            $stateManager = $self->stateClass()::stateManagerClass();
-            assert(in_array(IsStateManager::class, class_uses($stateManager)));
-            $stateManager->setAttribute($stateManager::stateColumnName(), $self->stateClass()::defaultState()::name());
+            $stateClass = $self->stateClass();
+
+            $stateManagerClass = $stateClass::stateManagerClass();
+            assert(in_array(IsStateManager::class, class_uses($stateManagerClass)));
+
+            $stateManager = new $stateManagerClass();
+
+            $defaultState = $stateClass::defaultState();
+            $stateManager->setAttribute($stateManager::stateColumnName(), $defaultState::name());
 
             $self->stateManager()->save($stateManager);
             $self->setRelation('stateManager', $stateManager);
@@ -28,19 +36,16 @@ trait HasStateManager
 
     public function getStateAttribute(): State
     {
-        $stateManager = self::stateClass()::stateManagerClass();
-        assert(in_array(IsStateManager::class, class_uses($stateManager)));
-
-        $stateName = $this->stateManager->getAttribute($stateManager::stateColumnName());
+        $stateName = $this->stateManager->getAttribute($this->stateManager::stateColumnName());
         assert(is_string($stateName));
 
-        $stateClasses = $this->stateClassConfig()->possibleStates();
-        $stateClass = $stateClasses[$stateName] ?? null;
-        if ($stateClass === null) {
+        $possibleStateClasses = $this->stateClassConfig()->possibleStates();
+        $currentStateClass = $possibleStateClasses[$stateName] ?? null;
+        if ($currentStateClass === null) {
             throw new UnknownStateException("The state {$stateName} of {$this->table} with id {$this->id} is not part of {$this->stateClass()}.");
         }
 
-        return new $stateClass();
+        return new $currentStateClass();
     }
 
     /** @param State|class-string<State> $newState */
@@ -57,15 +62,16 @@ trait HasStateManager
 
     public function stateManager(): MorphOne
     {
-        return $this->morphOne(
-            $this->stateClass()::stateManagerClass(),
-            'stateable',
-        );
+        $stateClass = $this->stateClass();
+
+        return $this->morphOne($stateClass::stateManagerClass(), 'stateable');
     }
 
     public function stateClassConfig(): StateConfig
     {
-        return $this->stateClass()::config();
+        $stateClass = $this->stateClass();
+
+        return $stateClass::config();
     }
 
     public function stateMachine(): StateMachine
