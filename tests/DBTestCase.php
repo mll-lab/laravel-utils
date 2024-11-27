@@ -5,7 +5,6 @@ namespace MLL\LaravelUtils\Tests;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Support\Facades\DB;
 use MLL\LaravelUtils\Database\DatabaseServiceProvider;
-use MLL\LaravelUtils\ModelStates\ModelStatesServiceProvider;
 
 abstract class DBTestCase extends TestCase
 {
@@ -58,7 +57,6 @@ abstract class DBTestCase extends TestCase
         return [
             ...parent::getPackageProviders($app),
             DatabaseServiceProvider::class,
-            ModelStatesServiceProvider::class,
         ];
     }
 

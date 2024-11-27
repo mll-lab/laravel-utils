@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 interface HasStateManagerInterface
 {
+    /** @phpstan-ignore missingType.generics (declaring type not specified here on purpose because it is an interface) */
     public function stateManager(): MorphOne;
 
     /** @return class-string<State> */

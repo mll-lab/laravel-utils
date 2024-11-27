@@ -17,4 +17,9 @@ final class StateManager extends Model
     {
         return $this->morphTo();
     }
+
+    public static function stateColumnName(): string
+    {
+        return 'state_name';
+    }
 }

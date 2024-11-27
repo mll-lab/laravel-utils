@@ -98,16 +98,12 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.1"
           - "8.2"
           - "8.3"
         laravel-version:
           - ^9.51
           - ^10
           - ^11
-        exclude:
-          - php-version: "8.1"
-            laravel-version: ^11
 
     steps:
       - uses: actions/checkout@v4
@@ -134,7 +130,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.1"
           - "8.2"
           - "8.3"
         dependencies:
@@ -144,9 +139,6 @@ jobs:
           - ^9.51
           - ^10
           - ^11
-        exclude:
-          - php-version: "8.1"
-            laravel-version: ^11
 
     services:
       mariadb:

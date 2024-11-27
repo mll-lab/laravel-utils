@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\ModelStates;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 abstract class State
@@ -9,6 +10,9 @@ abstract class State
     abstract public static function config(): StateConfig;
 
     abstract public static function defaultState(): self;
+
+    /** @return class-string<Model> */
+    abstract public static function stateManagerClass(): string;
 
     public static function name(): string
     {

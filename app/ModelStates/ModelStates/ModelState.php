@@ -2,6 +2,7 @@
 
 namespace App\ModelStates\ModelStates;
 
+use App\ModelStates\StateManager;
 use MLL\LaravelUtils\ModelStates\State;
 use MLL\LaravelUtils\ModelStates\StateConfig;
 
@@ -18,5 +19,10 @@ abstract class ModelState extends State
     public static function defaultState(): ModelState
     {
         return new StateA();
+    }
+
+    public static function stateManagerClass(): string
+    {
+        return StateManager::class;
     }
 }

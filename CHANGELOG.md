@@ -9,6 +9,16 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v9.0.0
+
+### Changed
+
+- Support multiple `StateManager` classes by configuring the `StateManager`-Model in `StateConfig` and the column name in `StateManager`-Model
+
+### Removed
+
+- Drop support for PHP 8.1
+
 ## v8.0.1
 
 ### Fixed

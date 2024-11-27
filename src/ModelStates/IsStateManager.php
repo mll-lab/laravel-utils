@@ -17,6 +17,8 @@ trait IsStateManager
     /** @return MorphTo<HasStateManagerInterface&Model, self> */
     abstract public function stateable(): MorphTo;
 
+    abstract public static function stateColumnName(): string;
+
     /** @return SupportCollection<class-string<State>, State> */
     public function getCanTransitionToAttribute(): SupportCollection
     {
