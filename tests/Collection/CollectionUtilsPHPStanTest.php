@@ -5,7 +5,7 @@ namespace MLL\LaravelUtils\Tests\Collection;
 use PHPStan\Testing\TypeInferenceTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-class CollectionUtilsPHPStanTest extends TypeInferenceTestCase
+final class CollectionUtilsPHPStanTest extends TypeInferenceTestCase
 {
     /** @return iterable<mixed> */
     public static function dataFileAsserts(): iterable

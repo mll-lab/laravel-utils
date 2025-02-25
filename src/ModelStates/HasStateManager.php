@@ -26,10 +26,9 @@ trait HasStateManager
 
             $stateManagerClass = $stateClass::stateManagerClass();
             assert(in_array(needle: IsStateManager::class, haystack: class_uses($stateManagerClass), strict: true));
-
             $stateManager = new $stateManagerClass();
-            assert(method_exists($stateManager, 'stateColumnName'), 'due to IsStateManager');
 
+            assert(method_exists($stateManager, 'stateColumnName'), 'due to IsStateManager');
             $stateColumnName = $stateManager::stateColumnName(); // @phpstan-ignore method.staticCall (due to IsStateManager)
             assert(is_string($stateColumnName), 'due to IsStateManager');
 
