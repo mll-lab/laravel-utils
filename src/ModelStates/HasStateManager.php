@@ -2,8 +2,11 @@
 
 namespace MLL\LaravelUtils\ModelStates;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use MLL\LaravelUtils\ModelStates\Exceptions\UnknownStateException;
+
+use function Safe\class_uses;
 
 trait HasStateManager
 {
@@ -22,12 +25,16 @@ trait HasStateManager
             $stateClass = $self->stateClass();
 
             $stateManagerClass = $stateClass::stateManagerClass();
-            assert(in_array(IsStateManager::class, class_uses($stateManagerClass)));
+            assert(in_array(needle: IsStateManager::class, haystack: class_uses($stateManagerClass), strict: true));
 
             $stateManager = new $stateManagerClass();
+            assert(method_exists($stateManager, 'stateColumnName'), 'due to IsStateManager');
+
+            $stateColumnName = $stateManager::stateColumnName(); // @phpstan-ignore method.staticCall (due to IsStateManager)
+            assert(is_string($stateColumnName), 'due to IsStateManager');
 
             $defaultState = $stateClass::defaultState();
-            $stateManager->setAttribute($stateManager::stateColumnName(), $defaultState::name());
+            $stateManager->setAttribute($stateColumnName, $defaultState::name());
 
             $self->stateManager()->save($stateManager);
             $self->setRelation('stateManager', $stateManager);
@@ -60,6 +67,7 @@ trait HasStateManager
             ->transitionTo($newState);
     }
 
+    /** @return MorphOne<Model, $this> */
     public function stateManager(): MorphOne
     {
         $stateClass = $this->stateClass();

@@ -17,7 +17,7 @@ class CollectionUtils
      */
     public static function flattenOnce(Collection $collection): Collection
     {
-        /** @var list<(TValue is iterable ? value-of<TValue> : TValue)> $flat */
+        /** @var list<(TValue is iterable<*> ? value-of<TValue> : TValue)> $flat */
         $flat = [];
 
         foreach ($collection as $item) {

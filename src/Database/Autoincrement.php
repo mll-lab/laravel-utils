@@ -41,7 +41,6 @@ abstract class Autoincrement
      */
     public static function next(): int
     {
-        // @phpstan-ignore-next-line TODO remove when requiring Laravel 9+ that can infer this must return int
         return DB::transaction(static function (): int {
             $name = static::name();
             $builder = DB::table($name);
@@ -49,8 +48,9 @@ abstract class Autoincrement
             $current = $builder
                 ->lockForUpdate()
                 ->max($name);
+            assert(is_int($current) || $current === null);
 
-            $next = $current + 1;
+            $next = ($current ?? 0) + 1;
 
             if ($current === null) {
                 $builder->insert([$name => $next]);

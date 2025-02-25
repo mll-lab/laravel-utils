@@ -2,6 +2,7 @@
 
 namespace MLL\LaravelUtils\ModelStates;
 
+use App\ModelStates\StateManager;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class Transition
@@ -49,6 +50,8 @@ abstract class Transition
     final protected function manage(): void
     {
         $stateManager = $this->model->stateManager;
+        assert($stateManager instanceof StateManager);
+
         $stateManager->setAttribute($stateManager::stateColumnName(), $this->to::name());
         $stateManager->save();
     }

@@ -25,8 +25,13 @@ class StateMachine
     /** @param State|class-string<State> $newState */
     public function transitionTo(State|string $newState): HasStateManagerInterface
     {
-        $from = $this->model->state::class;
-        $to = $newState::class;
+        $state = $this->model->state;
+        assert($state instanceof State);
+
+        $from = $state::class;
+        $to = $newState instanceof State
+            ? $newState::class
+            : $newState;
 
         $transition = $this->instantiateTransitionClass($from, $to);
 

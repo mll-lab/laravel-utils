@@ -10,4 +10,4 @@ $nested = new Collection([
     new Collection([4, 5, 6]),
 ]);
 $flattened = CollectionUtils::flattenOnce($nested);
-assertType('Illuminate\Support\Collection<int, int>', $flattened);
+assertType('Illuminate\Support\Collection<int, 1|2|3|4|5|6>', $flattened);
