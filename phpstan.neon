@@ -3,11 +3,13 @@ parameters:
   paths:
   - src
   - tests
+  # Install https://plugins.jetbrains.com/plugin/7677-awesome-console to make those links clickable
+  editorUrl: '%%relFile%%:%%line%%'
+  editorUrlTitle: '%%relFile%%:%%line%%'
   reportUnmatchedIgnoredErrors: false # As long as we support multiple Laravel versions at once, there will be some dead spots
   ignoreErrors:
   # PHPStan does not believe interfaces can define magic properties
   - '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$stateManager\.#'
   - '#Access to an undefined property .*MLL\\LaravelUtils\\ModelStates\\HasStateManagerInterface::\$state\.#'
-  # Install https://plugins.jetbrains.com/plugin/7677-awesome-console to make those links clickable
-  editorUrl: '%%relFile%%:%%line%%'
-  editorUrlTitle: '%%relFile%%:%%line%%'
+  # See https://github.com/phpstan/phpstan-strict-rules/issues/140
+  - '#Dynamic call to static method Illuminate\\Support\\Collection.+::interpose\(\)\.#'

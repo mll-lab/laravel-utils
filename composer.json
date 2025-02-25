@@ -75,5 +75,10 @@
         "MLL\\LaravelUtils\\Mail\\MailServiceProvider"
       ]
     }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "[ -f vendor/bin/testbench ] && vendor/bin/testbench package:discover || true"
+    ]
   }
 }

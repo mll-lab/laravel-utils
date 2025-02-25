@@ -6,13 +6,13 @@ use Illuminate\Foundation\Application;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 
-final class StateMachine
+class StateMachine
 {
-    private readonly StateConfig $stateConfig;
+    protected StateConfig $stateConfig;
 
-    private readonly HasStateManagerInterface $model;
+    protected HasStateManagerInterface $model;
 
-    private readonly Application $app;
+    protected Application $app;
 
     public function __construct(HasStateManagerInterface $model)
     {

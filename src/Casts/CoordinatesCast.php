@@ -24,11 +24,13 @@ class CoordinatesCast implements CastsAttributes
      * @param  string  $key
      * @param  array<array-key, mixed> $attributes
      *
-     * @return Coordinates<TCoordinateSystem>
+     * @return Coordinates<TCoordinateSystem>|null
      */
-    public function get($model, $key, $value, $attributes): Coordinates
+    public function get($model, $key, $value, $attributes): ?Coordinates
     {
-        assert(is_string($value));
+        if (! is_string($value)) {
+            return null;
+        }
 
         return Coordinates::fromString($value, new $this->coordinateSystemClass());
     }

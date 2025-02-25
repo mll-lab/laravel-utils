@@ -129,13 +129,13 @@ final class StateTest extends DBTestCase
 
         $first = $model->stateManager->possibleTransitions()->first();
         self::assertInstanceOf(CustomTransition::class, $first);
-        self::assertSame($first->direction(), TransitionDirection::FORWARD);
+        self::assertSame(TransitionDirection::FORWARD, $first->direction());
         self::assertInstanceOf(StateX::class, $first->from());
         self::assertSame(StateY::name(), $first->to()::name());
 
         $last = $model->stateManager->possibleTransitions()->last();
         self::assertInstanceOf(CustomInvalidTransition::class, $last);
-        self::assertSame($last->direction(), TransitionDirection::REVERSE);
+        self::assertSame(TransitionDirection::REVERSE, $last->direction());
         self::assertFalse($last->isVisibleFromFrontend());
         self::assertSame(StateX::name(), $last->from()::name());
         self::assertSame(StateZ::name(), $last->to()::name());
@@ -148,7 +148,7 @@ final class StateTest extends DBTestCase
 
         $default = $model->stateManager->possibleTransitions()->first();
         self::assertInstanceOf(DefaultTransition::class, $default);
-        self::assertSame($default->direction(), TransitionDirection::FORWARD);
+        self::assertSame(TransitionDirection::FORWARD, $default->direction());
         self::assertTrue($default->isVisibleFromFrontend());
     }
 

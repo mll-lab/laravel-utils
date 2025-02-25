@@ -9,6 +9,17 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v9.1.0
+
+### Added
+
+- Add Collection macro `interpose` and `CollectionUtils::flattenOnce`
+
+### Fixed
+
+- Handle empty coordinates in `CoordinatesCast`
+- Open class `StateMachine` for inheritance
+
 ## v9.0.0
 
 ### Changed
