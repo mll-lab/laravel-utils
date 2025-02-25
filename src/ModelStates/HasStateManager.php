@@ -17,7 +17,7 @@ trait HasStateManager
     {
         self::created(function (self $self): void {
             if (property_exists($self, 'stateManager')
-                && (property_exists($self, 'stateManager') && $self->stateManager !== null)
+                && isset($self->stateManager)
             ) {
                 return;
             }
