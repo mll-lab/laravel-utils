@@ -5,9 +5,6 @@ use MLL\LaravelUtils\Collection\CollectionUtils;
 
 use function PHPStan\Testing\assertType;
 
-$nested = new Collection([
-    new Collection([1, 2, 3]),
-    new Collection([4, 5, 6]),
-]);
+/** @var Collection<int, array<int>> $nested */
 $flattened = CollectionUtils::flattenOnce($nested);
-assertType('Illuminate\Support\Collection<int, 1|2|3|4|5|6>', $flattened);
+assertType('Illuminate\Support\Collection<int, int>', $flattened);

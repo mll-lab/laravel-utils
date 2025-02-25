@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
-use Rector\CodeQuality\Rector\Concat\JoinStringConcatRector;
 use Rector\Config\RectorConfig;
-use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitSelfCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 
@@ -29,13 +27,15 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
     $rectorConfig->importNames();
     $rectorConfig->importShortClasses(false);
-    $rectorConfig->rule(PreferPHPUnitSelfCallRector::class);
+    $rectorConfig->rule(Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitSelfCallRector::class);
     $rectorConfig->skip([
         // skip csv test file to keep `\r` and `\n` for readability
-        JoinStringConcatRector::class => [
+        Rector\CodeQuality\Rector\Concat\JoinStringConcatRector::class => [
             // single file
             __DIR__ . '/tests/Unit/CSVArrayTest.php',
         ],
+        // Unsafe with typed properties
+        Rector\CodeQuality\Rector\Isset_\IssetOnPropertyObjectToPropertyExistsRector::class,
     ]);
     $rectorConfig->paths([
         __DIR__ . '/src',
