@@ -9,7 +9,11 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
-## v9.1.0
+## v10.0.0
+
+### Removed
+
+- Drop support for Laravel 9 and 10
 
 ### Added
 
