@@ -39,8 +39,12 @@ final class PublishTest extends TestCase
 
         $migrations = $base->files('database/migrations');
         self::assertCount(1, $migrations);
+        self::assertCount(1, $migrations);
 
-        $foo = $base->get($migrations[0]);
+        $firstMigration = $migrations[0];
+        self::assertIsString($firstMigration);
+
+        $foo = $base->get($firstMigration);
         self::assertIsString($foo);
         self::assertStringContainsString(': void', $foo);
     }

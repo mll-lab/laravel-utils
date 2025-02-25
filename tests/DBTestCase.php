@@ -34,7 +34,10 @@ abstract class DBTestCase extends TestCase
         $columnName = "Tables_in_{$databaseName}";
         foreach (DB::select('SHOW TABLES') as $table) {
             assert($table instanceof \stdClass);
-            DB::table($table->{$columnName})->truncate();
+
+            $value = $table->{$columnName};
+            assert(is_string($value));
+            DB::table($value)->truncate();
         }
     }
 

@@ -11,22 +11,16 @@ final class DoctrineDBALEnumTypeTest extends DBTestCase
 {
     public function testIsRegistered(): void
     {
-        self::assertInstanceOf(
-            DoctrineDBALEnumType::class,
-            Type::getType(DoctrineDBALEnumType::NAME)
-        );
+        self::assertInstanceOf(DoctrineDBALEnumType::class, Type::getType(DoctrineDBALEnumType::NAME));
     }
 
     public function testGetSQLDeclaration(): void
     {
         $enumType = Type::getType(DoctrineDBALEnumType::NAME);
 
-        self::assertSame(
-            "ENUM('foo','bar')",
-            $enumType->getSQLDeclaration(
-                ['allowed' => ['foo', 'bar']],
-                new MySQLPlatform()
-            )
-        );
+        self::assertSame("ENUM('foo','bar')", $enumType->getSQLDeclaration(
+            ['allowed' => ['foo', 'bar']],
+            new MySQLPlatform()
+        ));
     }
 }

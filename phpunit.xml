@@ -9,14 +9,8 @@
     </include>
   </source>
   <testsuites>
-    <testsuite name="Core">
-      <directory>tests/Core</directory>
-    </testsuite>
-    <testsuite name="Database">
-      <directory>tests/Database</directory>
-    </testsuite>
-    <testsuite name="ModelStates">
-      <directory>tests/ModelStates</directory>
+    <testsuite name="Tests">
+      <directory>tests</directory>
     </testsuite>
   </testsuites>
   <php>

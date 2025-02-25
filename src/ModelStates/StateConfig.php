@@ -115,6 +115,7 @@ final class StateConfig
     {
         $stateable->refresh();
         $from = $stateable->state;
+        assert($from instanceof State);
         $possibleNextStates = $this->possibleNextStates($from);
 
         $stateMachine = $stateable->stateMachine();

@@ -2,7 +2,9 @@
 
 namespace MLL\LaravelUtils;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
+use MLL\LaravelUtils\Collection\CollectionMixin;
 use MLL\LaravelUtils\Queue\DispatchJob;
 
 class LaravelUtilsServiceProvider extends ServiceProvider
@@ -16,5 +18,7 @@ class LaravelUtilsServiceProvider extends ServiceProvider
         $this->commands([
             DispatchJob::class,
         ]);
+
+        Collection::mixin(new CollectionMixin());
     }
 }

@@ -9,6 +9,21 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.0.0
+
+### Removed
+
+- Drop support for Laravel 9 and 10
+
+### Added
+
+- Add Collection macro `interpose` and `CollectionUtils::flattenOnce`
+
+### Fixed
+
+- Handle empty coordinates in `CoordinatesCast`
+- Open class `StateMachine` for inheritance
+
 ## v9.0.0
 
 ### Changed

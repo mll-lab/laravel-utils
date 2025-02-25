@@ -6,13 +6,13 @@ use Illuminate\Foundation\Application;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotAllowed;
 use MLL\LaravelUtils\ModelStates\Exceptions\TransitionNotFound;
 
-final class StateMachine
+class StateMachine
 {
-    private readonly StateConfig $stateConfig;
+    protected StateConfig $stateConfig;
 
-    private readonly HasStateManagerInterface $model;
+    protected HasStateManagerInterface $model;
 
-    private readonly Application $app;
+    protected Application $app;
 
     public function __construct(HasStateManagerInterface $model)
     {
@@ -25,8 +25,13 @@ final class StateMachine
     /** @param State|class-string<State> $newState */
     public function transitionTo(State|string $newState): HasStateManagerInterface
     {
-        $from = $this->model->state::class;
-        $to = $newState::class;
+        $state = $this->model->state;
+        assert($state instanceof State);
+
+        $from = $state::class;
+        $to = $newState instanceof State
+            ? $newState::class
+            : $newState;
 
         $transition = $this->instantiateTransitionClass($from, $to);
 

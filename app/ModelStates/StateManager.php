@@ -4,6 +4,7 @@ namespace App\ModelStates;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
 use MLL\LaravelUtils\ModelStates\IsStateManager;
 
 /**
@@ -13,9 +14,10 @@ final class StateManager extends Model
 {
     use IsStateManager;
 
-    public function stateable(): MorphTo
+    /** @return MorphTo<HasStateManagerInterface&Model, $this> */
+    public function stateable(): MorphTo // @phpstan-ignore method.childReturnType
     {
-        return $this->morphTo();
+        return $this->morphTo(); // @phpstan-ignore return.type
     }
 
     public static function stateColumnName(): string

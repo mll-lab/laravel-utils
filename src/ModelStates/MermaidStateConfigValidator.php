@@ -14,9 +14,9 @@ class MermaidStateConfigValidator
     public static function assertGraphEquals(string $expectedGraphString, Graph $actualGraph): void
     {
         Assert::assertSame(
-            expected: $expectedGraphString,
-            actual: $actualGraph->__toString(),
-            message: "The Mermaid graph did not match. See the actual generated graph at {$actualGraph->getLiveEditorUrl()}."
+            $expectedGraphString,
+            $actualGraph->__toString(),
+            "The Mermaid graph did not match. See the actual generated graph at {$actualGraph->getLiveEditorUrl()}."
         );
     }
 

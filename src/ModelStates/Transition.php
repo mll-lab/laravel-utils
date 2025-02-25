@@ -49,7 +49,13 @@ abstract class Transition
     final protected function manage(): void
     {
         $stateManager = $this->model->stateManager;
-        $stateManager->setAttribute($stateManager::stateColumnName(), $this->to::name());
+        assert($stateManager instanceof Model, 'due to HasStateManagerInterface');
+
+        assert(method_exists($stateManager, 'stateColumnName'), 'due to IsStateManager');
+        $stateColumnName = $stateManager::stateColumnName(); // @phpstan-ignore method.staticCall (due to IsStateManager)
+        assert(is_string($stateColumnName), 'due to IsStateManager');
+
+        $stateManager->setAttribute($stateColumnName, $this->to::name());
         $stateManager->save();
     }
 }
