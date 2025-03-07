@@ -48,5 +48,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->phpstanConfigs([
         __DIR__ . '/phpstan.neon',
         __DIR__ . '/vendor/larastan/larastan/extension.neon',
+        __DIR__ . '/vendor/spaze/phpstan-disallowed-calls/extension.neon',
     ]);
 };

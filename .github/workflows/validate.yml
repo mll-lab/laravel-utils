@@ -103,6 +103,7 @@ jobs:
           - "8.4"
         laravel-version:
           - ^11
+          - ^12
 
     steps:
       - uses: actions/checkout@v4
@@ -118,7 +119,7 @@ jobs:
 
       - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - run: vendor/bin/phpstan
+      - run: vendor/bin/phpstan analyse --configuration=phpstan.neon
 
   tests:
     name: "Tests - PHP ${{ matrix.php-version }}, Illuminate ${{ matrix.illuminate }}, ${{ matrix.dependencies }}"
@@ -137,6 +138,7 @@ jobs:
           - highest
         laravel-version:
           - ^11
+          - ^12
 
     services:
       mariadb:
