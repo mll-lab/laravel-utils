@@ -118,7 +118,7 @@ jobs:
 
       - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
-      - run: vendor/bin/phpstan
+      - run: vendor/bin/phpstan analyse --configuration=phpstan.neon
 
   tests:
     name: "Tests - PHP ${{ matrix.php-version }}, Illuminate ${{ matrix.illuminate }}, ${{ matrix.dependencies }}"

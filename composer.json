@@ -43,10 +43,12 @@
     "phpstan/phpstan-phpunit": "^2",
     "phpstan/phpstan-strict-rules": "^2",
     "phpunit/phpunit": "^11.5.10 || ^12",
+    "spaze/phpstan-disallowed-calls": "^4.4",
     "thecodingmachine/phpstan-safe-rule": "^1.2"
   },
   "suggest": {
-    "jbzoo/mermaid-php": "Used for visualization of the transition graph of the model states"
+    "jbzoo/mermaid-php": "Used for visualization of the transition graph of the model states",
+    "spaze/phpstan-disallowed-calls": "Required when using the PHPStan configuration from rules.neon directly or through the extension installer"
   },
   "autoload": {
     "psr-4": {
@@ -74,6 +76,11 @@
         "MLL\\LaravelUtils\\LaravelUtilsServiceProvider",
         "MLL\\LaravelUtils\\Database\\DatabaseServiceProvider",
         "MLL\\LaravelUtils\\Mail\\MailServiceProvider"
+      ]
+    },
+    "phpstan": {
+      "includes": [
+        "rules.neon"
       ]
     }
   },

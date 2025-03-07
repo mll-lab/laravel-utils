@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Register rules as a PHPStan extension
+
 ## v10.0.0
 
 ### Removed
