@@ -52,6 +52,6 @@ vendor: up composer.json
 	${dcphp} composer validate --strict
 	${dcphp} composer normalize
 
-.PHONY: php
-php: up ## Open an interactive shell into the PHP container
+.PHONY: shell
+shell: up ## Open an interactive shell into the PHP container
 	${dcphp} bash

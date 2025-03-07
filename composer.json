@@ -20,7 +20,7 @@
   },
   "require": {
     "php": "^8.2",
-    "illuminate/support": "^11",
+    "illuminate/support": "^11 || ^12",
     "mll-lab/php-utils": "^5.2",
     "mll-lab/str_putcsv": "^1",
     "ramsey/uuid": "^4.7",
@@ -32,7 +32,7 @@
     "jangregor/phpstan-prophecy": "^2",
     "jbzoo/mermaid-php": "^2.3",
     "larastan/larastan": "^3",
-    "laravel/framework": "^11",
+    "laravel/framework": "^11 || ^12",
     "mll-lab/graphql-php-scalars": "^4 || ^5",
     "mll-lab/php-cs-fixer-config": "^5",
     "mll-lab/rector-config": "^2",
