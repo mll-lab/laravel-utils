@@ -1,6 +1,5 @@
 parameters:
   disallowedMethodCalls:
-  - method: 'Illuminate\Support\Collection::toArray()'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
     message: 'Creating or filling models through arrays prevents static validation from working.'
     errorTip: 'Use createOne() without the array parameter.'
@@ -25,6 +24,7 @@ parameters:
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
+  - method: 'Illuminate\Support\Collection::toArray()'
     message: 'because it is inefficient and provides no type inference'
     errorTip: 'use all() instead'
   - method: 'Illuminate\Support\Collection::where()'
