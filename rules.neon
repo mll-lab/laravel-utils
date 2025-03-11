@@ -1,26 +1,26 @@
 parameters:
   disallowedMethodCalls:
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
-    message: 'Creating or filling models through arrays prevents static validation from working.'
-    errorTip: 'Use createOne() without the array parameter.'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call createOne() without any parameters, use property assignment to fill the model.'
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::makeOne()'
-    message: 'Creating or filling models through arrays prevents static validation from working.'
-    errorTip: 'Use makeOne() without the array parameter.'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call makeOne() without any parameters, use property assignment to fill the model.'
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::create()'
-    message: 'Creating or filling models through arrays prevents static validation from working.'
-    errorTip: 'Use create() without the array parameter.'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call create() without any parameters, use property assignment to fill the model.'
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::make()'
-    message: 'Creating or filling models through arrays prevents static validation from working.'
-    errorTip: 'Use make() without the array parameter.'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call make() without any parameters, use property assignment to fill the model.'
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
