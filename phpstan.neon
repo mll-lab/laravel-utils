@@ -1,9 +1,16 @@
+includes:
+- rules.neon
 parameters:
   level: max
   paths:
   - app
   - src
   - tests
+  excludePaths:
+  # Intentionally contains errors
+  - tests/PHPStan/data
+  # Mixins are not recognized with the latest dependencies, TODO try removing this again
+  - tests/Collection/CollectionMixinTest.php
   # Install https://plugins.jetbrains.com/plugin/7677-awesome-console to make those links clickable
   editorUrl: '%%relFile%%:%%line%%'
   editorUrlTitle: '%%relFile%%:%%line%%'

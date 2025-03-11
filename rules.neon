@@ -1,0 +1,49 @@
+parameters:
+  disallowedMethodCalls:
+  - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call createOne() without any parameters, use property assignment to fill the model.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
+  - method: 'Illuminate\Database\Eloquent\Factories\Factory::makeOne()'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call makeOne() without any parameters, use property assignment to fill the model.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
+  - method: 'Illuminate\Database\Eloquent\Factories\Factory::create()'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call create() without any parameters, use property assignment to fill the model.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
+  - method: 'Illuminate\Database\Eloquent\Factories\Factory::make()'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Call make() without any parameters, use property assignment to fill the model.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
+  - method: 'Illuminate\Support\Collection::toArray()'
+    message: 'because it is inefficient and provides no type inference'
+    errorTip: 'use all() instead'
+  - method: 'Illuminate\Support\Collection::where()'
+    message: 'because it might be not type safe'
+    errorTip: 'use filter()/reject() instead'
+  - method: 'Illuminate\Support\Collection::pluck()'
+    message: 'because it is not type safe'
+    errorTip: 'use map() instead'
+  disallowedFunctionCalls:
+  - function: 'optional()'
+    message: 'undermines type safety'
+    errorTip: 'use null coalescing operator instead'
+  disallowedStaticCalls:
+  - method: 'Illuminate\Database\Eloquent\Builder::create()'
+    message: 'creating or filling models through arrays prevents static validation from working'
+    errorTip: 'create new instance assign properties'
+  - method: 'Illuminate\Support\Facades\Event::fake()'
+    message: 'you MUST limit which events to fake so model events still work'
+    errorTip: 'use Event::fake(MyEvent::class) instead'
+    allowParamsAnywhereAnyValue:
+    - position: 1
+      name: 'eventsToFake'
