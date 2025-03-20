@@ -1,4 +1,5 @@
 parameters:
+  # https://github.com/spaze/phpstan-disallowed-calls/blob/main/docs/custom-rules.md
   disallowedMethodCalls:
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
     message: 'creating or filling models through arrays prevents static validation from working.'
@@ -27,6 +28,9 @@ parameters:
   - method: 'Illuminate\Support\Collection::toArray()'
     message: 'because it is inefficient and provides no type inference'
     errorTip: 'use all() instead'
+  - method: 'Illuminate\Support\Collection::flatten()'
+    message: 'because it provides no type inference'
+    errorTip: 'use Illuminate\Support\Collection::flatMap() or MLL\LaravelUtils\Collection\CollectionUtils::flattenOnce() instead'
   - method: 'Illuminate\Support\Collection::where()'
     message: 'because it might be not type safe'
     errorTip: 'use filter()/reject() instead'

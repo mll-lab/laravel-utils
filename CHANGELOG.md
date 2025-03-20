@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.2.0
+
+### Added
+
+- Disallow `Illuminate\Support\Collection::flatten()` via PHPStan rule
+
 ## v10.1.0
 
 ### Added
