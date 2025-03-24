@@ -31,7 +31,7 @@
     "ergebnis/composer-normalize": "^2",
     "jangregor/phpstan-prophecy": "^2",
     "jbzoo/mermaid-php": "^2.3",
-    "larastan/larastan": "^3",
+    "larastan/larastan": "^3.2",
     "laravel/framework": "^11 || ^12",
     "mll-lab/graphql-php-scalars": "^4 || ^5",
     "mll-lab/php-cs-fixer-config": "^5",
@@ -42,7 +42,7 @@
     "phpstan/phpstan-deprecation-rules": "^2",
     "phpstan/phpstan-phpunit": "^2",
     "phpstan/phpstan-strict-rules": "^2",
-    "phpunit/phpunit": "^11.5.10 || ^12",
+    "phpunit/phpunit": "^11.5.15 || ^12",
     "spaze/phpstan-disallowed-calls": "^4.4",
     "thecodingmachine/phpstan-safe-rule": "^1.2"
   },
