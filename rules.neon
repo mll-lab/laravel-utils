@@ -44,7 +44,10 @@ parameters:
   disallowedStaticCalls:
   - method: 'Illuminate\Database\Eloquent\Builder::create()'
     message: 'creating or filling models through arrays prevents static validation from working'
-    errorTip: 'create new instance assign properties'
+    errorTip: 'assign attributes through property assignment'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
   - method: 'Illuminate\Support\Facades\Event::fake()'
     message: 'you MUST limit which events to fake so model events still work'
     errorTip: 'use Event::fake(MyEvent::class) instead'

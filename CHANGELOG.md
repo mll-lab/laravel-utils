@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.2.1
+
+### Fixed
+
+- Allow `Illuminate\Database\Eloquent\Builder::create()` without attributes in PHPStan rule
+
 ## v10.2.0
 
 ### Added
