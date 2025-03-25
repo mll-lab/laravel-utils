@@ -16,6 +16,11 @@ final class PHPStanExtensionTest extends PHPStanTestCase
     {
         self::getContainer();
 
+        yield [__DIR__ . '/data/builder.php', [
+            6 => ['Calling Illuminate\Database\Eloquent\Builder::create() (as App\Models\User::create()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
+            7 => ['Calling Illuminate\Database\Eloquent\Builder::create() (as App\Models\User::create()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
+        ]];
+
         yield [__DIR__ . '/data/factory.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
@@ -86,6 +91,7 @@ final class PHPStanExtensionTest extends PHPStanTestCase
     public static function getAdditionalConfigFiles(): array
     {
         return [
+            __DIR__ . '/../../vendor/larastan/larastan/extension.neon',
             __DIR__ . '/../../vendor/spaze/phpstan-disallowed-calls/extension.neon',
             __DIR__ . '/../../rules.neon',
         ];
