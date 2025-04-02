@@ -40,11 +40,11 @@ php-cs-fixer: up
 	${dcphp} vendor/bin/php-cs-fixer fix
 
 .PHONY: stan
-stan: up ## Runs a static analysis with phpstan
+stan: up ## Run static analysis with PHPStan
 	${dcphp} vendor/bin/phpstan analyse --configuration=phpstan.neon
 
 .PHONY: test
-test: up ## Runs auto-review, unit, and integration tests with phpunit
+test: up ## Run tests with PHPUnit
 	${dcphp} vendor/bin/phpunit
 
 vendor: up composer.json
