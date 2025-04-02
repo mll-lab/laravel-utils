@@ -1,6 +1,12 @@
 parameters:
   # https://github.com/spaze/phpstan-disallowed-calls/blob/main/docs/custom-rules.md
   disallowedMethodCalls:
+  - method: 'Illuminate\Database\Eloquent\Model::update()'
+    message: 'it assigns attributes through an array and is not type safe, without parameters it is like save().'
+    errorTip: 'Assign attributes through property assignment, then call save(). If your intention was to not save new models, check $exists explicitly.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'attributes'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
     message: 'creating or filling models through arrays prevents static validation from working.'
     errorTip: 'Call createOne() without any parameters, use property assignment to fill the model.'
@@ -27,30 +33,30 @@ parameters:
       name: 'attributes'
   - method: 'Illuminate\Support\Collection::toArray()'
     message: 'because it is inefficient and provides no type inference'
-    errorTip: 'use all() instead'
+    errorTip: 'Use all() instead.'
   - method: 'Illuminate\Support\Collection::flatten()'
-    message: 'because it provides no type inference'
-    errorTip: 'use Illuminate\Support\Collection::flatMap() or MLL\LaravelUtils\Collection\CollectionUtils::flattenOnce() instead'
+    message: 'because it provides no type inference.'
+    errorTip: 'Use Illuminate\Support\Collection::flatMap() or MLL\LaravelUtils\Collection\CollectionUtils::flattenOnce() instead.'
   - method: 'Illuminate\Support\Collection::where()'
-    message: 'because it might be not type safe'
-    errorTip: 'use filter()/reject() instead'
+    message: 'because it might be not type safe.'
+    errorTip: 'Use filter()/reject() instead.'
   - method: 'Illuminate\Support\Collection::pluck()'
-    message: 'because it is not type safe'
-    errorTip: 'use map() instead'
+    message: 'because it is not type safe.'
+    errorTip: 'Use map() instead.'
   disallowedFunctionCalls:
   - function: 'optional()'
-    message: 'undermines type safety'
-    errorTip: 'use null coalescing operator instead'
+    message: 'undermines type safety.'
+    errorTip: 'Use the null safe operator ?-> instead.'
   disallowedStaticCalls:
   - method: 'Illuminate\Database\Eloquent\Builder::create()'
-    message: 'creating or filling models through arrays prevents static validation from working'
-    errorTip: 'assign attributes through property assignment'
+    message: 'creating or filling models through arrays prevents static validation from working.'
+    errorTip: 'Assign attributes through property assignment.'
     allowExceptParamsAnyValue:
     - position: 1
       name: 'attributes'
   - method: 'Illuminate\Support\Facades\Event::fake()'
-    message: 'you MUST limit which events to fake so model events still work'
-    errorTip: 'use Event::fake(MyEvent::class) instead'
+    message: 'you MUST limit which events to fake so model events still work.'
+    errorTip: 'Use Event::fake(MyEvent::class) instead.'
     allowParamsAnywhereAnyValue:
     - position: 1
       name: 'eventsToFake'

@@ -25,6 +25,11 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
         ]];
+
+        yield [__DIR__ . '/data/model.php', [
+            6 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
+            7 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
+        ]];
     }
 
     /** @param array<int, array<int, string>> $expectedErrors */
