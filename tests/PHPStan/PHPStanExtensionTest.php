@@ -26,6 +26,11 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
         ]];
 
+        yield [__DIR__ . '/data/functions.php', [
+            3 => ['Calling optional() is forbidden, it undermines type safety.'],
+            4 => ['Calling getenv() is forbidden, it does not consider the .env file.'],
+        ]];
+
         yield [__DIR__ . '/data/model.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
             7 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],

@@ -41,8 +41,11 @@ parameters:
     message: 'because it is not type safe.'
     errorTip: 'Use map() instead.'
   disallowedFunctionCalls:
+  - function: 'getenv()'
+    message: 'it does not consider the .env file.'
+    errorTip: 'Use env() instead.'
   - function: 'optional()'
-    message: 'undermines type safety.'
+    message: 'it undermines type safety.'
     errorTip: 'Use the null safe operator ?-> instead.'
   disallowedStaticCalls:
   - method: 'Illuminate\Database\Eloquent\Builder::create()'

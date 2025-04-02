@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.4.0
+
+### Added
+
+- Disallow `getenv()` via PHPStan rule
+
 ## v10.3.0
 
 ### Added
