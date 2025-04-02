@@ -4,9 +4,6 @@ parameters:
   - method: 'Illuminate\Database\Eloquent\Model::update()'
     message: 'it assigns attributes through an array and is not type safe, without parameters it is like save().'
     errorTip: 'Assign attributes through property assignment, then call save(). If your intention was to not save new models, check $exists explicitly.'
-    allowExceptParamsAnyValue:
-    - position: 1
-      name: 'attributes'
   - method: 'Illuminate\Database\Eloquent\Factories\Factory::createOne()'
     message: 'creating or filling models through arrays prevents static validation from working.'
     errorTip: 'Call createOne() without any parameters, use property assignment to fill the model.'
