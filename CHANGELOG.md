@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.3.0
+
+### Added
+
+- Disallow `Illuminate\Database\Eloquent\Model::update()` via PHPStan rule
+
 ## v10.2.1
 
 ### Fixed
