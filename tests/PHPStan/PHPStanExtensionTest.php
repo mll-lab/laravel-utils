@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 /** Built like https://github.com/larastan/larastan/blob/e01fd6ad60c659b735816c21a14df0a3cbca7dbe/tests/Integration/IntegrationTest.php. */
 final class PHPStanExtensionTest extends PHPStanTestCase
 {
-    /** @return iterable<mixed> */
+    /** @return iterable<array{0: string, 1?: array<int, array<int, string>>}> */
     public static function dataIntegrationTests(): iterable
     {
         self::getContainer();
@@ -24,6 +24,11 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         yield [__DIR__ . '/data/factory.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
+        ]];
+
+        yield [__DIR__ . '/data/model.php', [
+            6 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
+            7 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
         ]];
     }
 
