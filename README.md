@@ -1,6 +1,6 @@
 # laravel-utils
 
-[![Continuous Integration](https://github.com/mll-lab/laravel-utils/workflows/Continuous%20Integration/badge.svg)](https://github.com/mll-lab/laravel-utils/actions)
+[![Validate](https://github.com/mll-lab/laravel-utils/actions/workflows/validate.yml/badge.svg)](https://github.com/mll-lab/laravel-utils/actions)
 [![Code Coverage](https://codecov.io/gh/mll-lab/laravel-utils/branch/master/graph/badge.svg)](https://codecov.io/gh/mll-lab/laravel-utils)
 
 [![Latest Stable Version](https://poser.pugx.org/mll-lab/laravel-utils/v/stable)](https://packagist.org/packages/mll-lab/laravel-utils)
