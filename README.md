@@ -29,7 +29,7 @@ Extend the class [`Autoincrement`](src/Database/Autoincrement.php) with a descri
 ```php
 use MLL\LaravelUtils\Database\Autoincrement;
 
-final class MaxFooId extends Autoincrement
+final class MaxFooID extends Autoincrement
 {
     public static function name(): string
     {
@@ -41,8 +41,9 @@ final class MaxFooId extends Autoincrement
 Generate a migration and call the `createTable()` method in it:
 
 ```php
-public function up() {
-    MaxFooId::createTable();
+public function up(): void
+{
+    MaxFooID::createTable();
 }
 ```
 
@@ -54,7 +55,7 @@ public $incrementing = false;
 protected static function booted(): void
 {
     self::creating(function (self $instance): void {
-        $instance->id ??= MaxFooId::next();
+        $instance->id ??= MaxFooID::next();
     });
 ```
 
