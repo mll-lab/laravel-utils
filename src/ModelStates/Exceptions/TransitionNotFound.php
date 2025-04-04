@@ -6,9 +6,10 @@ use MLL\LaravelUtils\ModelStates\HasStateManagerInterface;
 
 final class TransitionNotFound extends CouldNotPerformTransition
 {
-    public function __construct(string $from, string $to, HasStateManagerInterface $model)
+    public function __construct(HasStateManagerInterface $model, string $from, string $to)
     {
         $modelClass = $model::class;
-        parent::__construct("Transitions from `{$from}` to `{$to}` on model `{$modelClass}` was not found, did you forget to register it in the config?");
+        $stateClass = $model->stateClass();
+        parent::__construct("A transition from `{$from}` to `{$to}` is missing for model `{$modelClass}`. Did you forget to register it in `{$stateClass}::config()`?");
     }
 }

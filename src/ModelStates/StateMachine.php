@@ -53,7 +53,7 @@ class StateMachine
     public function instantiateTransitionClass(string $from, string $to): Transition
     {
         $transitionClass = $this->stateConfig->transition($from, $to)
-            ?? throw new TransitionNotFound($from, $to, $this->model);
+            ?? throw new TransitionNotFound($this->model, $from, $to);
 
         return new $transitionClass($this->model, $from, $to);
     }

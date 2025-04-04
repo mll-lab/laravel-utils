@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.4.1
+
+### Changed
+
+- Improve `TransitionNotFound` exception message
+
 ## v10.4.0
 
 ### Added
