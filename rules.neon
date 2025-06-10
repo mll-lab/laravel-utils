@@ -3,7 +3,7 @@ parameters:
   disallowedClasses:
   - class: 'Illuminate\Support\Carbon'
     message: 'it is mostly just an alias.'
-	errorTip: 'use Carbon\Carbon instead.'
+    errorTip: 'use Carbon\Carbon instead.'
   disallowedMethodCalls:
   - method: 'Illuminate\Database\Eloquent\Model::update()'
     message: 'it assigns attributes through an array and is not type safe, without parameters it is like save().'
