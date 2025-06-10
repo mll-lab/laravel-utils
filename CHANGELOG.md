@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.5.0
+
+### Added
+
+- Disallow `Illuminate\Support\Carbon` via PHPStan rule
+
 ## v10.4.1
 
 ### Changed
