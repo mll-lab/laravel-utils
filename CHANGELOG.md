@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v11.0.0
+
+### Breaking Changes
+
+- Enable repeating a transition by removing state check in setStateAttribute
+
 ## v10.5.0
 
 ### Added

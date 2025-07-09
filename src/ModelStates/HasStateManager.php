@@ -57,11 +57,6 @@ trait HasStateManager
     /** @param State|class-string<State> $newState */
     public function setStateAttribute(State|string $newState): void
     {
-        // if the old and new state are the same, do not perform a "transition"
-        if ($this->state::name() === $newState::name()) {
-            return;
-        }
-
         $this->stateMachine()
             ->transitionTo($newState);
     }
