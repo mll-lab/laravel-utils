@@ -3,6 +3,7 @@
 namespace App\ModelStates\ModelStates;
 
 use App\ModelStates\StateManager;
+use App\ModelStates\Transitions\TransitionWithException;
 use MLL\LaravelUtils\ModelStates\State;
 use MLL\LaravelUtils\ModelStates\StateConfig;
 
@@ -12,6 +13,7 @@ abstract class ModelState extends State
     {
         return (new StateConfig())
             ->allowTransition(StateA::class, StateB::class)
+            ->allowTransition(StateA::class, StateA::class, TransitionWithException::class)
             ->allowTransition([StateA::class, StateB::class], StateC::class)
             ->allowTransition(StateA::class, StateD::class);
     }

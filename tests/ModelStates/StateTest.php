@@ -35,15 +35,16 @@ final class StateTest extends DBTestCase
         self::assertSame(StateA::name(), $model->stateManager->state_name);
     }
 
-    public function testIfOldAndNewStateAreIdenticalNoTransitionNotAllowedExceptionWillBeThrown(): void
+    public function testTransitionIsBeingCalledIfOldAndNewStateAreIdentical(): void
     {
         // A -> A
         $model1 = new TestModel();
         $model1->save();
         self::assertSame('STATE_A', StateA::name());
         self::assertSame(StateA::name(), $model1->stateManager->state_name);
+
+        self::expectExceptionObject(new \Exception('This is a exception thrown by TransitionWithException.'));
         $model1->state = new StateA();
-        self::assertSame(StateA::name(), $model1->stateManager->state_name);
     }
 
     public function testCanTransitionToAllowedStates(): void
@@ -116,6 +117,7 @@ final class StateTest extends DBTestCase
             StateB::class => new StateB(),
             StateC::class => new StateC(),
             StateD::class => new StateD(),
+            StateA::class => new StateA(),
         ]), $model->stateManager->canTransitionTo);
 
         $model->state = new StateB();
@@ -206,6 +208,7 @@ graph TB;
     STATE_A-->FOO_BAR;
     STATE_A-->STATE_C;
     STATE_A-->STATE_D;
+    STATE_A-->|"TransitionWithException"|STATE_A;
 
 linkStyle default interpolate basis;
 MERMAID;

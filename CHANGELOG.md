@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v11.0.0
+
+### Changed
+
+- Execute transitions when repeatedly setting the same state
+
 ## v10.5.0
 
 ### Added
