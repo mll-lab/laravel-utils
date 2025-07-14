@@ -44,6 +44,9 @@ parameters:
   - method: 'Illuminate\Support\Collection::pluck()'
     message: 'because it is not type safe.'
     errorTip: 'Use map() instead.'
+  - method: 'Illuminate\Testing\TestResponse::dump()'
+    message: 'it is used for debugging.'
+    errorTip: 'Remove debugging code before committing.'
   disallowedFunctionCalls:
   - function: 'getenv()'
     message: 'it does not consider the .env file.'
