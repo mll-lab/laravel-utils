@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Disallow `Illuminate\Testing\TestResponse::dump()` via PHPStan rule
+
 ## v10.6.0
 
 ### Added
