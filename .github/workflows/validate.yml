@@ -53,7 +53,7 @@ jobs:
       - name: "Install locked dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Run localheinz/composer-normalize"
+      - name: "Run ergebnis/composer-normalize"
         run: composer normalize
 
       - name: "Commit fixes"
