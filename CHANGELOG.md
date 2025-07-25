@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Changed
+
+- Respect `Transition::canTransition()` in `IsStateManager::$canTransitionTo` https://github.com/mll-lab/laravel-utils/pull/38
+
 ## v10.7.0
 
 ### Added
