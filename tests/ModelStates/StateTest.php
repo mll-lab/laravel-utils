@@ -119,7 +119,19 @@ final class StateTest extends DBTestCase
         ]), $model->stateManager->canTransitionTo);
 
         $model->state = new StateB();
-        self::assertEquals(new SupportCollection([StateC::class => new StateC()]), $model->stateManager->canTransitionTo);
+        self::assertEquals(new SupportCollection([
+            StateC::class => new StateC(),
+        ]), $model->stateManager->canTransitionTo);
+
+        $model->state = new StateC();
+        self::assertEquals(new SupportCollection([
+            StateA::class => new StateA(),
+        ]), $model->stateManager->canTransitionTo);
+
+        $model->state = new StateA();
+        $model->state = new StateD();
+        self::assertEquals(new SupportCollection([
+        ]), $model->stateManager->canTransitionTo);
     }
 
     public function testReturnsListOfPossibleNextTransitionsForCustomTransition(): void
@@ -206,6 +218,8 @@ graph TB;
     STATE_A-->FOO_BAR;
     STATE_A-->STATE_C;
     STATE_A-->STATE_D;
+    STATE_C-->STATE_A;
+    STATE_D-->|"CustomInvalidTransition"|STATE_A;
 
 linkStyle default interpolate basis;
 MERMAID;

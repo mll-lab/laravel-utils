@@ -28,8 +28,13 @@ trait IsStateManager
         $state = $stateable->state;
         assert($state instanceof State);
 
+        $stateMachine = $stateable->stateMachine();
+
         return $stateable->stateClass()::config()
-            ->possibleNextStates($state);
+            ->possibleNextStates($state)
+            ->filter(fn (State $nextState): bool => $stateMachine
+                ->instantiateTransitionClass($state::class, $nextState::class)
+                ->canTransition());
     }
 
     /** @return Collection<array-key, Transition> */

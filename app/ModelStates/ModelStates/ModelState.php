@@ -3,6 +3,7 @@
 namespace App\ModelStates\ModelStates;
 
 use App\ModelStates\StateManager;
+use App\ModelStates\Transitions\CustomInvalidTransition;
 use MLL\LaravelUtils\ModelStates\State;
 use MLL\LaravelUtils\ModelStates\StateConfig;
 
@@ -13,7 +14,9 @@ abstract class ModelState extends State
         return (new StateConfig())
             ->allowTransition(StateA::class, StateB::class)
             ->allowTransition([StateA::class, StateB::class], StateC::class)
-            ->allowTransition(StateA::class, StateD::class);
+            ->allowTransition(StateA::class, StateD::class)
+            ->allowTransition(StateC::class, StateA::class)
+            ->allowTransition(StateD::class, StateA::class, CustomInvalidTransition::class);
     }
 
     public static function defaultState(): ModelState
