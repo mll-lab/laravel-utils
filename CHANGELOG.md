@@ -13,7 +13,7 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ### Added
 
-- Force usage of `Illuminate\Database\Eloquent\Relations\HasOneOrMany::chaperone()` over its alias `inverse()` via PHPStan rule
+- Force usage of `Illuminate\Database\Eloquent\Relations\HasOneOrMany::chaperone()` over its alias `inverse()` via PHPStan rule https://github.com/mll-lab/laravel-utils/pull/39
 
 ## v10.8.0
 
