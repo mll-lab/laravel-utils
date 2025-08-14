@@ -13,7 +13,31 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ### Changed
 
-- Execute transitions when repeatedly setting the same state
+- Execute transitions when repeatedly setting the same state https://github.com/mll-lab/laravel-utils/pull/34
+
+## v10.9.0
+
+### Added
+
+- Force usage of `Illuminate\Database\Eloquent\Relations\HasOneOrMany::chaperone()` over its alias `inverse()` via PHPStan rule https://github.com/mll-lab/laravel-utils/pull/39
+
+## v10.8.0
+
+### Changed
+
+- Respect `Transition::canTransition()` in `IsStateManager::$canTransitionTo` https://github.com/mll-lab/laravel-utils/pull/38
+
+## v10.7.0
+
+### Added
+
+- Disallow `Illuminate\Testing\TestResponse::dump()` via PHPStan rule
+
+## v10.6.0
+
+### Added
+
+- Support `thecodingmachine/safe` version 3
 
 ## v10.5.0
 

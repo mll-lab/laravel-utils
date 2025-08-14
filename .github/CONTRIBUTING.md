@@ -1,5 +1,17 @@
 # CONTRIBUTING
 
+## Setup
+
+This project assumes to run in a Linux environment and requires
+- [GNU Make](https://www.gnu.org/software/make)
+- [Docker](https://www.docker.com)
+
+After cloning the repository, run the following command:
+
+```bash
+make setup
+```
+
 We are using [GitHub Actions](https://github.com/features/actions) as a continuous integration system.
 
 For details, see [`workflows/validate.yml`](workflows/validate.yml).
