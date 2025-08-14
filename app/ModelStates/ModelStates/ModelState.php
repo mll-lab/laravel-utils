@@ -3,8 +3,8 @@
 namespace App\ModelStates\ModelStates;
 
 use App\ModelStates\StateManager;
-use App\ModelStates\Transitions\TransitionWithException;
 use App\ModelStates\Transitions\CustomInvalidTransition;
+use App\ModelStates\Transitions\TransitionWithException;
 use MLL\LaravelUtils\ModelStates\State;
 use MLL\LaravelUtils\ModelStates\StateConfig;
 
