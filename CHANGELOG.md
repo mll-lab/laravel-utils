@@ -9,6 +9,12 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+## v10.10.0
+
+### Added
+
+- Forbid eager-loading on single Model instances https://github.com/mll-lab/laravel-utils/pull/40
+
 ## v10.9.0
 
 ### Added
