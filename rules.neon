@@ -53,6 +53,37 @@ parameters:
   - method: 'Illuminate\Support\Collection::pluck()'
     message: 'because it is not type safe.'
     errorTip: 'Use map() instead.'
+  - method: 'Illuminate\Support\Collection::keyBy()'
+    message: 'because string keys are not type safe.'
+    errorTip: 'Use a closure instead: ->keyBy(fn (Model $item): string => $item->attribute)'
+    allowParamsAnywhere:
+    - position: 1
+      name: 'keyBy'
+      typeString: 'Closure'
+  - method: 'Illuminate\Support\Collection::sortBy()'
+    message: 'because string keys are not type safe.'
+    errorTip: 'Use a closure instead: ->sortBy(fn (Model $item): string => $item->attribute)'
+    allowParamsAnywhere:
+    - position: 1
+      name: 'callback'
+      typeString: 'Closure'
+  - method: 'Illuminate\Support\Collection::sortByDesc()'
+    message: 'because string keys are not type safe.'
+    errorTip: 'Use a closure instead: ->sortByDesc(fn (Model $item): string => $item->attribute)'
+    allowParamsAnywhere:
+    - position: 1
+      name: 'callback'
+      typeString: 'Closure'
+  - method: 'Illuminate\Support\Collection::groupBy()'
+    message: 'because string keys are not type safe.'
+    errorTip: 'Use a closure instead: ->groupBy(fn (Model $item): string => $item->attribute)'
+    allowParamsAnywhere:
+    - position: 1
+      name: 'groupBy'
+      typeString: 'Closure'
+  - method: 'Illuminate\Support\Collection::firstWhere()'
+    message: 'because string keys are not type safe.'
+    errorTip: 'Use first() with a closure instead: ->first(fn (Model $item): bool => $item->attribute === $value)'
   - method: 'Illuminate\Testing\TestResponse::dump()'
     message: 'it is used for debugging.'
     errorTip: 'Remove debugging code before committing.'
