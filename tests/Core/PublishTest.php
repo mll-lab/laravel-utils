@@ -22,13 +22,13 @@ final class PublishTest extends TestCase
         $base->deleteDirectory('stubs');
 
         $pendingPublish = $this->artisan('vendor:publish --tag=strict-stubs');
-        assert($pendingPublish instanceof PendingCommand);
+        self::assertInstanceOf(PendingCommand::class, $pendingPublish);
         $pendingPublish
             ->assertExitCode(0)
             ->run();
 
         $pendingMakeMigration = $this->artisan('make:migration foo');
-        assert($pendingMakeMigration instanceof PendingCommand);
+        self::assertInstanceOf(PendingCommand::class, $pendingMakeMigration);
         $pendingMakeMigration
             ->assertExitCode(0)
             ->run();

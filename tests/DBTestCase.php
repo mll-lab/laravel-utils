@@ -33,7 +33,7 @@ abstract class DBTestCase extends TestCase
 
         $columnName = "Tables_in_{$databaseName}";
         foreach (DB::select('SHOW TABLES') as $table) {
-            assert($table instanceof \stdClass);
+            self::assertInstanceOf(\stdClass::class, $table);
 
             $value = $table->{$columnName};
             assert(is_string($value));
@@ -47,7 +47,7 @@ abstract class DBTestCase extends TestCase
 
         $config = $app->make(ConfigRepository::class);
         // @phpstan-ignore-next-line unknown with Laravel 8, known with Laravel 9
-        assert($config instanceof ConfigRepository);
+        self::assertInstanceOf(ConfigRepository::class, $config);
 
         $config->set('database.default', self::DEFAULT_CONNECTION);
 

@@ -10,9 +10,7 @@ use MLL\LaravelUtils\ModelStates\TransitionDirection;
 
 final class CustomTransition extends Transition
 {
-    /**
-     * @var HasStateManagerInterface&TestModelWithCustomTransition
-     */
+    /** @var HasStateManagerInterface&TestModelWithCustomTransition */
     protected HasStateManagerInterface&Model $model; // @phpstan-ignore-line
 
     public function handle(): TestModelWithCustomTransition
