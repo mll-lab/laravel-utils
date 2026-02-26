@@ -84,13 +84,6 @@ parameters:
   - method: 'Illuminate\Support\Collection::firstWhere()'
     message: 'because string keys are not type safe.'
     errorTip: 'Use first() with a closure instead: ->first(fn (Model $item): bool => $item->attribute === $value)'
-  - method: 'Illuminate\Support\Collection::get()'
-    message: 'because string keys are not type safe.'
-    errorTip: 'Use find() for models, or access the underlying array.'
-    allowExceptParams:
-    - position: 1
-      name: 'key'
-      typeString: 'string'
   - method: 'Illuminate\Testing\TestResponse::dump()'
     message: 'it is used for debugging.'
     errorTip: 'Remove debugging code before committing.'

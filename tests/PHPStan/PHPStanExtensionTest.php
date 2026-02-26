@@ -39,12 +39,11 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         ]];
 
         yield [__DIR__ . '/data/collection.php', [
-            10 => ['Calling Illuminate\Support\Collection::keyBy() is forbidden, because string keys are not type safe.'],
-            11 => ['Calling Illuminate\Support\Collection::sortBy() is forbidden, because string keys are not type safe.'],
-            12 => ['Calling Illuminate\Support\Collection::sortByDesc() is forbidden, because string keys are not type safe.'],
-            13 => ['Calling Illuminate\Support\Collection::groupBy() is forbidden, because string keys are not type safe.'],
-            14 => ['Calling Illuminate\Support\Collection::firstWhere() is forbidden, because string keys are not type safe.'],
-            15 => ['Calling Illuminate\Support\Collection::get() is forbidden, because string keys are not type safe.'],
+            9 => ['Calling Illuminate\Support\Collection::keyBy() is forbidden, because string keys are not type safe.'],
+            10 => ['Calling Illuminate\Support\Collection::sortBy() is forbidden, because string keys are not type safe.'],
+            11 => ['Calling Illuminate\Support\Collection::sortByDesc() is forbidden, because string keys are not type safe.'],
+            12 => ['Calling Illuminate\Support\Collection::groupBy() is forbidden, because string keys are not type safe.'],
+            13 => ['Calling Illuminate\Support\Collection::firstWhere() is forbidden, because string keys are not type safe.'],
         ]];
     }
 
