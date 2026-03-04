@@ -39,11 +39,18 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         ]];
 
         yield [__DIR__ . '/data/collection.php', [
-            9 => ['Calling Illuminate\Support\Collection::keyBy() is forbidden, because string keys are not type safe.'],
-            10 => ['Calling Illuminate\Support\Collection::sortBy() is forbidden, because string keys are not type safe.'],
-            11 => ['Calling Illuminate\Support\Collection::sortByDesc() is forbidden, because string keys are not type safe.'],
-            12 => ['Calling Illuminate\Support\Collection::groupBy() is forbidden, because string keys are not type safe.'],
-            13 => ['Calling Illuminate\Support\Collection::firstWhere() is forbidden, because string keys are not type safe.'],
+            11 => ['Calling Illuminate\Support\Collection::keyBy() is forbidden, because string keys are not type safe.'],
+            12 => ['Calling Illuminate\Support\Collection::sortBy() is forbidden, because string keys are not type safe.'],
+            13 => ['Calling Illuminate\Support\Collection::sortByDesc() is forbidden, because string keys are not type safe.'],
+            14 => ['Calling Illuminate\Support\Collection::groupBy() is forbidden, because string keys are not type safe.'],
+            15 => ['Calling Illuminate\Support\Collection::firstWhere() is forbidden, because string keys are not type safe.'],
+            16 => ['Calling Illuminate\Support\Collection::pluck() is forbidden, because it is not type safe.'],
+            19 => ['Calling Illuminate\Support\Collection::keyBy() (as Illuminate\Database\Eloquent\Collection::keyBy()) is forbidden, because string keys are not type safe.'],
+            20 => ['Calling Illuminate\Support\Collection::sortBy() (as Illuminate\Database\Eloquent\Collection::sortBy()) is forbidden, because string keys are not type safe.'],
+            21 => ['Calling Illuminate\Support\Collection::sortByDesc() (as Illuminate\Database\Eloquent\Collection::sortByDesc()) is forbidden, because string keys are not type safe.'],
+            22 => ['Calling Illuminate\Support\Collection::groupBy() (as Illuminate\Database\Eloquent\Collection::groupBy()) is forbidden, because string keys are not type safe.'],
+            23 => ['Calling Illuminate\Support\Collection::firstWhere() (as Illuminate\Database\Eloquent\Collection::firstWhere()) is forbidden, because string keys are not type safe.'],
+            24 => ['Calling Illuminate\Database\Eloquent\Collection::pluck() is forbidden, because it is not type safe.'],
         ]];
     }
 
