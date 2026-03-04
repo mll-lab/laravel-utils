@@ -52,7 +52,7 @@ parameters:
     errorTip: 'Use filter()/reject() instead.'
   - method: 'Illuminate\Support\Collection::pluck()'
     message: 'because it is not type safe.'
-    errorTip: 'Use map() instead.'
+    errorTip: 'Use Collection::map() instead, or shorten Builder::get()->pluck() to Builder::pluck().'
   - method: 'Illuminate\Support\Collection::keyBy()'
     message: 'because string keys are not type safe.'
     errorTip: 'Use a closure instead: ->keyBy(fn (Model $item): string => $item->attribute)'
