@@ -24,6 +24,7 @@ class RefreshQueueTimeouts extends Command
         $failedJobsTable = config('queue.failed.table', 'failed_jobs');
         assert(is_string($failedJobsTable));
 
+        /** @var bool $isDryRun flag option, see signature */
         $isDryRun = $this->option('dry-run');
 
         /** @var list<string> $queues option may be used multiple times, see signature */
