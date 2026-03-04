@@ -90,6 +90,33 @@ final class RefreshQueueTimeoutsTest extends DBTestCase
         }
     }
 
+    public function testUpdatesNullTimeoutInPayload(): void
+    {
+        $this->insertJobWithPayload('jobs', 'default', json_encode([
+            'displayName' => TimeoutJob::class,
+            'timeout' => null,
+            'data' => ['command' => ''],
+        ]));
+
+        $this->runRefreshCommand();
+
+        $payload = $this->jobPayload('jobs');
+        self::assertSame(300, $payload['timeout']);
+    }
+
+    public function testSkipsJobsWithMissingTimeoutKey(): void
+    {
+        $this->insertJobWithPayload('jobs', 'default', json_encode([
+            'displayName' => TimeoutJob::class,
+            'data' => ['command' => ''],
+        ]));
+
+        $this->runRefreshCommand();
+
+        $payload = $this->jobPayload('jobs');
+        self::assertArrayNotHasKey('timeout', $payload);
+    }
+
     public function testSkipsUnknownClassGracefully(): void
     {
         $this->insertJob('jobs', 'default', 'App\\Jobs\\NonExistentJob', 60);
@@ -111,13 +138,18 @@ final class RefreshQueueTimeoutsTest extends DBTestCase
 
     private function insertJob(string $table, string $queue, string $className, int $timeout): void
     {
+        $this->insertJobWithPayload($table, $queue, json_encode([
+            'displayName' => $className,
+            'timeout' => $timeout,
+            'data' => ['command' => ''],
+        ]));
+    }
+
+    private function insertJobWithPayload(string $table, string $queue, string $payload): void
+    {
         DB::table($table)->insert([
             'queue' => $queue,
-            'payload' => json_encode([
-                'displayName' => $className,
-                'timeout' => $timeout,
-                'data' => ['command' => ''],
-            ]),
+            'payload' => $payload,
             'attempts' => 0,
             'available_at' => time(),
             'created_at' => time(),
