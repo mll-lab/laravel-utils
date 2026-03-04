@@ -6,6 +6,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use MLL\LaravelUtils\Collection\CollectionMixin;
 use MLL\LaravelUtils\Queue\DispatchJob;
+use MLL\LaravelUtils\Queue\RefreshQueueTimeouts;
 
 class LaravelUtilsServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class LaravelUtilsServiceProvider extends ServiceProvider
 
         $this->commands([
             DispatchJob::class,
+            RefreshQueueTimeouts::class,
         ]);
 
         Collection::mixin(new CollectionMixin());
