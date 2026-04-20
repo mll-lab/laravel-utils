@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Added
+
+- Add `migrate:check` command that is aware of `ConditionalMigration`
+
 ## v10.10.0
 
 ### Added

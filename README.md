@@ -85,6 +85,24 @@ return new class extends Migration implements ConditionalMigration {
 };
 ```
 
+### Migrate Check
+
+The `migrate:check` command compares migration files against the migrations table and reports
+any truly pending migrations. Unlike other implementations, it is aware of `ConditionalMigration`:
+migrations where `shouldRun()` returns `false` are not reported as pending.
+
+```sh
+php artisan migrate:check
+```
+
+Use `--path` and `--realpath` to check specific migration directories:
+
+```sh
+php artisan migrate:check --path=database/migrations --realpath
+```
+
+Returns exit code `0` when no migrations are pending, exit code `1` otherwise.
+
 ### Strict Stubs
 
 To continually keep your stubs updated with the latest and greatest from this package,
