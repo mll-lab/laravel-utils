@@ -95,16 +95,10 @@ migrations where `shouldRun()` returns `false` are not reported as pending.
 php artisan migrate:check
 ```
 
-Use `--path` to check specific migration directories:
+Use `--path` to check a specific migration directory:
 
 ```sh
-php artisan migrate:check --path=database/migrations
-```
-
-Use `--realpath` when providing absolute paths:
-
-```sh
-php artisan migrate:check --path=/opt/app/database/migrations --realpath
+php artisan migrate:check --path=vendor/mll-lab/laravel-utils/migrations
 ```
 
 Returns exit code `0` when no migrations are pending, exit code `1` otherwise.
