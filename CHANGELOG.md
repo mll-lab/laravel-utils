@@ -9,6 +9,10 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
 
+### Fixed
+
+- Respect `ConditionalMigration::shouldRun()` in pretend mode
+
 ## v10.12.0
 
 ### Added
