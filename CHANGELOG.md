@@ -1,3 +1,9 @@
+## [10.12.2](https://github.com/mll-lab/laravel-utils/compare/v10.12.1...v10.12.2) (2026-04-24)
+
+### Bug Fixes
+
+* migrate:check failing when no --path option is provided ([#47](https://github.com/mll-lab/laravel-utils/issues/47)) ([eb8088f](https://github.com/mll-lab/laravel-utils/commit/eb8088ff26d415c852dbf1284f3bc026d4dfbbb1))
+
 ## [10.12.1](https://github.com/mll-lab/laravel-utils/compare/v10.12.0...v10.12.1) (2026-04-24)
 
 ### Bug Fixes
