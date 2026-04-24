@@ -15,15 +15,9 @@ class MigrateCheckCommand extends BaseCommand
     /** @var Migrator */
     protected $migrator;
 
-    public function __construct(Migrator $migrator)
-    {
-        parent::__construct();
-
-        $this->migrator = $migrator;
-    }
-
     public function handle(): int
     {
+        $this->migrator = $this->laravel->make('migrator');
         $migrator = $this->migrator;
 
         /** @var int Callback always returns int */
