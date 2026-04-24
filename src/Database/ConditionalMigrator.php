@@ -16,7 +16,7 @@ class ConditionalMigrator extends Migrator
 
         if ($migration instanceof ConditionalMigration && ! $migration->shouldRun()) {
             if (! $pretend) {
-                $this->write(Info::class, "Skipped migrating {$name}");
+                $this->write(Info::class, "Skipped migrating {$name}, shouldRun() returned false");
             }
 
             return;
