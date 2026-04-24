@@ -12,9 +12,13 @@ class MigrateCheckCommand extends BaseCommand
 
     protected $description = 'Check if there are any pending migrations';
 
+    /** @var Migrator */
+    protected $migrator;
+
     public function handle(): int
     {
-        $migrator = $this->migrator();
+        $this->migrator = $this->laravel->make('migrator');
+        $migrator = $this->migrator;
 
         /** @var int Callback always returns int */
         return $migrator->usingConnection($this->option('database'), function () use ($migrator): int { // @phpstan-ignore argument.type
@@ -57,11 +61,6 @@ class MigrateCheckCommand extends BaseCommand
 
             return 1;
         });
-    }
-
-    private function migrator(): Migrator
-    {
-        return $this->laravel->make('migrator');
     }
 
     private function resolveMigration(Migrator $migrator, string $path): object
