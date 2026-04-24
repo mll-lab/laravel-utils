@@ -5,7 +5,9 @@ namespace MLL\LaravelUtils\Database;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 
-/** Allow calling `->change()` on an enum column definition when using migrations. */
+/**
+ * Allow calling `->change()` on an enum column definition when using migrations.
+ */
 class DoctrineDBALEnumType extends Type
 {
     final public const NAME = 'enum';

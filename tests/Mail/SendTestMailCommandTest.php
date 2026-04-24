@@ -26,7 +26,7 @@ final class SendTestMailCommandTest extends TestCase
         self::assertCount(1, $sent);
 
         $testMail = $sent->firstOrFail();
-        assert($testMail instanceof TestMail);
+        self::assertInstanceOf(TestMail::class, $testMail);
         $testMail->assertFrom($from);
         $testMail->assertTo($to);
         $testMail->assertHasReplyTo($replyTo);

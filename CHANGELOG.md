@@ -15,6 +15,24 @@ See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 - Execute transitions when repeatedly setting the same state https://github.com/mll-lab/laravel-utils/pull/34
 
+## v10.12.0
+
+### Added
+
+- Add `migrate:check` command that is aware of `ConditionalMigration` https://github.com/mll-lab/laravel-utils/pull/44
+
+## v10.11.0
+
+### Added
+
+- Allow `mll-lab/php-utils` v6 https://github.com/mll-lab/laravel-utils/pull/42
+
+## v10.10.0
+
+### Added
+
+- Forbid eager-loading on single Model instances https://github.com/mll-lab/laravel-utils/pull/40
+
 ## v10.9.0
 
 ### Added

@@ -7,7 +7,9 @@ use JBZoo\MermaidPHP\Link;
 use JBZoo\MermaidPHP\Node;
 use PHPUnit\Framework\Assert;
 
-/** Requires the package jbzoo/mermaid-php. */
+/**
+ * Requires the package jbzoo/mermaid-php.
+ */
 class MermaidStateConfigValidator
 {
     /** Performs a PHPUnit assertion that a generated Mermaid graph equals an expected result. */

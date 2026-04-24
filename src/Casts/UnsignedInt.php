@@ -17,7 +17,7 @@ class UnsignedInt implements CastsAttributes
     /**
      * @param  Model  $model
      * @param  string  $key
-     * @param  array<array-key, mixed> $attributes
+     * @param  array<mixed> $attributes
      */
     public function get($model, $key, $value, $attributes): ?int
     {
@@ -27,7 +27,7 @@ class UnsignedInt implements CastsAttributes
     /**
      * @param  Model  $model
      * @param  string  $key
-     * @param  array<array-key, mixed>  $attributes
+     * @param  array<mixed>  $attributes
      */
     public function set($model, $key, $value, $attributes): ?int
     {

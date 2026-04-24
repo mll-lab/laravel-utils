@@ -8,7 +8,9 @@ use PHPStan\File\FileHelper;
 use PHPStan\Testing\PHPStanTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-/** Built like https://github.com/larastan/larastan/blob/e01fd6ad60c659b735816c21a14df0a3cbca7dbe/tests/Integration/IntegrationTest.php. */
+/**
+ * Built like https://github.com/larastan/larastan/blob/e01fd6ad60c659b735816c21a14df0a3cbca7dbe/tests/Integration/IntegrationTest.php.
+ */
 final class PHPStanExtensionTest extends PHPStanTestCase
 {
     /** @return iterable<array{0: string, 1?: array<int, array<int, string>>}> */
