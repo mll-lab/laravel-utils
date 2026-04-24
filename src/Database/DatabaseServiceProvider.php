@@ -16,6 +16,8 @@ class DatabaseServiceProvider extends ServiceProvider
             $app->make('files'),
             $app->make('events'),
         ));
+
+        $this->commands([MigrateCheckCommand::class]);
     }
 
     public function boot(): void
