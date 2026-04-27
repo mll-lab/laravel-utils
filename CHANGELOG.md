@@ -1,3 +1,9 @@
+## [10.13.0](https://github.com/mll-lab/laravel-utils/compare/v10.12.2...v10.13.0) (2026-04-27)
+
+### Features
+
+* add command to refresh stale queue job timeouts ([#43](https://github.com/mll-lab/laravel-utils/issues/43)) ([58dd21a](https://github.com/mll-lab/laravel-utils/commit/58dd21a5a29b77f54c16c966e8eaa912d594f612))
+
 ## [10.12.2](https://github.com/mll-lab/laravel-utils/compare/v10.12.1...v10.12.2) (2026-04-24)
 
 ### Bug Fixes
