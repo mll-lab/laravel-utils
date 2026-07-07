@@ -117,7 +117,7 @@ jobs:
       - name: "Remove conflicting dependencies that are not needed here"
         run: composer remove --dev rector/rector --no-update
 
-      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} laravel/framework:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
       - run: vendor/bin/phpstan analyse --configuration=phpstan.neon
 
@@ -162,7 +162,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
 
       - name: "Install Laravel"
-        run: composer require "illuminate/support:${{ matrix.laravel-version }}" --no-interaction --no-update
+        run: composer require "illuminate/support:${{ matrix.laravel-version }}" "laravel/framework:${{ matrix.laravel-version }}" --no-interaction --no-update
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
