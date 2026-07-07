@@ -139,6 +139,11 @@ jobs:
         laravel-version:
           - ^11
           - ^12
+        include:
+          - laravel-version: ^11
+            testbench-version: ^9
+          - laravel-version: ^12
+            testbench-version: ^10
 
     services:
       mariadb:
@@ -162,7 +167,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
 
       - name: "Install Laravel"
-        run: composer require "illuminate/support:${{ matrix.laravel-version }}" "laravel/framework:${{ matrix.laravel-version }}" --no-interaction --no-update
+        run: composer require "illuminate/support:${{ matrix.laravel-version }}" "laravel/framework:${{ matrix.laravel-version }}" "orchestra/testbench:${{ matrix.testbench-version }}" --no-interaction --no-update
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
