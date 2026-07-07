@@ -180,6 +180,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      code-quality: write
+
     services:
       mariadb:
         image: mariadb:10.6
@@ -204,8 +208,13 @@ jobs:
       - name: "Install dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: vendor/bin/phpunit --coverage-clover=clover.xml
+      - name: "Collect code coverage"
+        run: vendor/bin/phpunit --coverage-cobertura=coverage.xml
 
-      - name: "Send code coverage report to codecov.io"
-        uses: codecov/codecov-action@v2
+      - name: "Upload code coverage"
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/upload-code-coverage@v1
+        with:
+          file: coverage.xml
+          language: PHP
+          label: code-coverage/phpunit
