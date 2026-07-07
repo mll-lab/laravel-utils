@@ -1,3 +1,9 @@
+## [10.13.1](https://github.com/mll-lab/laravel-utils/compare/v10.13.0...v10.13.1) (2026-07-07)
+
+### Bug Fixes
+
+* constrain laravel/framework in CI matrix to prevent version mismatch ([#49](https://github.com/mll-lab/laravel-utils/issues/49)) ([46d3867](https://github.com/mll-lab/laravel-utils/commit/46d3867a1ca4aa1fa1db2d164570b528a736c7ec))
+
 ## [10.13.0](https://github.com/mll-lab/laravel-utils/compare/v10.12.2...v10.13.0) (2026-04-27)
 
 ### Features
