@@ -68,6 +68,13 @@
       "ocramius/package-versions": true,
       "phpstan/extension-installer": true
     },
+    "policy": {
+      "advisories": {
+        "ignore": [
+          "laravel/framework"
+        ]
+      }
+    },
     "preferred-install": "dist",
     "sort-packages": true
   },
