@@ -1,3 +1,27 @@
+## [10.13.1](https://github.com/mll-lab/laravel-utils/compare/v10.13.0...v10.13.1) (2026-07-07)
+
+### Bug Fixes
+
+* constrain laravel/framework in CI matrix to prevent version mismatch ([#49](https://github.com/mll-lab/laravel-utils/issues/49)) ([46d3867](https://github.com/mll-lab/laravel-utils/commit/46d3867a1ca4aa1fa1db2d164570b528a736c7ec))
+
+## [10.13.0](https://github.com/mll-lab/laravel-utils/compare/v10.12.2...v10.13.0) (2026-04-27)
+
+### Features
+
+* add command to refresh stale queue job timeouts ([#43](https://github.com/mll-lab/laravel-utils/issues/43)) ([58dd21a](https://github.com/mll-lab/laravel-utils/commit/58dd21a5a29b77f54c16c966e8eaa912d594f612))
+
+## [10.12.2](https://github.com/mll-lab/laravel-utils/compare/v10.12.1...v10.12.2) (2026-04-24)
+
+### Bug Fixes
+
+* migrate:check failing when no --path option is provided ([#47](https://github.com/mll-lab/laravel-utils/issues/47)) ([eb8088f](https://github.com/mll-lab/laravel-utils/commit/eb8088ff26d415c852dbf1284f3bc026d4dfbbb1))
+
+## [10.12.1](https://github.com/mll-lab/laravel-utils/compare/v10.12.0...v10.12.1) (2026-04-24)
+
+### Bug Fixes
+
+* respect ConditionalMigration::shouldRun() in pretend mode ([#45](https://github.com/mll-lab/laravel-utils/issues/45)) ([5cb791d](https://github.com/mll-lab/laravel-utils/commit/5cb791d2979471eeef2edf135202fd6d33cd5fdc))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -8,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
 
 ## Unreleased
+
+### Fixed
+
+- Respect `ConditionalMigration::shouldRun()` in pretend mode
 
 ## v10.12.0
 

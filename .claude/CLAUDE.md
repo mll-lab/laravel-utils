@@ -5,11 +5,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-make setup # Always run first, updates deps and starts containers
-make it    # Whole project validation
+make setup        # Always run first, updates deps and starts containers
+make it           # Whole project validation
+make test         # Run tests with PHPUnit
+make stan         # Run static analysis with PHPStan
+make fix          # Fix code style (rector + php-cs-fixer)
+make rector       # Run rector only
+make php-cs-fixer # Run php-cs-fixer only
+make build        # Build the local Docker containers
+make up           # Bring up the docker compose stack
 ```
-
-See `Makefile` for more targeted commands.
 
 ## Key Constraints
 

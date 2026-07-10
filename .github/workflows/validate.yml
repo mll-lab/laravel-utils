@@ -117,7 +117,7 @@ jobs:
       - name: "Remove conflicting dependencies that are not needed here"
         run: composer remove --dev rector/rector --no-update
 
-      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
+      - run: composer require illuminate/contracts:${{ matrix.laravel-version }} laravel/framework:${{ matrix.laravel-version }} --no-interaction --prefer-dist --no-progress
 
       - run: vendor/bin/phpstan analyse --configuration=phpstan.neon
 
@@ -139,6 +139,11 @@ jobs:
         laravel-version:
           - ^11
           - ^12
+        include:
+          - laravel-version: ^11
+            testbench-version: ^9
+          - laravel-version: ^12
+            testbench-version: ^10
 
     services:
       mariadb:
@@ -162,7 +167,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
 
       - name: "Install Laravel"
-        run: composer require "illuminate/support:${{ matrix.laravel-version }}" --no-interaction --no-update
+        run: composer require "illuminate/support:${{ matrix.laravel-version }}" "laravel/framework:${{ matrix.laravel-version }}" "orchestra/testbench:${{ matrix.testbench-version }}" --no-interaction --no-update
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
@@ -179,6 +184,10 @@ jobs:
     name: "Code Coverage"
 
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      code-quality: write
 
     services:
       mariadb:
@@ -204,8 +213,13 @@ jobs:
       - name: "Install dependencies with composer"
         run: composer install --no-interaction --no-progress --no-suggest
 
-      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: vendor/bin/phpunit --coverage-clover=clover.xml
+      - name: "Collect code coverage"
+        run: vendor/bin/phpunit --coverage-cobertura=coverage.xml
 
-      - name: "Send code coverage report to codecov.io"
-        uses: codecov/codecov-action@v2
+      - name: "Upload code coverage"
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/upload-code-coverage@v1
+        with:
+          file: coverage.xml
+          language: PHP
+          label: code-coverage/phpunit
