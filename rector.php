@@ -29,11 +29,6 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->importShortClasses(false);
     $rectorConfig->rule(Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitSelfCallRector::class);
     $rectorConfig->skip([
-        // skip csv test file to keep `\r` and `\n` for readability
-        Rector\CodeQuality\Rector\Concat\JoinStringConcatRector::class => [
-            // single file
-            __DIR__ . '/tests/Unit/CSVArrayTest.php',
-        ],
         // Unsafe with typed properties
         Rector\CodeQuality\Rector\Isset_\IssetOnPropertyObjectToPropertyExistsRector::class,
     ]);

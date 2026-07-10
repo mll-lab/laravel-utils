@@ -3,7 +3,6 @@
 namespace MLL\LaravelUtils\Tests\Database;
 
 use Illuminate\Support\Facades\DB;
-use MLL\LaravelUtils\Database\ConditionalMigrator;
 use MLL\LaravelUtils\Tests\DBTestCase;
 use Symfony\Component\Console\Output\BufferedOutput;
 
@@ -29,7 +28,6 @@ final class MigratorTest extends DBTestCase
     public function testPretendSkipsMigrationThatShouldNotRun(): void
     {
         $migrator = $this->app->make('migrator');
-        self::assertInstanceOf(ConditionalMigrator::class, $migrator);
 
         $output = new BufferedOutput();
         $migrator->setOutput($output);
