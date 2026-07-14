@@ -1,3 +1,9 @@
+## [10.14.0](https://github.com/mll-lab/laravel-utils/compare/v10.13.1...v10.14.0) (2026-07-14)
+
+### Features
+
+* forbid string-keyed collection operations via PHPStan rules ([#41](https://github.com/mll-lab/laravel-utils/issues/41)) ([c083ad5](https://github.com/mll-lab/laravel-utils/commit/c083ad56d98468d8b3f40d5bc1850f55c6550e8e))
+
 ## [10.13.1](https://github.com/mll-lab/laravel-utils/compare/v10.13.0...v10.13.1) (2026-07-07)
 
 ### Bug Fixes
