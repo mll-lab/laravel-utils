@@ -1,16 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(make build)",
-      "Bash(make fix)",
-      "Bash(make help)",
-      "Bash(make it)",
-      "Bash(make php-cs-fixer)",
-      "Bash(make rector)",
-      "Bash(make setup)",
-      "Bash(make stan)",
-      "Bash(make test)",
-      "Bash(make up)"
+      "Bash(make build:*)",
+      "Bash(make fix:*)",
+      "Bash(make help:*)",
+      "Bash(make it:*)",
+      "Bash(make php-cs-fixer:*)",
+      "Bash(make rector:*)",
+      "Bash(make setup:*)",
+      "Bash(make stan:*)",
+      "Bash(make test:*)",
+      "Bash(make up:*)"
+    ],
+    "deny": [
+      "Bash(make shell:*)"
     ]
   }
 }
