@@ -28,21 +28,6 @@
 
 * respect ConditionalMigration::shouldRun() in pretend mode ([#45](https://github.com/mll-lab/laravel-utils/issues/45)) ([5cb791d](https://github.com/mll-lab/laravel-utils/commit/5cb791d2979471eeef2edf135202fd6d33cd5fdc))
 
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-See [GitHub releases](https://github.com/mll-lab/laravel-utils/releases).
-
-## Unreleased
-
-### Fixed
-
-- Respect `ConditionalMigration::shouldRun()` in pretend mode
-
 ## v10.12.0
 
 ### Added
