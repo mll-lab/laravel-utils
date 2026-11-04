@@ -4,7 +4,10 @@ use Rector\Config\RectorConfig;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 
+use function MLL\RectorConfig\laravel;
+
 return static function (RectorConfig $rectorConfig): void {
+    laravel($rectorConfig);
     $rectorConfig->sets([
         SetList::CODE_QUALITY,
         SetList::PHP_71,
@@ -14,14 +17,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PHP_80,
         SetList::PHP_81,
         SetList::PHP_82,
-        PHPUnitSetList::PHPUNIT_40,
-        PHPUnitSetList::PHPUNIT_50,
-        PHPUnitSetList::PHPUNIT_60,
-        PHPUnitSetList::PHPUNIT_70,
-        PHPUnitSetList::PHPUNIT_80,
-        PHPUnitSetList::PHPUNIT_90,
-        PHPUnitSetList::PHPUNIT_100,
-        PHPUnitSetList::PHPUNIT_110,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
     ]);
