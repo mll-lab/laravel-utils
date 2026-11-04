@@ -1,3 +1,11 @@
+# Changelog
+
+## [10.15.0](https://github.com/mll-lab/laravel-utils/compare/v10.14.0...v10.15.0) (2026-11-04)
+
+### Features
+
+* allow php-utils v7 ([#54](https://github.com/mll-lab/laravel-utils/issues/54)) ([afa852d](https://github.com/mll-lab/laravel-utils/commit/afa852d9b9f1b4c52633652b8bb442f953e725b8))
+
 ## [10.14.0](https://github.com/mll-lab/laravel-utils/compare/v10.13.1...v10.14.0) (2026-07-14)
 
 ### Features
