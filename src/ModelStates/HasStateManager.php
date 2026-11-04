@@ -46,10 +46,8 @@ trait HasStateManager
         assert(is_string($stateName));
 
         $possibleStateClasses = $this->stateClassConfig()->possibleStates();
-        $currentStateClass = $possibleStateClasses[$stateName] ?? null;
-        if ($currentStateClass === null) {
-            throw new UnknownStateException("The state {$stateName} of {$this->table} with id {$this->id} is not part of {$this->stateClass()}.");
-        }
+        $currentStateClass = ($possibleStateClasses[$stateName] ?? null)
+            ?? throw new UnknownStateException("The state {$stateName} of {$this->table} with id {$this->id} is not part of {$this->stateClass()}.");
 
         return new $currentStateClass();
     }
