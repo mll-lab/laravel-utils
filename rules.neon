@@ -4,6 +4,11 @@ parameters:
   - class: 'Illuminate\Support\Carbon'
     message: 'it is mostly just an alias.'
     errorTip: 'use Carbon\Carbon instead.'
+  - class:
+    - 'Illuminate\Notifications\*'
+    - 'Illuminate\Support\Facades\Notification'
+    message: 'notifications duplicate mailables and need a notifiable wrapper for plain addresses.'
+    errorTip: 'Queue a Mailable extending MLL\LaravelUtils\Mail\RobustQueueableMailable instead.'
   disallowedMethodCalls:
   - method: 'Illuminate\Database\Eloquent\Model::update()'
     message: 'it assigns attributes through an array and is not type safe, without parameters it is like save().'
