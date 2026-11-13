@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.16.0](https://github.com/mll-lab/laravel-utils/compare/v10.15.0...v10.16.0) (2026-11-13)
+
+### Features
+
+* add RobustQueueableMailable and forbid Laravel notifications via PHPStan rules ([#56](https://github.com/mll-lab/laravel-utils/issues/56)) ([c5f052d](https://github.com/mll-lab/laravel-utils/commit/c5f052db0ded15a6e884e9eeb5a48138d300f551))
+
 ## [10.15.0](https://github.com/mll-lab/laravel-utils/compare/v10.14.0...v10.15.0) (2026-11-04)
 
 ### Features
