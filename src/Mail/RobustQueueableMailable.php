@@ -2,19 +2,24 @@
 
 namespace MLL\LaravelUtils\Mail;
 
+use Carbon\Carbon;
 use Illuminate\Queue\SerializesModels;
-use MLL\LaravelUtils\Queue\ExponentialBackoff;
 
 /**
  * Sets reasonable defaults for mailables to enable robust queuing.
+ *
+ * Retries for a day, so mails survive a mail server outage of several hours.
  */
 abstract class RobustQueueableMailable extends QueueableMailable
 {
-    use ExponentialBackoff;
     use SerializesModels;
 
-    /** https://laravel.com/docs/queues#max-attempts */
-    public int $tries = 10;
+    /**
+     * Seconds between attempts, the last value repeats.
+     *
+     * @var list<int>
+     */
+    public array $backoff = [60, 300, 900, 1800];
 
     /**
      * Run a queue worker for it, e.g. `php artisan queue:work --queue=mail`.
@@ -22,4 +27,10 @@ abstract class RobustQueueableMailable extends QueueableMailable
      * @var string|null
      */
     public $queue = 'mail';
+
+    /** https://laravel.com/docs/queues#time-based-attempts */
+    public function retryUntil(): Carbon
+    {
+        return Carbon::now()->addDay();
+    }
 }
