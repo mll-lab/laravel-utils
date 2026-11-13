@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.17.0](https://github.com/mll-lab/laravel-utils/compare/v10.16.0...v10.17.0) (2026-11-13)
+
+### Features
+
+* forbid passing arguments to Model::factory() ([#58](https://github.com/mll-lab/laravel-utils/issues/58)) ([2591c65](https://github.com/mll-lab/laravel-utils/commit/2591c6550d85aae44664625933f2a8a3863078d4))
+
 ## [10.16.0](https://github.com/mll-lab/laravel-utils/compare/v10.15.0...v10.16.0) (2026-11-13)
 
 ### Features
