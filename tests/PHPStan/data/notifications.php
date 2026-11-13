@@ -8,6 +8,4 @@ final class NotifiableUser
     use Notifiable;
 }
 
-final class FooNotification extends Notification {}
-
 Illuminate\Support\Facades\Notification::fake();

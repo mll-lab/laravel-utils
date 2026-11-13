@@ -42,8 +42,7 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             3 => ['Namespace Illuminate\\Notifications\\Notifiable is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notifiable matches Illuminate\\Notifications\\*]'],
             4 => ['Namespace Illuminate\\Notifications\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notification matches Illuminate\\Notifications\\*]'],
             8 => ['Trait Illuminate\\Notifications\\Notifiable is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notifiable matches Illuminate\\Notifications\\*]'],
-            11 => ['Namespace Illuminate\\Notifications\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notification matches Illuminate\\Notifications\\*]'],
-            13 => ['Namespace Illuminate\\Support\\Facades\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses.'],
+            11 => ['Namespace Illuminate\\Support\\Facades\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses.'],
         ]];
 
         yield [__DIR__ . '/data/collection.php', [
