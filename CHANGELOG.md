@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.18.0](https://github.com/mll-lab/laravel-utils/compare/v10.17.0...v10.18.0) (2026-11-13)
+
+### Features
+
+* retry RobustQueueableMailable for a day ([#57](https://github.com/mll-lab/laravel-utils/issues/57)) ([b4f45e9](https://github.com/mll-lab/laravel-utils/commit/b4f45e9bfb6b66865365fde3761289ac50753903))
+
 ## [10.17.0](https://github.com/mll-lab/laravel-utils/compare/v10.16.0...v10.17.0) (2026-11-13)
 
 ### Features
