@@ -117,6 +117,18 @@ add `/stubs` to your `.gitignore` and add the following to your `composer.json`:
     }
 ```
 
+### Queued mails
+
+Extend `MLL\LaravelUtils\Mail\RobustQueueableMailable` to queue a mail on the queue `mail` with 10 tries and exponential backoff.
+Run a worker for that queue:
+
+```sh
+php artisan queue:work --queue=mail
+```
+
+The PHPStan rules in [`rules.neon`](rules.neon) forbid Laravel notifications.
+Use such a mailable instead.
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).
