@@ -10,6 +10,7 @@ use App\ModelStates\ModelStates\StateD;
 use App\ModelStates\OtherModelStates\StateX;
 use App\ModelStates\OtherModelStates\StateY;
 use App\ModelStates\OtherModelStates\StateZ;
+use App\ModelStates\StateManager;
 use App\ModelStates\TestModel;
 use App\ModelStates\TestModelWithCustomTransition;
 use App\ModelStates\Transitions\CustomInvalidTransition;
@@ -35,15 +36,69 @@ final class StateTest extends DBTestCase
         self::assertSame(StateA::name(), $model->stateManager->state_name);
     }
 
-    public function testIfOldAndNewStateAreIdenticalNoTransitionNotAllowedExceptionWillBeThrown(): void
+    public function testRepeatingAStateWithoutConfiguredTransitionDoesNothing(): void
     {
         // A -> A
         $model1 = new TestModel();
         $model1->save();
         self::assertSame('STATE_A', StateA::name());
         self::assertSame(StateA::name(), $model1->stateManager->state_name);
+
+        $updates = 0;
+        StateManager::updated(function () use (&$updates): void {
+            ++$updates;
+        });
+
         $model1->state = new StateA();
         self::assertSame(StateA::name(), $model1->stateManager->state_name);
+        self::assertSame(0, $updates);
+    }
+
+    public function testRepeatingAStateWithConfiguredTransitionSavesTheStateManager(): void
+    {
+        $model = new TestModelWithCustomTransition();
+        $model->save();
+        $model->state = new StateY();
+
+        $updates = 0;
+        StateManager::updated(function () use (&$updates): void {
+            ++$updates;
+        });
+
+        // Y -> Y
+        $model->state = new StateY();
+        self::assertSame(StateY::name(), $model->stateManager->state_name);
+        self::assertSame(1, $updates);
+    }
+
+    public function testVetoedRepeatKeepsTheStateManagerClean(): void
+    {
+        $model = new TestModelWithCustomTransition();
+        $model->save();
+        $model->state = new StateY();
+
+        StateManager::updating(fn (): bool => false);
+
+        // Y -> Y
+        $model->state = new StateY();
+        self::assertSame(StateY::name(), $model->stateManager->getOriginal('state_name'));
+        self::assertFalse($model->stateManager->isDirty());
+    }
+
+    public function testTransitionKeepsTheOriginalStateForUpdatingListeners(): void
+    {
+        $model = new TestModelWithCustomTransition();
+        $model->save();
+
+        $originalStateName = null;
+        StateManager::updating(function (StateManager $stateManager) use (&$originalStateName): void {
+            $originalStateName = $stateManager->getOriginal('state_name');
+        });
+
+        // X -> Y
+        $model->state = new StateY();
+
+        self::assertSame(StateX::name(), $originalStateName);
     }
 
     public function testCanTransitionToAllowedStates(): void

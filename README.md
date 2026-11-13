@@ -117,6 +117,21 @@ add `/stubs` to your `.gitignore` and add the following to your `composer.json`:
     }
 ```
 
+### Repeating a model state
+
+Setting a model to its current state does nothing by default.
+To make a state repeatable, allow a transition from the state to itself in the `config()` of your abstract state class:
+
+```php
+public static function config(): StateConfig
+{
+    return (new StateConfig())
+        ->allowTransition(Prepared::class, Prepared::class);
+}
+```
+
+Setting the current state again then runs that transition and saves the state manager, although the state name it stores stays the same.
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).

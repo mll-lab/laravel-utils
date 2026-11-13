@@ -50,12 +50,8 @@ abstract class Transition
     {
         $stateManager = $this->model->stateManager;
         assert($stateManager instanceof Model, 'due to HasStateManagerInterface');
+        assert(method_exists($stateManager, 'persistState'), 'due to IsStateManager');
 
-        assert(method_exists($stateManager, 'stateColumnName'), 'due to IsStateManager');
-        $stateColumnName = $stateManager::stateColumnName(); // @phpstan-ignore method.staticCall (due to IsStateManager)
-        assert(is_string($stateColumnName), 'due to IsStateManager');
-
-        $stateManager->setAttribute($stateColumnName, $this->to::name());
-        $stateManager->save();
+        $stateManager->persistState($this->to());
     }
 }
