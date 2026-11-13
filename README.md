@@ -119,7 +119,8 @@ add `/stubs` to your `.gitignore` and add the following to your `composer.json`:
 
 ### Queued mails
 
-Extend `MLL\LaravelUtils\Mail\RobustQueueableMailable` to queue a mail on the queue `mail` with 10 tries and exponential backoff.
+Extend `MLL\LaravelUtils\Mail\RobustQueueableMailable` to queue a mail on the queue `mail`.
+It retries for a day, up to 30 minutes apart, so mails survive a mail server outage of several hours.
 Run a worker for that queue:
 
 ```sh
