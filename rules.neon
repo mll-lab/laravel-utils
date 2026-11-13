@@ -115,3 +115,9 @@ parameters:
     allowParamsAnywhereAnyValue:
     - position: 1
       name: 'eventsToFake'
+  - method: 'Illuminate\Database\Eloquent\Factories\HasFactory::factory()'
+    message: 'passing arguments to factory() is a hidden alternative to the fluent factory methods.'
+    errorTip: 'Use Foo::factory()->count($count), or a named factory method that uses afterMaking.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'count'

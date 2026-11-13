@@ -26,6 +26,10 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         yield [__DIR__ . '/data/factory.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
+            13 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            14 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            15 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            16 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
         ]];
 
         yield [__DIR__ . '/data/functions.php', [
@@ -114,10 +118,12 @@ final class PHPStanExtensionTest extends PHPStanTestCase
      */
     private function assertSameErrorMessages(array $expectedErrors, array $errors): void
     {
+        $errorLines = array_map(static fn (Error $error): int => $error->getLine() ?? 0, $errors);
+        self::assertEqualsCanonicalizing(array_keys($expectedErrors), array_values(array_unique($errorLines)));
+
         foreach ($errors as $error) {
             $errorLine = $error->getLine() ?? 0;
 
-            self::assertArrayHasKey($errorLine, $expectedErrors);
             self::assertContains($error->getMessage(), $expectedErrors[$errorLine], sprintf("Unexpected error \"%s\" at line %d.\n\nExpected \"%s\"", $error->getMessage(), $errorLine, implode("\n\t", $expectedErrors[$errorLine])));
         }
     }
