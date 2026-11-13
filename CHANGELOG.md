@@ -36,6 +36,12 @@
 
 * respect ConditionalMigration::shouldRun() in pretend mode ([#45](https://github.com/mll-lab/laravel-utils/issues/45)) ([5cb791d](https://github.com/mll-lab/laravel-utils/commit/5cb791d2979471eeef2edf135202fd6d33cd5fdc))
 
+## v11.0.0
+
+### Changed
+
+- Execute transitions when repeatedly setting the same state https://github.com/mll-lab/laravel-utils/pull/34
+
 ## v10.12.0
 
 ### Added
