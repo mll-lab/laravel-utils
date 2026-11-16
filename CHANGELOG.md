@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.18.1](https://github.com/mll-lab/laravel-utils/compare/v10.18.0...v10.18.1) (2026-11-16)
+
+### Bug Fixes
+
+* allow calling Queueable methods such as afterCommit() on mailables ([#59](https://github.com/mll-lab/laravel-utils/issues/59)) ([8c4e481](https://github.com/mll-lab/laravel-utils/commit/8c4e4812bd92d73ec6472c7b434f9882c7043d41))
+
 ## [10.18.0](https://github.com/mll-lab/laravel-utils/compare/v10.17.0...v10.18.0) (2026-11-13)
 
 ### Features
