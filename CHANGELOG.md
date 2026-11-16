@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.20.0](https://github.com/mll-lab/laravel-utils/compare/v10.19.0...v10.20.0) (2026-11-16)
+
+### Features
+
+* forbid Collection::concat() in favor of spread construction ([#61](https://github.com/mll-lab/laravel-utils/issues/61)) ([ab68258](https://github.com/mll-lab/laravel-utils/commit/ab68258f6f15f1aac3a08dcd77039f5994bb9db9))
+
 ## [10.19.0](https://github.com/mll-lab/laravel-utils/compare/v10.18.1...v10.19.0) (2026-11-16)
 
 ### Features
