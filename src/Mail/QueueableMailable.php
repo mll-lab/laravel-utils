@@ -11,8 +11,6 @@ use Illuminate\Mail\Mailable;
  * Its only purpose is to include the trait Queueable here to avoid a conflict between:
  * - @see Queueable::$queue
  * - @see RobustQueueableMailable::$queue
- *
- * @internal
  */
 abstract class QueueableMailable extends Mailable
 {
