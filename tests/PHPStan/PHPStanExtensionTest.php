@@ -35,6 +35,7 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         yield [__DIR__ . '/data/functions.php', [
             3 => ['Calling optional() is forbidden, it undermines type safety.'],
             4 => ['Calling getenv() is forbidden, it does not consider the .env file.'],
+            5 => ['Calling resolve() is forbidden, it is an alias for app().'],
         ]];
 
         yield [__DIR__ . '/data/model.php', [

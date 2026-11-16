@@ -102,6 +102,9 @@ parameters:
   - function: 'optional()'
     message: 'it undermines type safety.'
     errorTip: 'Use the null safe operator ?-> instead.'
+  - function: 'resolve()'
+    message: 'it is an alias for app().'
+    errorTip: 'Use app() instead.'
   disallowedStaticCalls:
   - method: 'Illuminate\Database\Eloquent\Builder::create()'
     message: 'creating or filling models through arrays prevents static validation from working.'
