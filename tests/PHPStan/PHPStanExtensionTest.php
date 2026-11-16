@@ -64,6 +64,8 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             22 => ['Calling Illuminate\Support\Collection::groupBy() (as Illuminate\Database\Eloquent\Collection::groupBy()) is forbidden, because string keys are not type safe.'],
             23 => ['Calling Illuminate\Support\Collection::firstWhere() (as Illuminate\Database\Eloquent\Collection::firstWhere()) is forbidden, because string keys are not type safe.'],
             24 => ['Calling Illuminate\Database\Eloquent\Collection::pluck() is forbidden, because it is not type safe.'],
+            47 => ['Calling Illuminate\Support\Collection::concat() is forbidden, it is always replaceable by spread construction, which reads symmetrically.'],
+            48 => ['Calling Illuminate\Support\Collection::concat() (as Illuminate\Database\Eloquent\Collection::concat()) is forbidden, it is always replaceable by spread construction, which reads symmetrically.'],
         ]];
     }
 

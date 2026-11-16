@@ -42,3 +42,7 @@ $eloquentCollection->sortBy(fn (User $user): int => $user->getKey());
 $eloquentCollection->sortByDesc(fn (User $user): int => $user->getKey());
 $eloquentCollection->groupBy(fn (User $user): int => $user->getKey());
 $eloquentCollection->first(fn (User $user): bool => $user->getKey() === 1);
+
+// Disallowed: concat() on either collection
+$collection->concat($eloquentCollection);
+$eloquentCollection->concat($collection);
