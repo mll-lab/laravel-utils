@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.19.0](https://github.com/mll-lab/laravel-utils/compare/v10.18.1...v10.19.0) (2026-11-16)
+
+### Features
+
+* forbid resolve() in favor of app() ([#60](https://github.com/mll-lab/laravel-utils/issues/60)) ([7b355fb](https://github.com/mll-lab/laravel-utils/commit/7b355fb31276162d1335eb1900d9524306f80c75))
+
 ## [10.18.1](https://github.com/mll-lab/laravel-utils/compare/v10.18.0...v10.18.1) (2026-11-16)
 
 ### Bug Fixes
