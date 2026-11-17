@@ -103,6 +103,18 @@ php artisan migrate:check --path=vendor/mll-lab/laravel-utils/migrations
 
 Returns exit code `0` when no migrations are pending, exit code `1` otherwise.
 
+### Typed config reads
+
+The PHPStan rules in [`rules.neon`](rules.neon) forbid reading config through `config('key')` or `config()->get()`.
+Use the typed getters of `Illuminate\Support\Facades\Config` instead, such as `Config::string()` or `Config::integer()`.
+They throw on `null`, so read a key that may hold `null` with `ConfigUtils::tryString()`:
+
+```php
+use MLL\LaravelUtils\Config\ConfigUtils;
+
+$slug = ConfigUtils::tryString('cron-job.slug');
+```
+
 ### Strict Stubs
 
 To continually keep your stubs updated with the latest and greatest from this package,

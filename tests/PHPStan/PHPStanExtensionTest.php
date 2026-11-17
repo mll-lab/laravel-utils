@@ -23,6 +23,14 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             7 => ['Calling Illuminate\Database\Eloquent\Builder::create() (as App\Models\User::create()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
         ]];
 
+        yield [__DIR__ . '/data/config.php', [
+            3 => ['Calling config() is forbidden, it is not type safe.'],
+            4 => [
+                'Calling Illuminate\Contracts\Config\Repository::get() (as Illuminate\Config\Repository::get()) is forbidden, it is not type safe.',
+                'Calling config() is forbidden, it is not type safe.',
+            ],
+        ]];
+
         yield [__DIR__ . '/data/factory.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
