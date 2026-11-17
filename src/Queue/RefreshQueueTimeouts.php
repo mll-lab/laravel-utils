@@ -4,6 +4,7 @@ namespace MLL\LaravelUtils\Queue;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 
 class RefreshQueueTimeouts extends Command
@@ -18,11 +19,8 @@ class RefreshQueueTimeouts extends Command
 
     public function handle(): void
     {
-        $jobsTable = config('queue.connections.database.table', 'jobs');
-        assert(is_string($jobsTable));
-
-        $failedJobsTable = config('queue.failed.table', 'failed_jobs');
-        assert(is_string($failedJobsTable));
+        $jobsTable = Config::string('queue.connections.database.table', 'jobs');
+        $failedJobsTable = Config::string('queue.failed.table', 'failed_jobs');
 
         /** @var bool $isDryRun flag option, see signature */
         $isDryRun = $this->option('dry-run');

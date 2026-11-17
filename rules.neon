@@ -95,10 +95,20 @@ parameters:
   - method: 'Illuminate\Support\Collection::concat()'
     message: 'it is always replaceable by spread construction, which reads symmetrically.'
     errorTip: 'Use new Collection([...$a, ...$b]) or new EloquentCollection([...$a, ...$b]) instead.'
+  - method: 'Illuminate\Contracts\Config\Repository::get()'
+    message: 'it is not type safe.'
+    errorTip: 'Use a typed getter such as Illuminate\Support\Facades\Config::string(), or MLL\LaravelUtils\Config\ConfigUtils::tryString() for nullable values.'
   - method: 'Illuminate\Testing\TestResponse::dump()'
     message: 'it is used for debugging.'
     errorTip: 'Remove debugging code before committing.'
   disallowedFunctionCalls:
+  - function: 'config()'
+    message: 'it is not type safe.'
+    errorTip: 'Use a typed getter such as Illuminate\Support\Facades\Config::string(), or MLL\LaravelUtils\Config\ConfigUtils::tryString() for nullable values.'
+    allowParamsAnywhere:
+    - position: 1
+      name: 'key'
+      typeString: 'array'
   - function: 'getenv()'
     message: 'it does not consider the .env file.'
     errorTip: 'Use env() instead.'
