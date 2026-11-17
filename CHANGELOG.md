@@ -1,5 +1,41 @@
 # Changelog
 
+## [10.20.0](https://github.com/mll-lab/laravel-utils/compare/v10.19.0...v10.20.0) (2026-11-16)
+
+### Features
+
+* forbid Collection::concat() in favor of spread construction ([#61](https://github.com/mll-lab/laravel-utils/issues/61)) ([ab68258](https://github.com/mll-lab/laravel-utils/commit/ab68258f6f15f1aac3a08dcd77039f5994bb9db9))
+
+## [10.19.0](https://github.com/mll-lab/laravel-utils/compare/v10.18.1...v10.19.0) (2026-11-16)
+
+### Features
+
+* forbid resolve() in favor of app() ([#60](https://github.com/mll-lab/laravel-utils/issues/60)) ([7b355fb](https://github.com/mll-lab/laravel-utils/commit/7b355fb31276162d1335eb1900d9524306f80c75))
+
+## [10.18.1](https://github.com/mll-lab/laravel-utils/compare/v10.18.0...v10.18.1) (2026-11-16)
+
+### Bug Fixes
+
+* allow calling Queueable methods such as afterCommit() on mailables ([#59](https://github.com/mll-lab/laravel-utils/issues/59)) ([8c4e481](https://github.com/mll-lab/laravel-utils/commit/8c4e4812bd92d73ec6472c7b434f9882c7043d41))
+
+## [10.18.0](https://github.com/mll-lab/laravel-utils/compare/v10.17.0...v10.18.0) (2026-11-13)
+
+### Features
+
+* retry RobustQueueableMailable for a day ([#57](https://github.com/mll-lab/laravel-utils/issues/57)) ([b4f45e9](https://github.com/mll-lab/laravel-utils/commit/b4f45e9bfb6b66865365fde3761289ac50753903))
+
+## [10.17.0](https://github.com/mll-lab/laravel-utils/compare/v10.16.0...v10.17.0) (2026-11-13)
+
+### Features
+
+* forbid passing arguments to Model::factory() ([#58](https://github.com/mll-lab/laravel-utils/issues/58)) ([2591c65](https://github.com/mll-lab/laravel-utils/commit/2591c6550d85aae44664625933f2a8a3863078d4))
+
+## [10.16.0](https://github.com/mll-lab/laravel-utils/compare/v10.15.0...v10.16.0) (2026-11-13)
+
+### Features
+
+* add RobustQueueableMailable and forbid Laravel notifications via PHPStan rules ([#56](https://github.com/mll-lab/laravel-utils/issues/56)) ([c5f052d](https://github.com/mll-lab/laravel-utils/commit/c5f052db0ded15a6e884e9eeb5a48138d300f551))
+
 ## [10.15.0](https://github.com/mll-lab/laravel-utils/compare/v10.14.0...v10.15.0) (2026-11-04)
 
 ### Features

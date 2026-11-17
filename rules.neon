@@ -4,6 +4,11 @@ parameters:
   - class: 'Illuminate\Support\Carbon'
     message: 'it is mostly just an alias.'
     errorTip: 'use Carbon\Carbon instead.'
+  - class:
+    - 'Illuminate\Notifications\*'
+    - 'Illuminate\Support\Facades\Notification'
+    message: 'notifications duplicate mailables and need a notifiable wrapper for plain addresses.'
+    errorTip: 'Queue a Mailable extending MLL\LaravelUtils\Mail\RobustQueueableMailable instead.'
   disallowedMethodCalls:
   - method: 'Illuminate\Database\Eloquent\Model::update()'
     message: 'it assigns attributes through an array and is not type safe, without parameters it is like save().'
@@ -87,6 +92,9 @@ parameters:
   - method: 'Illuminate\Support\Collection::firstWhere()'
     message: 'because string keys are not type safe.'
     errorTip: 'Use first() with a closure instead: ->first(fn (Model $item): bool => $item->attribute === $value)'
+  - method: 'Illuminate\Support\Collection::concat()'
+    message: 'it is always replaceable by spread construction, which reads symmetrically.'
+    errorTip: 'Use new Collection([...$a, ...$b]) or new EloquentCollection([...$a, ...$b]) instead.'
   - method: 'Illuminate\Testing\TestResponse::dump()'
     message: 'it is used for debugging.'
     errorTip: 'Remove debugging code before committing.'
@@ -97,6 +105,9 @@ parameters:
   - function: 'optional()'
     message: 'it undermines type safety.'
     errorTip: 'Use the null safe operator ?-> instead.'
+  - function: 'resolve()'
+    message: 'it is an alias for app().'
+    errorTip: 'Use app() instead.'
   disallowedStaticCalls:
   - method: 'Illuminate\Database\Eloquent\Builder::create()'
     message: 'creating or filling models through arrays prevents static validation from working.'
@@ -110,3 +121,9 @@ parameters:
     allowParamsAnywhereAnyValue:
     - position: 1
       name: 'eventsToFake'
+  - method: 'Illuminate\Database\Eloquent\Factories\HasFactory::factory()'
+    message: 'passing arguments to factory() is a hidden alternative to the fluent factory methods.'
+    errorTip: 'Use Foo::factory()->count($count), or a named factory method that uses afterMaking.'
+    allowExceptParamsAnyValue:
+    - position: 1
+      name: 'count'

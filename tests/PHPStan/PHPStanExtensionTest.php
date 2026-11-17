@@ -26,16 +26,29 @@ final class PHPStanExtensionTest extends PHPStanTestCase
         yield [__DIR__ . '/data/factory.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
             7 => ['Calling Illuminate\Database\Eloquent\Factories\Factory::createOne() (as Database\Factories\UserFactory::createOne()) is forbidden, creating or filling models through arrays prevents static validation from working.'],
+            13 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            14 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            15 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
+            16 => ['Calling Illuminate\Database\Eloquent\Factories\HasFactory::factory() (as App\Models\User::factory()) is forbidden, passing arguments to factory() is a hidden alternative to the fluent factory methods.'],
         ]];
 
         yield [__DIR__ . '/data/functions.php', [
             3 => ['Calling optional() is forbidden, it undermines type safety.'],
             4 => ['Calling getenv() is forbidden, it does not consider the .env file.'],
+            5 => ['Calling resolve() is forbidden, it is an alias for app().'],
         ]];
 
         yield [__DIR__ . '/data/model.php', [
             6 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
             7 => ['Calling Illuminate\Database\Eloquent\Model::update() (as App\Models\User::update()) is forbidden, it assigns attributes through an array and is not type safe, without parameters it is like save().'],
+        ]];
+
+        yield [__DIR__ . '/data/notifications.php', [
+            3 => ['Namespace Illuminate\\Notifications\\Notifiable is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notifiable matches Illuminate\\Notifications\\*]'],
+            4 => ['Namespace Illuminate\\Notifications\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notification matches Illuminate\\Notifications\\*]'],
+            8 => ['Trait Illuminate\\Notifications\\Notifiable is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notifiable matches Illuminate\\Notifications\\*]'],
+            11 => ['Class Illuminate\\Notifications\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses. [Illuminate\\Notifications\\Notification matches Illuminate\\Notifications\\*]'],
+            13 => ['Class Illuminate\\Support\\Facades\\Notification is forbidden, notifications duplicate mailables and need a notifiable wrapper for plain addresses.'],
         ]];
 
         yield [__DIR__ . '/data/collection.php', [
@@ -51,6 +64,8 @@ final class PHPStanExtensionTest extends PHPStanTestCase
             22 => ['Calling Illuminate\Support\Collection::groupBy() (as Illuminate\Database\Eloquent\Collection::groupBy()) is forbidden, because string keys are not type safe.'],
             23 => ['Calling Illuminate\Support\Collection::firstWhere() (as Illuminate\Database\Eloquent\Collection::firstWhere()) is forbidden, because string keys are not type safe.'],
             24 => ['Calling Illuminate\Database\Eloquent\Collection::pluck() is forbidden, because it is not type safe.'],
+            47 => ['Calling Illuminate\Support\Collection::concat() is forbidden, it is always replaceable by spread construction, which reads symmetrically.'],
+            48 => ['Calling Illuminate\Support\Collection::concat() (as Illuminate\Database\Eloquent\Collection::concat()) is forbidden, it is always replaceable by spread construction, which reads symmetrically.'],
         ]];
     }
 
@@ -106,10 +121,12 @@ final class PHPStanExtensionTest extends PHPStanTestCase
      */
     private function assertSameErrorMessages(array $expectedErrors, array $errors): void
     {
+        $errorLines = array_map(static fn (Error $error): int => $error->getLine() ?? 0, $errors);
+        self::assertEqualsCanonicalizing(array_keys($expectedErrors), array_values(array_unique($errorLines)));
+
         foreach ($errors as $error) {
             $errorLine = $error->getLine() ?? 0;
 
-            self::assertArrayHasKey($errorLine, $expectedErrors);
             self::assertContains($error->getMessage(), $expectedErrors[$errorLine], sprintf("Unexpected error \"%s\" at line %d.\n\nExpected \"%s\"", $error->getMessage(), $errorLine, implode("\n\t", $expectedErrors[$errorLine])));
         }
     }

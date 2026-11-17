@@ -43,7 +43,7 @@
     "phpstan/phpstan-phpunit": "^2",
     "phpstan/phpstan-strict-rules": "^2",
     "phpunit/phpunit": "^11.5.15 || ^12",
-    "spaze/phpstan-disallowed-calls": "^4.4",
+    "spaze/phpstan-disallowed-calls": "^4.15.1",
     "thecodingmachine/phpstan-safe-rule": "^1.2"
   },
   "suggest": {

@@ -2,3 +2,4 @@
 
 optional(null)->bar;
 $foo = getenv('FOO');
+resolve(stdClass::class);

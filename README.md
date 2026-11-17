@@ -132,6 +132,19 @@ public static function config(): StateConfig
 
 Setting the current state again then runs that transition and saves the state manager, although the state name it stores stays the same.
 
+### Queued mails
+
+Extend `MLL\LaravelUtils\Mail\RobustQueueableMailable` to queue a mail on the queue `mail`.
+It retries for a day, up to 30 minutes apart, so mails survive a mail server outage of several hours.
+Run a worker for that queue:
+
+```sh
+php artisan queue:work --queue=mail
+```
+
+The PHPStan rules in [`rules.neon`](rules.neon) forbid Laravel notifications.
+Use such a mailable instead.
+
 ## Changelog
 
 See [`CHANGELOG.md`](CHANGELOG.md).
