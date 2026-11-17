@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.21.0](https://github.com/mll-lab/laravel-utils/compare/v10.20.0...v10.21.0) (2026-11-17)
+
+### Features
+
+* forbid untyped config reads in favor of typed getters ([#62](https://github.com/mll-lab/laravel-utils/issues/62)) ([945d5d7](https://github.com/mll-lab/laravel-utils/commit/945d5d73d8f92ca4e41500e393f0f7f5ba67574c))
+
 ## [10.20.0](https://github.com/mll-lab/laravel-utils/compare/v10.19.0...v10.20.0) (2026-11-16)
 
 ### Features
