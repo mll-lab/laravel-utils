@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.22.0](https://github.com/mll-lab/laravel-utils/compare/v10.21.0...v10.22.0) (2026-11-18)
+
+### Features
+
+* run a configured transition when setting the current state again ([2f76b54](https://github.com/mll-lab/laravel-utils/commit/2f76b5402a00d3384ca9cdb4bb7b48d303cc64e2))
+
 ## [10.21.0](https://github.com/mll-lab/laravel-utils/compare/v10.20.0...v10.21.0) (2026-11-17)
 
 ### Features
