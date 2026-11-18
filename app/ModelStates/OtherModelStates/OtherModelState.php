@@ -14,6 +14,7 @@ abstract class OtherModelState extends State
     {
         return (new StateConfig())
             ->allowTransition(StateX::class, StateY::class, CustomTransition::class)
+            ->allowTransition(StateY::class, StateY::class)
             ->allowTransition(StateX::class, StateZ::class, CustomInvalidTransition::class);
     }
 

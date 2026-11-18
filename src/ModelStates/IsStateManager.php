@@ -37,6 +37,27 @@ trait IsStateManager
                 ->canTransition());
     }
 
+    public function persistState(State $state): void
+    {
+        $stateColumnName = static::stateColumnName();
+        $this->setAttribute($stateColumnName, $state::name());
+
+        if ($this->isDirty($stateColumnName)) {
+            $this->save();
+
+            return;
+        }
+
+        // A repeated state leaves the attribute unchanged, but must be saved like any other transition
+        $originalStateName = $this->original[$stateColumnName];
+        unset($this->original[$stateColumnName]);
+        try {
+            $this->save();
+        } finally {
+            $this->original[$stateColumnName] ??= $originalStateName;
+        }
+    }
+
     /** @return Collection<array-key, Transition> */
     public function possibleTransitions(): Collection
     {

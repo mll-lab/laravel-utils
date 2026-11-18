@@ -55,8 +55,12 @@ trait HasStateManager
     /** @param State|class-string<State> $newState */
     public function setStateAttribute(State|string $newState): void
     {
-        // if the old and new state are the same, do not perform a "transition"
-        if ($this->state::name() === $newState::name()) {
+        $currentStateClass = $this->state::class;
+
+        $isSameState = $currentStateClass::name() === $newState::name();
+        $hasNoRepeatTransition = $this->stateClassConfig()->transition(fromMorphClass: $currentStateClass, toMorphClass: $currentStateClass) === null;
+        $isRepeatWithoutTransition = $isSameState && $hasNoRepeatTransition;
+        if ($isRepeatWithoutTransition) {
             return;
         }
 
