@@ -70,9 +70,7 @@
     },
     "policy": {
       "advisories": {
-        "ignore": [
-          "laravel/framework"
-        ]
+        "block": false
       }
     },
     "preferred-install": "dist",
